@@ -39,6 +39,39 @@
 				.addEventListener("input", function () {
 					const searchTerm = this.value.toLowerCase();
 					const cards = document.querySelectorAll(".card-item");
+					const activeCategory = document
+						.querySelector(".btn-group .btn.btn-primary")
+						?.getAttribute("data-category");
+
+					cards.forEach((card) => {
+						const title = card
+							.querySelector(".card-title")
+							.textContent.toLowerCase();
+						const matchesSearch = title.includes(searchTerm);
+						const matchesCategory =
+							!activeCategory ||
+							card.getAttribute("data-category") === activeCategory;
+
+						if (matchesSearch && matchesCategory) {
+							card.style.display = "block";
+						} else {
+							card.style.display = "none";
+						}
+					});
+				});
+
+			function filterCards(category) {
+				const searchTerm = document
+					.getElementById("searchBar")
+					.value.toLowerCase();
+				const cards = document.querySelectorAll(".card-item");
+				const buttons = document.querySelectorAll(".btn-group .btn");
+				const activeButton = document.querySelector(
+					`.btn-group .btn.btn-primary[data-category="${category}"]`
+				);
+
+				if (activeButton) {
+					// If the clicked button is already active, remove the filter
 					cards.forEach((card) => {
 						const title = card
 							.querySelector(".card-title")
@@ -49,20 +82,6 @@
 							card.style.display = "none";
 						}
 					});
-				});
-
-			function filterCards(category) {
-				const cards = document.querySelectorAll(".card-item");
-				const buttons = document.querySelectorAll(".btn-group .btn");
-				const activeButton = document.querySelector(
-					`.btn-group .btn.btn-primary[data-category="${category}"]`
-				);
-
-				if (activeButton) {
-					// If the clicked button is already active, remove the filter
-					cards.forEach((card) => {
-						card.style.display = "block";
-					});
 					buttons.forEach((button) => {
 						button.classList.remove("btn-primary");
 						button.classList.add("btn-secondary");
@@ -70,7 +89,14 @@
 				} else {
 					// Apply the filter
 					cards.forEach((card) => {
-						if (card.getAttribute("data-category") === category) {
+						const title = card
+							.querySelector(".card-title")
+							.textContent.toLowerCase();
+						const matchesSearch = title.includes(searchTerm);
+						const matchesCategory =
+							card.getAttribute("data-category") === category;
+
+						if (matchesSearch && matchesCategory) {
 							card.style.display = "block";
 						} else {
 							card.style.display = "none";
@@ -130,6 +156,57 @@
 					})
 					.catch((error) => console.error("Error fetching data:", error));
 			});
+
+			const cursorCircle = document.createElement("div");
+
+			cursorCircle.style.zIndex = "9999";
+			cursorCircle.style.position = "fixed";
+			cursorCircle.style.width = "30px";
+			cursorCircle.style.height = "30px";
+			cursorCircle.style.borderRadius = "50%";
+			cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+			cursorCircle.style.pointerEvents = "none";
+			cursorCircle.style.transition = "transform 0.2s ease";
+			document.body.appendChild(cursorCircle);
+			handleMouseMove = (event) => {
+				const xoffset = 15;
+				const yoffset = 15;
+				const y = event.pageY;
+				const x = event.pageX;
+				const ref = cursorCircle;
+				const scrollLeft =
+					window.scrollX !== undefined
+						? window.scrollX
+						: (
+								document.documentElement ||
+								document.body.parentNode ||
+								document.body
+						  ).scrollLeft;
+				const scrollTop =
+					window.scrollY !== undefined
+						? window.scrollY
+						: (
+								document.documentElement ||
+								document.body.parentNode ||
+								document.body
+						  ).scrollTop;
+				ref.style.left = x - scrollLeft - xoffset + "px";
+				ref.style.top = y - scrollTop - yoffset + "px";
+			};
+			document.addEventListener("mousemove", handleMouseMove, false);
+			document
+				.querySelectorAll("a, button, input, .card, .btn")
+				.forEach((element) => {
+					element.addEventListener("mouseenter", () => {
+						console.log("enter");
+						cursorCircle.style.transform = "scale(2)";
+						cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+					});
+					element.addEventListener("mouseleave", () => {
+						cursorCircle.style.transform = "scale(1)";
+						cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+					});
+				});
 		</script>
 	</body>
 </html>
