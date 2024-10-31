@@ -1,6 +1,228 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Site-Accessibilite</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+	<head>
+		<title>Site-Accessibilite</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="../css/style.css" />
+	</head>
+	<body>
+		<div class="container mt-5">
+			<h1 class="mb-4">Site Accessibilite</h1>
+			<div class="row mb-4">
+				<div class="col-md-8">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Search..."
+						id="searchBar" />
+				</div>
+				<div class="col-md-4 text-end">
+					<div
+						class="btn-group"
+						role="group">
+						<button
+							class="btn btn-primary"
+							onclick="filterCards('all')">
+							All
+						</button>
+						<button
+							class="btn btn-secondary"
+							onclick="filterCards('category1')">
+							Category 1
+						</button>
+						<button
+							class="btn btn-secondary"
+							onclick="filterCards('category2')">
+							Category 2
+						</button>
+					</div>
+				</div>
+			</div>
+			<div
+				class="row"
+				id="cardGrid">
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 1</h5>
+							<p class="card-text">Description for card 1.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category2">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 2</h5>
+							<p class="card-text">Description for card 2.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 3</h5>
+							<p class="card-text">Description for card 3.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 4</h5>
+							<p class="card-text">Description for card 4.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 5</h5>
+							<p class="card-text">Description for card 5.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 6</h5>
+							<p class="card-text">Description for card 6.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 7</h5>
+							<p class="card-text">Description for card 7.</p>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-3 mb-4 card-item"
+					data-category="category1">
+					<div class="card h-100">
+						<img
+							src="https://via.placeholder.com/150"
+							class="card-img-top"
+							alt="..." />
+						<div class="card-body">
+							<h5 class="card-title">Card 8</h5>
+							<p class="card-text">Description for card 8.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script
+			type="text/javascript"
+			src="cartes.json"></script>
+		<script>
+			function filterCards(category) {
+				const cards = document.querySelectorAll(".card-item");
+				cards.forEach((card) => {
+					if (
+						category === "all" ||
+						card.getAttribute("data-category") === category
+					) {
+						card.style.display = "block";
+					} else {
+						card.style.display = "none";
+					}
+				});
+			}
+
+			document
+				.getElementById("searchBar")
+				.addEventListener("input", function () {
+					const searchTerm = this.value.toLowerCase();
+					const cards = document.querySelectorAll(".card-item");
+					cards.forEach((card) => {
+						const title = card
+							.querySelector(".card-title")
+							.textContent.toLowerCase();
+						if (title.includes(searchTerm)) {
+							card.style.display = "block";
+						} else {
+							card.style.display = "none";
+						}
+					});
+				});
+			fetch("../data/cartes.json")
+				.then((response) => response.json())
+				.then((data) => {
+					const cardGrid = document.getElementById("cardGrid");
+					cardGrid.innerHTML = ""; // Clear existing cards
+					console.log(data);
+					/*data.forEach((item) => {
+						console.log(item);
+						const card = document.createElement("div");
+						card.className = "col-md-3 mb-4 card-item";
+						card.setAttribute("data-category", item.category);
+
+						card.innerHTML = `
+                                <div class="card h-100">
+                                    <img src="../images/${item.id}.jpg" class="card-img-top" alt="${item.title}" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">${item.title}</h5>
+                                        <p class="card-text">${item.description}</p>
+                                    </div>
+                                </div>
+                            `;
+
+						cardGrid.appendChild(card);
+					});
+                    */
+				})
+				.catch((error) => console.error("Error fetching cartes.json:", error));
+		</script>
+	</body>
+</html>
