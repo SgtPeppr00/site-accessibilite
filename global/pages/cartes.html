@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Site-Accessibilite</title>
+		<title>Cartes</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -14,9 +14,9 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<h1 class="mb-4">Site Accessibilite</h1>
+			<h1 class="mb-4">Cartes</h1>
 			<div class="row mb-4">
-				<div class="col-md-5">
+				<div class="col-md-6">
 					<input
 						type="text"
 						class="form-control"
@@ -34,20 +34,6 @@
 				id="cardGrid"></div>
 		</div>
 		<script>
-			function filterCards(category) {
-				const cards = document.querySelectorAll(".card-item");
-				cards.forEach((card) => {
-					if (
-						category === "all" ||
-						card.getAttribute("data-category") === category
-					) {
-						card.style.display = "block";
-					} else {
-						card.style.display = "none";
-					}
-				});
-			}
-
 			document
 				.getElementById("searchBar")
 				.addEventListener("input", function () {
@@ -64,59 +50,57 @@
 						}
 					});
 				});
-			let activeCategory = "all";
 
 			function filterCards(category) {
-				if (activeCategory === category) {
-					activeCategory = "all";
-				} else {
-					activeCategory = category;
-				}
-
 				const cards = document.querySelectorAll(".card-item");
-				cards.forEach((card) => {
-					if (
-						activeCategory === "all" ||
-						card.getAttribute("data-category") === activeCategory
-					) {
-						card.style.display = "block";
-					} else {
-						card.style.display = "none";
-					}
-				});
-
 				const buttons = document.querySelectorAll(".btn-group .btn");
-				buttons.forEach((button) => {
-					if (button.getAttribute("data-category") === activeCategory) {
-						button.classList.remove("btn-secondary");
-						button.classList.add("btn-primary");
-					} else {
+				const activeButton = document.querySelector(
+					`.btn-group .btn.btn-primary[data-category="${category}"]`
+				);
+
+				if (activeButton) {
+					// If the clicked button is already active, remove the filter
+					cards.forEach((card) => {
+						card.style.display = "block";
+					});
+					buttons.forEach((button) => {
 						button.classList.remove("btn-primary");
 						button.classList.add("btn-secondary");
-					}
-				});
+					});
+				} else {
+					// Apply the filter
+					cards.forEach((card) => {
+						if (card.getAttribute("data-category") === category) {
+							card.style.display = "block";
+						} else {
+							card.style.display = "none";
+						}
+					});
+					buttons.forEach((button) => {
+						if (button.getAttribute("data-category") === category) {
+							button.classList.remove("btn-secondary");
+							button.classList.add("btn-primary");
+						} else {
+							button.classList.remove("btn-primary");
+							button.classList.add("btn-secondary");
+						}
+					});
+				}
 			}
 
 			document.addEventListener("DOMContentLoaded", () => {
 				fetch("../data/cartes.json")
 					.then((response) => response.json())
 					.then((data) => {
-						const categories = [
-							"all",
-							...data.familles.map((famille) => famille.id),
-						];
 						const buttonGroup = document.querySelector(".btn-group");
 
-						categories.forEach((category) => {
+						// Create a button for each famille using famille.titre
+						data.familles.forEach((famille) => {
 							const button = document.createElement("button");
-							button.className =
-								category === "all" ? "btn btn-primary" : "btn btn-secondary";
-							button.setAttribute("data-category", category);
-							button.textContent =
-								category === "all"
-									? "All"
-									: category.charAt(0).toUpperCase() + category.slice(1);
-							button.onclick = () => filterCards(category);
+							button.className = "btn btn-secondary";
+							button.setAttribute("data-category", famille.id);
+							button.textContent = famille.titre; // Set text content to famille.titre
+							button.onclick = () => filterCards(famille.id);
 							buttonGroup.appendChild(button);
 						});
 
@@ -127,17 +111,18 @@
 							famille.cartes.forEach((carte) => {
 								const card = document.createElement("div");
 								card.className = "col-md-3 mb-4 card-item";
-								card.setAttribute("data-category", famille.titre);
+								card.setAttribute("data-category", famille.id);
 
 								card.innerHTML = `
-									<div class="card h-100">
-										<img src="../img/cartes/${carte.id}.png" class="card-img-top" alt="${carte.titre}" />
-										<div class="card-body">
-											<h5 class="card-title">${carte.titre}</h5>
-											<p class="card-text">${carte.description}</p>
-										</div>
-									</div>
-								`;
+						<div class="card h-100">
+							<img src="../img/cartes/${carte.id}.png" class="card-img-top" alt="${carte.titre}" />
+							<div class="card-body">
+								<h5 class="card-title">${carte.titre}</h5>
+								<h6 class="card-body">"${carte.sousTitre}"</h6>
+								<p class="card-text">${carte.description}</p>
+							</div>
+						</div>
+					`;
 
 								cardGrid.appendChild(card);
 							});
