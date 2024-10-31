@@ -153,6 +153,20 @@
 								cardGrid.appendChild(card);
 							});
 						});
+
+						// Wait for all cards to be added before adding event listeners
+						document
+							.querySelectorAll("a, button, input, img, .btn-group .btn")
+							.forEach((element) => {
+								element.addEventListener("mouseover", () => {
+									cursorCircle.style.transform = "scale(2)";
+									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+								});
+								element.addEventListener("mouseleave", () => {
+									cursorCircle.style.transform = "scale(1)";
+									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+								});
+							});
 					})
 					.catch((error) => console.error("Error fetching data:", error));
 			});
@@ -194,19 +208,6 @@
 				ref.style.top = y - scrollTop - yoffset + "px";
 			};
 			document.addEventListener("mousemove", handleMouseMove, false);
-			document
-				.querySelectorAll("a, button, input, .card, .btn")
-				.forEach((element) => {
-					element.addEventListener("mouseenter", () => {
-						console.log("enter");
-						cursorCircle.style.transform = "scale(2)";
-						cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-					});
-					element.addEventListener("mouseleave", () => {
-						cursorCircle.style.transform = "scale(1)";
-						cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-					});
-				});
 		</script>
 	</body>
 </html>
