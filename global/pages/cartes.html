@@ -16,7 +16,7 @@
 		<div class="container mt-5">
 			<h1 class="mb-4">Site Accessibilite</h1>
 			<div class="row mb-4">
-				<div class="col-md-8">
+				<div class="col-md-5">
 					<input
 						type="text"
 						class="form-control"
@@ -26,141 +26,12 @@
 				<div class="col-md-4 text-end">
 					<div
 						class="btn-group"
-						role="group">
-						<button
-							class="btn btn-primary"
-							onclick="filterCards('all')">
-							All
-						</button>
-						<button
-							class="btn btn-secondary"
-							onclick="filterCards('category1')">
-							Category 1
-						</button>
-						<button
-							class="btn btn-secondary"
-							onclick="filterCards('category2')">
-							Category 2
-						</button>
-					</div>
+						role="group"></div>
 				</div>
 			</div>
 			<div
 				class="row"
-				id="cardGrid">
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 1</h5>
-							<p class="card-text">Description for card 1.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category2">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 2</h5>
-							<p class="card-text">Description for card 2.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 3</h5>
-							<p class="card-text">Description for card 3.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category2">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 4</h5>
-							<p class="card-text">Description for card 4.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category2">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 5</h5>
-							<p class="card-text">Description for card 5.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 6</h5>
-							<p class="card-text">Description for card 6.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 7</h5>
-							<p class="card-text">Description for card 7.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://placehold.jp/150x150.png"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 8</h5>
-							<p class="card-text">Description for card 8.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+				id="cardGrid"></div>
 		</div>
 		<script>
 			function filterCards(category) {
@@ -193,38 +64,87 @@
 						}
 					});
 				});
-			fetch("../data/cartes.json")
-				.then((response) => {
-					//console.log(response);
-					return response.json();
-				})
-				.then((data) => {
-					const cardGrid = document.getElementById("cardGrid");
-					cardGrid.innerHTML = "";
-					console.log(data.familles);
+			let activeCategory = "all";
 
-					data.familles.forEach((famille) => {
-						famille.cartes.forEach((carte) => {
-							console.log(carte);
-							const card = document.createElement("div");
-							card.className = "col-md-3 mb-4 card-item";
-							card.setAttribute("data-category", famille.titre);
+			function filterCards(category) {
+				if (activeCategory === category) {
+					activeCategory = "all";
+				} else {
+					activeCategory = category;
+				}
 
-							card.innerHTML = `
-										 <div class="card h-100">
-											 <img src="../img/cartes/${carte.id}.png" class="card-img-top" alt="${carte.titre}" />
-											 <div class="card-body">
-												 <h5 class="card-title">${carte.titre}</h5>
-												 <p class="card-text">${carte.description}</p>
-											 </div>
-										 </div>
-									 `;
+				const cards = document.querySelectorAll(".card-item");
+				cards.forEach((card) => {
+					if (
+						activeCategory === "all" ||
+						card.getAttribute("data-category") === activeCategory
+					) {
+						card.style.display = "block";
+					} else {
+						card.style.display = "none";
+					}
+				});
 
-							cardGrid.appendChild(card);
+				const buttons = document.querySelectorAll(".btn-group .btn");
+				buttons.forEach((button) => {
+					if (button.getAttribute("data-category") === activeCategory) {
+						button.classList.remove("btn-secondary");
+						button.classList.add("btn-primary");
+					} else {
+						button.classList.remove("btn-primary");
+						button.classList.add("btn-secondary");
+					}
+				});
+			}
+
+			document.addEventListener("DOMContentLoaded", () => {
+				fetch("../data/cartes.json")
+					.then((response) => response.json())
+					.then((data) => {
+						const categories = [
+							"all",
+							...data.familles.map((famille) => famille.id),
+						];
+						const buttonGroup = document.querySelector(".btn-group");
+
+						categories.forEach((category) => {
+							const button = document.createElement("button");
+							button.className =
+								category === "all" ? "btn btn-primary" : "btn btn-secondary";
+							button.setAttribute("data-category", category);
+							button.textContent =
+								category === "all"
+									? "All"
+									: category.charAt(0).toUpperCase() + category.slice(1);
+							button.onclick = () => filterCards(category);
+							buttonGroup.appendChild(button);
 						});
-					});
-				})
-				.catch((error) => console.error("Error fetching cartes.json:", error));
+
+						const cardGrid = document.getElementById("cardGrid");
+						cardGrid.innerHTML = "";
+
+						data.familles.forEach((famille) => {
+							famille.cartes.forEach((carte) => {
+								const card = document.createElement("div");
+								card.className = "col-md-3 mb-4 card-item";
+								card.setAttribute("data-category", famille.titre);
+
+								card.innerHTML = `
+									<div class="card h-100">
+										<img src="../img/cartes/${carte.id}.png" class="card-img-top" alt="${carte.titre}" />
+										<div class="card-body">
+											<h5 class="card-title">${carte.titre}</h5>
+											<p class="card-text">${carte.description}</p>
+										</div>
+									</div>
+								`;
+
+								cardGrid.appendChild(card);
+							});
+						});
+					})
+					.catch((error) => console.error("Error fetching data:", error));
+			});
 		</script>
 	</body>
 </html>
