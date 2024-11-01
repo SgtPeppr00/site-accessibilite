@@ -167,6 +167,24 @@
 									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 								});
 							});
+						document.querySelectorAll(".card-item").forEach((card) => {
+							const readButton = document.createElement("button");
+							readButton.className = "btn btn-info mt-2";
+							readButton.textContent = "Lire la carte";
+							readButton.onclick = () => {
+								const title = card.querySelector(".card-title").textContent;
+								const subTitle =
+									card.querySelector(".card-body h6").textContent;
+								const description =
+									card.querySelector(".card-text").textContent;
+								const utterance = new SpeechSynthesisUtterance(
+									`${title}. ${subTitle}. ${description}`
+								);
+								utterance.lang = "fr-FR";
+								window.speechSynthesis.speak(utterance);
+							};
+							card.querySelector(".card-body").appendChild(readButton);
+						});
 					})
 					.catch((error) => console.error("Error fetching data:", error));
 			});
