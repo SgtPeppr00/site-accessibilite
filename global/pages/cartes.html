@@ -15,6 +15,22 @@
 	<body>
 		<div class="container mt-5">
 			<h1 class="mb-4">Cartes</h1>
+			<a
+				href="./accueil.html"
+				class="btn btn-primary mb-4"
+				>Accueil</a
+			>
+			<a
+				href="./atelier.html"
+				class="btn btn-primary mb-4"
+				>Atelier</a
+			>
+			<a
+				href="./contact.html"
+				class="btn btn-primary mb-4"
+				>Contact</a
+			>
+
 			<div class="row mb-4">
 				<div class="col-md-6">
 					<input
@@ -34,6 +50,7 @@
 				id="cardGrid"></div>
 		</div>
 		<script>
+			const synth = window.speechSynthesis;
 			document
 				.getElementById("searchBar")
 				.addEventListener("input", function () {
@@ -155,18 +172,7 @@
 						});
 
 						// Wait for all cards to be added before adding event listeners
-						document
-							.querySelectorAll("a, button, input, img, .btn-group .btn")
-							.forEach((element) => {
-								element.addEventListener("mouseover", () => {
-									cursorCircle.style.transform = "scale(2)";
-									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-								});
-								element.addEventListener("mouseleave", () => {
-									cursorCircle.style.transform = "scale(1)";
-									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-								});
-							});
+
 						document.querySelectorAll(".card-item").forEach((card) => {
 							const readButton = document.createElement("button");
 							readButton.className = "btn btn-info mt-2";
@@ -181,10 +187,29 @@
 									`${title}. ${subTitle}. ${description}`
 								);
 								utterance.lang = "fr-FR";
-								window.speechSynthesis.speak(utterance);
+								synth.speak(utterance);
+								document.addEventListener("keydown", (event) => {
+									if (event.key == "p") {
+										synth.cancel();
+									}
+								});
 							};
 							card.querySelector(".card-body").appendChild(readButton);
 						});
+						document
+							.querySelectorAll(
+								"a, button, input, img, .btn-group .btn, .btn-info"
+							)
+							.forEach((element) => {
+								element.addEventListener("mouseover", () => {
+									cursorCircle.style.transform = "scale(2)";
+									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+								});
+								element.addEventListener("mouseleave", () => {
+									cursorCircle.style.transform = "scale(1)";
+									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+								});
+							});
 					})
 					.catch((error) => console.error("Error fetching data:", error));
 			});
