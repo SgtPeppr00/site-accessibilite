@@ -237,6 +237,7 @@
 							)
 							.forEach((element) => {
 								element.addEventListener("mouseover", () => {
+									element.style = "cursor: pointer";
 									cursorCircle.style.transform = "scale(2)";
 									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
 								});
