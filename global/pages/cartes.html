@@ -33,19 +33,21 @@
 			>
 
 			<div class="row mb-4">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<input
 						type="text"
 						class="form-control"
 						placeholder="Search..."
 						id="searchBar" />
 				</div>
-				<div class="col-md-4 text-end">
+				<div class="col-md-1 text-start"></div>
+				<div class="col-md-2">
 					<div
 						class="btn-group"
 						role="group"></div>
 				</div>
 			</div>
+
 			<div
 				class="row"
 				id="cardGrid"></div>
@@ -91,9 +93,7 @@
 				if (activeButton) {
 					// If the clicked button is already active, remove the filter
 					cards.forEach((card) => {
-						const title = card
-							.querySelector(".card-title")
-							.textContent.toLowerCase();
+						const title = card.dataset.title.toLowerCase();
 						if (title.includes(searchTerm)) {
 							card.style.display = "block";
 						} else {
@@ -139,7 +139,7 @@
 						// Create a button for each famille using famille.titre
 						data.familles.forEach((famille) => {
 							const button = document.createElement("button");
-							button.className = "btn btn-secondary";
+							button.className = "btn btn-secondary me-2  rounded"; // Add 'me-2' to add margin to the end of each button
 							button.setAttribute("data-category", famille.id);
 							button.textContent = famille.titre; // Set text content to famille.titre
 							button.onclick = () => filterCards(famille.id);
@@ -162,7 +162,9 @@
 								// Afficher uniquement l'image dans la carte
 								card.innerHTML = `
 			<div class="card h-100">
-				<img src="../img/cartes/${carte.id}.png" class="card-img-top" alt="${carte.titre}" />
+				<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" />
+				<div class="card-body">
+					<h5 class="card-title">${carte.titre}</h5>
 			</div>
 		`;
 
