@@ -32,10 +32,10 @@
 				>Contact</a
 			>
 
-			<div class="d-flex justify-content-between mb-4">
+			<div class="d-flex filters justify-content-between mb-4">
 				<input
 					type="text"
-					class="form-control me-2 h-50 w-25"
+					class="form-control me-5 h-50 mb-4"
 					placeholder="Search..."
 					id="searchBar" />
 				<div
@@ -89,15 +89,13 @@
 					// If the clicked button is already active, remove the filter
 					cards.forEach((card) => {
 						const title = card.dataset.title.toLowerCase();
-						if (title.includes(searchTerm)) {
-							card.style.display = "block";
-						} else {
-							card.style.display = "none";
-						}
+						card.style.display = title.includes(searchTerm) ? "block" : "none";
 					});
+
+					// Reset all buttons to their original background color
 					buttons.forEach((button) => {
+						button.classList.add(button.dataset.originalBg);
 						button.classList.remove("btn-primary");
-						button.classList.add("btn-secondary");
 					});
 				} else {
 					// Apply the filter
@@ -107,19 +105,17 @@
 						const matchesCategory =
 							card.getAttribute("data-category") === category;
 
-						if (matchesSearch && matchesCategory) {
-							card.style.display = "block";
-						} else {
-							card.style.display = "none";
-						}
+						card.style.display =
+							matchesSearch && matchesCategory ? "block" : "none";
 					});
+
+					// Update button styles
 					buttons.forEach((button) => {
 						if (button.getAttribute("data-category") === category) {
-							button.classList.remove("btn-secondary");
+							button.classList.add(button.dataset.originalBg);
 							button.classList.add("btn-primary");
 						} else {
-							button.classList.remove("btn-primary");
-							button.classList.add("btn-secondary");
+							button.classList.remove(button.dataset.originalBg);
 						}
 					});
 				}
@@ -137,8 +133,28 @@
 							button.className = "btn btn-secondary me-2  rounded"; // Add 'me-2' to add margin to the end of each button
 							button.setAttribute("data-category", famille.id);
 							button.textContent = famille.titre; // Set text content to famille.titre
-							button.onclick = () => filterCards(famille.id);
+							button.addEventListener("click", () => filterCards(famille.id));
 							buttonGroup.appendChild(button);
+							if (famille.id == "organisation-de-la-journee") {
+								button.classList.add("bluebg");
+								button.dataset.originalBg = "bluebg";
+							}
+							if (famille.id == "accessibilite-des-lieux") {
+								button.classList.add("redbg");
+								button.dataset.originalBg = "redbg";
+							}
+							if (famille.id == "materiel") {
+								button.classList.add("orangebg");
+								button.dataset.originalBg = "orangebg";
+							}
+							if (famille.id == "numerique") {
+								button.classList.add("greenbg");
+								button.dataset.originalBg = "greenbg";
+							}
+							if (famille.id == "evenements-sociaux-professionnels") {
+								button.classList.add("purplebg");
+								button.dataset.originalBg = "purplebg";
+							}
 						});
 
 						const cardGrid = document.getElementById("cardGrid");
@@ -288,5 +304,52 @@
 			};
 			document.addEventListener("mousemove", handleMouseMove, false);
 		</script>
+		<style>
+			.bluebg {
+				background-color: #207cc4;
+				color: white;
+			}
+			.bluebg:hover {
+				background-color: #1a5f90;
+				color: white;
+			}
+			.redbg {
+				background-color: #c0245c;
+				color: white;
+			}
+			.redbg:hover {
+				background-color: #8e1b45;
+				color: white;
+			}
+			.greenbg {
+				background-color: #78c444;
+				color: white;
+			}
+			.greenbg:hover {
+				background-color: #5c9333;
+				color: white;
+			}
+			.orangebg {
+				background-color: #f09424;
+				color: white;
+			}
+			.orangebg:hover {
+				background-color: #b36e1b;
+				color: white;
+			}
+			.purplebg {
+				background-color: #68449c;
+				color: white;
+			}
+			.purplebg:hover {
+				background-color: #4e3474;
+				color: white;
+			}
+			@media (max-width: 900px) {
+				.filters {
+					flex-direction: column;
+				}
+			}
+		</style>
 	</body>
 </html>
