@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Site-Accessibilite</title>
+		<title>Cartes</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -14,215 +14,342 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<h1 class="mb-4">Site Accessibilite</h1>
-			<div class="row mb-4">
-				<div class="col-md-8">
-					<input
-						type="text"
-						class="form-control"
-						placeholder="Search..."
-						id="searchBar" />
-				</div>
-				<div class="col-md-4 text-end">
-					<div
-						class="btn-group"
-						role="group">
-						<button
-							class="btn btn-primary"
-							onclick="filterCards('all')">
-							All
-						</button>
-						<button
-							class="btn btn-secondary"
-							onclick="filterCards('category1')">
-							Category 1
-						</button>
-						<button
-							class="btn btn-secondary"
-							onclick="filterCards('category2')">
-							Category 2
-						</button>
-					</div>
-				</div>
+			<h1 class="mb-4">Cartes</h1>
+			<div></div>
+			<a
+				href="./accueil.html"
+				class="btn btn-primary mb-4"
+				>Accueil</a
+			>
+			<a
+				href="./atelier.html"
+				class="btn btn-primary mb-4"
+				>Atelier</a
+			>
+			<a
+				href="./contact.html"
+				class="btn btn-primary mb-4"
+				>Contact</a
+			>
+
+			<div class="d-flex filters justify-content-between mb-4">
+				<input
+					type="text"
+					class="form-control me-5 h-50 mb-4"
+					placeholder="Search..."
+					id="searchBar" />
+				<div
+					class="btn-group"
+					role="group"></div>
 			</div>
+
 			<div
 				class="row"
-				id="cardGrid">
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 1</h5>
-							<p class="card-text">Description for card 1.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category2">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 2</h5>
-							<p class="card-text">Description for card 2.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 3</h5>
-							<p class="card-text">Description for card 3.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 4</h5>
-							<p class="card-text">Description for card 4.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 5</h5>
-							<p class="card-text">Description for card 5.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 6</h5>
-							<p class="card-text">Description for card 6.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 7</h5>
-							<p class="card-text">Description for card 7.</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-3 mb-4 card-item"
-					data-category="category1">
-					<div class="card h-100">
-						<img
-							src="https://via.placeholder.com/150"
-							class="card-img-top"
-							alt="..." />
-						<div class="card-body">
-							<h5 class="card-title">Card 8</h5>
-							<p class="card-text">Description for card 8.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+				id="cardGrid"></div>
 		</div>
-		<script
-			type="text/javascript"
-			src="cartes.json"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 		<script>
-			function filterCards(category) {
-				const cards = document.querySelectorAll(".card-item");
-				cards.forEach((card) => {
-					if (
-						category === "all" ||
-						card.getAttribute("data-category") === category
-					) {
-						card.style.display = "block";
-					} else {
-						card.style.display = "none";
-					}
-				});
-			}
-
+			const synth = window.speechSynthesis;
 			document
 				.getElementById("searchBar")
 				.addEventListener("input", function () {
 					const searchTerm = this.value.toLowerCase();
 					const cards = document.querySelectorAll(".card-item");
+					const activeCategory = document
+						.querySelector(".btn-group .btn.btn-primary")
+						?.getAttribute("data-category");
+
 					cards.forEach((card) => {
-						const title = card
-							.querySelector(".card-title")
-							.textContent.toLowerCase();
-						if (title.includes(searchTerm)) {
+						const title = card.dataset.title.toLowerCase();
+						const matchesSearch = title.includes(searchTerm);
+						const matchesCategory =
+							!activeCategory ||
+							card.getAttribute("data-category") === activeCategory;
+
+						if (matchesSearch && matchesCategory) {
 							card.style.display = "block";
 						} else {
 							card.style.display = "none";
 						}
 					});
 				});
-			fetch("../data/cartes.json")
-				.then((response) => response.json())
-				.then((data) => {
-					const cardGrid = document.getElementById("cardGrid");
-					cardGrid.innerHTML = ""; // Clear existing cards
-					console.log(data);
-					/*data.forEach((item) => {
-						console.log(item);
-						const card = document.createElement("div");
-						card.className = "col-md-3 mb-4 card-item";
-						card.setAttribute("data-category", item.category);
 
-						card.innerHTML = `
-                                <div class="card h-100">
-                                    <img src="../images/${item.id}.jpg" class="card-img-top" alt="${item.title}" />
-                                    <div class="card-body">
-                                        <h5 class="card-title">${item.title}</h5>
-                                        <p class="card-text">${item.description}</p>
-                                    </div>
-                                </div>
-                            `;
+			function filterCards(category) {
+				const searchTerm = document
+					.getElementById("searchBar")
+					.value.toLowerCase();
+				const cards = document.querySelectorAll(".card-item");
+				const buttons = document.querySelectorAll(".btn-group .btn");
+				const activeButton = document.querySelector(
+					`.btn-group .btn.btn-primary[data-category="${category}"]`
+				);
 
-						cardGrid.appendChild(card);
+				if (activeButton) {
+					// If the clicked button is already active, remove the filter
+					cards.forEach((card) => {
+						const title = card.dataset.title.toLowerCase();
+						card.style.display = title.includes(searchTerm) ? "block" : "none";
 					});
-                    */
-				})
-				.catch((error) => console.error("Error fetching cartes.json:", error));
+
+					// Reset all buttons to their original background color
+					buttons.forEach((button) => {
+						button.classList.add(button.dataset.originalBg);
+						button.classList.remove("btn-primary");
+					});
+				} else {
+					// Apply the filter
+					cards.forEach((card) => {
+						const title = card.dataset.title.toLowerCase();
+						const matchesSearch = title.includes(searchTerm);
+						const matchesCategory =
+							card.getAttribute("data-category") === category;
+
+						card.style.display =
+							matchesSearch && matchesCategory ? "block" : "none";
+					});
+
+					// Update button styles
+					buttons.forEach((button) => {
+						if (button.getAttribute("data-category") === category) {
+							button.classList.add(button.dataset.originalBg);
+							button.classList.add("btn-primary");
+						} else {
+							button.classList.remove(button.dataset.originalBg);
+						}
+					});
+				}
+			}
+
+			document.addEventListener("DOMContentLoaded", () => {
+				fetch("../data/cartes.json")
+					.then((response) => response.json())
+					.then((data) => {
+						const buttonGroup = document.querySelector(".btn-group");
+
+						// Create a button for each famille using famille.titre
+						data.familles.forEach((famille) => {
+							const button = document.createElement("button");
+							button.className = "btn btn-secondary me-2  rounded"; // Add 'me-2' to add margin to the end of each button
+							button.setAttribute("data-category", famille.id);
+							button.textContent = famille.titre; // Set text content to famille.titre
+							button.addEventListener("click", () => filterCards(famille.id));
+							buttonGroup.appendChild(button);
+							if (famille.id == "organisation-de-la-journee") {
+								button.classList.add("bluebg");
+								button.dataset.originalBg = "bluebg";
+							}
+							if (famille.id == "accessibilite-des-lieux") {
+								button.classList.add("redbg");
+								button.dataset.originalBg = "redbg";
+							}
+							if (famille.id == "materiel") {
+								button.classList.add("orangebg");
+								button.dataset.originalBg = "orangebg";
+							}
+							if (famille.id == "numerique") {
+								button.classList.add("greenbg");
+								button.dataset.originalBg = "greenbg";
+							}
+							if (famille.id == "evenements-sociaux-professionnels") {
+								button.classList.add("purplebg");
+								button.dataset.originalBg = "purplebg";
+							}
+						});
+
+						const cardGrid = document.getElementById("cardGrid");
+						cardGrid.innerHTML = "";
+
+						data.familles.forEach((famille) => {
+							famille.cartes.forEach((carte) => {
+								const card = document.createElement("div");
+								card.className = "col-md-3 mb-4 card-item";
+								card.setAttribute("data-category", famille.id);
+								card.setAttribute("data-title", carte.titre);
+								card.setAttribute("data-subtitle", carte.sousTitre);
+								card.setAttribute("data-description", carte.description);
+								card.setAttribute("data-image", `${carte.id}.png`);
+
+								// Afficher uniquement l'image dans la carte
+								card.innerHTML = `
+			<div class="card h-100">
+				<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" />
+				<div class="card-body h-50">
+					<h5 class="card-title">${carte.titre}</h5>
+			</div>
+		`;
+
+								cardGrid.appendChild(card);
+							});
+						});
+
+						// Ajouter des écouteurs d'événements aux images après l'ajout de toutes les cartes
+						document.querySelectorAll(".card-item img").forEach((img) => {
+							img.addEventListener("click", () => {
+								const card = img.closest(".card-item");
+								const title = card.dataset.title;
+								const subTitle = card.dataset.subtitle;
+								const description = card.dataset.description;
+
+								// Création du modal avec uniquement l'image et le contenu de la carte
+								const modal = document.createElement("div");
+								modal.className = "modal fade";
+								modal.tabIndex = -1;
+								modal.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">${title}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
+                        <h6>${subTitle}</h6>
+                        <p>${description}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-info">Lire la carte</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+								document.body.appendChild(modal);
+								const bootstrapModal = new bootstrap.Modal(modal);
+								bootstrapModal.show();
+
+								// Lecture de la carte
+								modal
+									.querySelector(".btn-info")
+									.addEventListener("click", () => {
+										const utterance = new SpeechSynthesisUtterance(
+											`${title}. ${subTitle}. ${description}`
+										);
+										utterance.lang = "fr-FR";
+										synth.speak(utterance);
+									});
+								document.addEventListener("keydown", (event) => {
+									if (event.key === "Escape") {
+										bootstrapModal.hide();
+									}
+								});
+								document.addEventListener("keydown", (event) => {
+									if (event.key === "p") {
+										synth.cancel();
+									}
+								});
+
+								// Suppression du modal après sa fermeture
+								modal.addEventListener("hidden.bs.modal", () => {
+									modal.remove();
+								});
+							});
+						});
+
+						document
+							.querySelectorAll(
+								"a, button, input, img, .btn-group .btn, .btn-info"
+							)
+							.forEach((element) => {
+								element.addEventListener("mouseover", () => {
+									element.style = "cursor: pointer";
+									cursorCircle.style.transform = "scale(2)";
+									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+								});
+								element.addEventListener("mouseleave", () => {
+									cursorCircle.style.transform = "scale(1)";
+									cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+								});
+							});
+					})
+					.catch((error) => console.error("Error fetching data:", error));
+			});
+
+			const cursorCircle = document.createElement("div");
+
+			cursorCircle.style.zIndex = "9999";
+			cursorCircle.style.position = "fixed";
+			cursorCircle.style.width = "30px";
+			cursorCircle.style.height = "30px";
+			cursorCircle.style.borderRadius = "50%";
+			cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+			cursorCircle.style.pointerEvents = "none";
+			cursorCircle.style.transition = "transform 0.2s ease";
+			document.body.appendChild(cursorCircle);
+			handleMouseMove = (event) => {
+				const xoffset = 15;
+				const yoffset = 15;
+				const y = event.pageY;
+				const x = event.pageX;
+				const ref = cursorCircle;
+				const scrollLeft =
+					window.scrollX !== undefined
+						? window.scrollX
+						: (
+								document.documentElement ||
+								document.body.parentNode ||
+								document.body
+						  ).scrollLeft;
+				const scrollTop =
+					window.scrollY !== undefined
+						? window.scrollY
+						: (
+								document.documentElement ||
+								document.body.parentNode ||
+								document.body
+						  ).scrollTop;
+				ref.style.left = x - scrollLeft - xoffset + "px";
+				ref.style.top = y - scrollTop - yoffset + "px";
+			};
+			document.addEventListener("mousemove", handleMouseMove, false);
 		</script>
+		<style>
+			.bluebg {
+				background-color: #207cc4;
+				color: white;
+			}
+			.bluebg:hover {
+				background-color: #1a5f90;
+				color: white;
+			}
+			.redbg {
+				background-color: #c0245c;
+				color: white;
+			}
+			.redbg:hover {
+				background-color: #8e1b45;
+				color: white;
+			}
+			.greenbg {
+				background-color: #78c444;
+				color: white;
+			}
+			.greenbg:hover {
+				background-color: #5c9333;
+				color: white;
+			}
+			.orangebg {
+				background-color: #f09424;
+				color: white;
+			}
+			.orangebg:hover {
+				background-color: #b36e1b;
+				color: white;
+			}
+			.purplebg {
+				background-color: #68449c;
+				color: white;
+			}
+			.purplebg:hover {
+				background-color: #4e3474;
+				color: white;
+			}
+			@media (max-width: 900px) {
+				.filters {
+					flex-direction: column;
+				}
+			}
+		</style>
 	</body>
 </html>
