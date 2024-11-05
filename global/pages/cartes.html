@@ -35,9 +35,17 @@
 			<div class="d-flex filters justify-content-between mb-4">
 				<input
 					type="text"
-					class="form-control me-5 h-50 mb-4"
+					class="form-control me-5 h-50 mb-4 opacity-100"
 					placeholder="Search..."
 					id="searchBar" />
+				<button
+					href="./cartes.html"
+					class="btn btn-primary mb-4 visually-hidden-focusable fixed-top"
+					id="skipToCards"
+					tabindex="1">
+					Passer directement aux cartes
+				</button>
+
 				<div
 					class="btn-group"
 					role="group"></div>
@@ -121,6 +129,19 @@
 				}
 			}
 
+			skipButton = document.getElementById("skipToCards");
+			["click", "keydown"].forEach(function (e) {
+				skipButton.addEventListener(e, () => {
+					if (e === "keydown" && event.key !== "Enter") {
+						return;
+					}
+					cardGrid = document.getElementById("cardGrid");
+					cardGrid.focus();
+					cardGrid.scrollIntoView();
+					skipButton.blur();
+				});
+			});
+
 			document.addEventListener("DOMContentLoaded", () => {
 				fetch("../data/cartes.json")
 					.then((response) => response.json())
@@ -172,12 +193,12 @@
 
 								// Afficher uniquement l'image dans la carte
 								card.innerHTML = `
-			<div class="card h-100">
-				<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" />
-				<div class="card-body h-50">
-					<h5 class="card-title">${carte.titre}</h5>
-			</div>
-		`;
+				<div class="card h-100">
+					<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0"/>
+					<div class="card-body h-50">
+						<h5 class="card-title">${carte.titre}</h5>
+				</div>
+			`;
 
 								cardGrid.appendChild(card);
 							});
@@ -185,64 +206,69 @@
 
 						// Ajouter des écouteurs d'événements aux images après l'ajout de toutes les cartes
 						document.querySelectorAll(".card-item img").forEach((img) => {
-							img.addEventListener("click", () => {
-								const card = img.closest(".card-item");
-								const title = card.dataset.title;
-								const subTitle = card.dataset.subtitle;
-								const description = card.dataset.description;
+							["click", "keydown"].forEach(function (e) {
+								img.addEventListener(e, () => {
+									if (e === "keydown" && event.key !== "Enter") {
+										return;
+									}
+									const card = img.closest(".card-item");
+									const title = card.dataset.title;
+									const subTitle = card.dataset.subtitle;
+									const description = card.dataset.description;
 
-								// Création du modal avec uniquement l'image et le contenu de la carte
-								const modal = document.createElement("div");
-								modal.className = "modal fade";
-								modal.tabIndex = -1;
-								modal.innerHTML = `
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">${title}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
-                        <h6>${subTitle}</h6>
-                        <p>${description}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        <button type="button" class="btn btn-info">Lire la carte</button>
-                    </div>
-                </div>
-            </div>
-        `;
+									// Création du modal avec uniquement l'image et le contenu de la carte
+									const modal = document.createElement("div");
+									modal.className = "modal fade";
+									modal.tabIndex = -1;
+									modal.innerHTML = `
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">${title}</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body text-center">
+													<img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
+													<h6>${subTitle}</h6>
+													<p>${description}</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+													<button type="button" class="btn btn-info">Lire la carte</button>
+												</div>
+											</div>
+										</div>
+			      `;
 
-								document.body.appendChild(modal);
-								const bootstrapModal = new bootstrap.Modal(modal);
-								bootstrapModal.show();
+									document.body.appendChild(modal);
+									const bootstrapModal = new bootstrap.Modal(modal);
+									bootstrapModal.show();
 
-								// Lecture de la carte
-								modal
-									.querySelector(".btn-info")
-									.addEventListener("click", () => {
-										const utterance = new SpeechSynthesisUtterance(
-											`${title}. ${subTitle}. ${description}`
-										);
-										utterance.lang = "fr-FR";
-										synth.speak(utterance);
+									// Lecture de la carte
+									modal
+										.querySelector(".btn-info")
+										.addEventListener("click", () => {
+											const utterance = new SpeechSynthesisUtterance(
+												`${title}. ${subTitle}. ${description}`
+											);
+											utterance.lang = "fr-FR";
+											synth.speak(utterance);
+										});
+									document.addEventListener("keydown", (event) => {
+										if (event.key === "Escape") {
+											bootstrapModal.hide();
+										}
 									});
-								document.addEventListener("keydown", (event) => {
-									if (event.key === "Escape") {
-										bootstrapModal.hide();
-									}
-								});
-								document.addEventListener("keydown", (event) => {
-									if (event.key === "p") {
-										synth.cancel();
-									}
-								});
+									document.addEventListener("keydown", (event) => {
+										if (event.key === "p") {
+											synth.cancel();
+										}
+									});
 
-								// Suppression du modal après sa fermeture
-								modal.addEventListener("hidden.bs.modal", () => {
-									modal.remove();
+									// Suppression du modal après sa fermeture
+									modal.addEventListener("hidden.bs.modal", () => {
+										modal.remove();
+									});
 								});
 							});
 						});
@@ -305,11 +331,15 @@
 			document.addEventListener("mousemove", handleMouseMove, false);
 		</script>
 		<style>
+			.card-img-top:focus {
+				outline: 6px solid #000000;
+			}
 			.bluebg {
 				background-color: #207cc4;
 				color: white;
 			}
-			.bluebg:hover {
+			.bluebg:hover,
+			.bluebg:focus {
 				background-color: #1a5f90;
 				color: white;
 			}
@@ -317,7 +347,8 @@
 				background-color: #c0245c;
 				color: white;
 			}
-			.redbg:hover {
+			.redbg:hover,
+			.redbg:focus {
 				background-color: #8e1b45;
 				color: white;
 			}
@@ -325,7 +356,8 @@
 				background-color: #78c444;
 				color: white;
 			}
-			.greenbg:hover {
+			.greenbg:hover,
+			.greenbg:focus {
 				background-color: #5c9333;
 				color: white;
 			}
@@ -333,7 +365,8 @@
 				background-color: #f09424;
 				color: white;
 			}
-			.orangebg:hover {
+			.orangebg:hover,
+			.orangebg:focus {
 				background-color: #b36e1b;
 				color: white;
 			}
@@ -341,7 +374,8 @@
 				background-color: #68449c;
 				color: white;
 			}
-			.purplebg:hover {
+			.purplebg:hover,
+			.purplebg:focus {
 				background-color: #4e3474;
 				color: white;
 			}
