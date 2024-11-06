@@ -67,7 +67,7 @@
 					const activeCategory = document
 						.querySelector(".btn-group .btn.btn-primary")
 						?.getAttribute("data-category");
-
+					let i = 0;
 					cards.forEach((card) => {
 						const title = card.dataset.title.toLowerCase();
 						const matchesSearch = title.includes(searchTerm);
@@ -77,8 +77,13 @@
 
 						if (matchesSearch && matchesCategory) {
 							card.style.display = "block";
+							card.querySelector("img").tabIndex = 0;
+							card.setAttribute("data-id", i);
+							i += 1;
 						} else {
 							card.style.display = "none";
+							card.querySelector("img").tabIndex = -1;
+							card.setAttribute("data-id", "");
 						}
 					});
 				});
@@ -127,6 +132,17 @@
 						}
 					});
 				}
+				let i = 0;
+				cards.forEach((card) => {
+					if (card.style.display === "block") {
+						card.querySelector("img").tabIndex = 0;
+						card.setAttribute("data-id", i);
+						i += 1;
+					} else {
+						card.querySelector("img").tabIndex = -1;
+						card.setAttribute("data-id", "");
+					}
+				});
 			}
 
 			skipButton = document.getElementById("skipToCards");
@@ -191,6 +207,7 @@
 								card.setAttribute("data-description", carte.description);
 								card.setAttribute("data-image", `${carte.id}.png`);
 								card.setAttribute("data-id", i);
+								card.style.display = "block";
 								i += 1;
 
 								// Afficher uniquement l'image dans la carte
@@ -224,16 +241,15 @@
 									modal.className = "modal fade";
 									modal.tabIndex = -1;
 									modal.innerHTML = `
-										<div class="modal-dialog modal-dialog-centered modal-xl h-50">
-											<div class="modal-content h-50">
+										<div class="modal-dialog modal-dialog-centered modal-xl">
+											<div class="modal-content">
 												<div class="modal-header">
 													<h5 class="modal-title">${title}</h5>
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body d-flex text-center">
 													<div class="d-flex justify-content-between align-items-center w-100">
-														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}">&#11164;
-</button>
+														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}">&#11164;</button>
 														<div class="w-75">
 															<img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
 														</div>
@@ -241,8 +257,7 @@
 															<h6>${subTitle}</h6>
 															<p>${description}</p>
 														</div>
-														<button type="button" class="btn btn-secondary ms-2" id="nextCard" data-id="${id}">&#11166;
-</button>
+														<button type="button" class="btn btn-secondary ms-2" id="nextCard" data-id="${id}">&#11166;</button>
 													</div>
 												</div>
 												<div class="modal-footer">
@@ -274,67 +289,10 @@
 										.querySelectorAll("#nextCard, #prevCard")
 										.forEach((button) => {
 											button.addEventListener("click", () => {
-												const id = parseInt(button.dataset.id);
-												const cards = document.querySelectorAll(".card-item");
-												const nextCard =
-													button.id === "nextCard" ? id + 1 : id - 1;
-												const card = cards[nextCard];
-												if (card) {
-													const title = card.dataset.title;
-													const subTitle = card.dataset.subtitle;
-													const description = card.dataset.description;
-													const image = card.dataset.image;
-													const id = card.dataset.id;
-
-													modal.querySelector(".modal-title").textContent =
-														title;
-													modal.querySelector(
-														"img"
-													).src = `../img/cartes/${image}`;
-													modal.querySelector("img").alt = title;
-													modal.querySelector("h6").textContent = subTitle;
-													modal.querySelector("p").textContent = description;
-													modal.querySelector("#nextCard").dataset.id = id;
-													modal.querySelector("#prevCard").dataset.id = id;
-												} else {
-													if (button.id === "nextCard") {
-														const title = cards[0].dataset.title;
-														const subTitle = cards[0].dataset.subtitle;
-														const description = cards[0].dataset.description;
-														const image = cards[0].dataset.image;
-														const id = cards[0].dataset.id;
-
-														modal.querySelector(".modal-title").textContent =
-															title;
-														modal.querySelector(
-															"img"
-														).src = `../img/cartes/${image}`;
-														modal.querySelector("img").alt = title;
-														modal.querySelector("h6").textContent = subTitle;
-														modal.querySelector("p").textContent = description;
-														modal.querySelector("#nextCard").dataset.id = id;
-														modal.querySelector("#prevCard").dataset.id = id;
-													} else {
-														const title = cards[cards.length - 1].dataset.title;
-														const subTitle =
-															cards[cards.length - 1].dataset.subtitle;
-														const description =
-															cards[cards.length - 1].dataset.description;
-														const image = cards[cards.length - 1].dataset.image;
-														const id = cards[cards.length - 1].dataset.id;
-
-														modal.querySelector(".modal-title").textContent =
-															title;
-														modal.querySelector(
-															"img"
-														).src = `../img/cartes/${image}`;
-														modal.querySelector("img").alt = title;
-														modal.querySelector("h6").textContent = subTitle;
-														modal.querySelector("p").textContent = description;
-														modal.querySelector("#nextCard").dataset.id = id;
-														modal.querySelector("#prevCard").dataset.id = id;
-													}
-												}
+												cardNavigation(
+													button.id === "nextCard" ? "next" : "prev",
+													parseInt(button.dataset.id)
+												);
 											});
 										});
 									document.addEventListener("keydown", (event) => {
@@ -366,6 +324,73 @@
 					})
 					.catch((error) => console.error("Error fetching data:", error));
 			});
+			document.addEventListener("keydown", (event) => {
+				const modal = document.querySelector(".modal");
+				if (modal) {
+					if (event.key === "ArrowLeft") {
+						const id = parseInt(modal.querySelector("#prevCard").dataset.id);
+						cardNavigation("prev", id);
+					}
+					if (event.key === "ArrowRight") {
+						const id = parseInt(modal.querySelector("#nextCard").dataset.id);
+						cardNavigation("next", id);
+					}
+				}
+			});
+			function cardNavigation(direction, id) {
+				const allcards = document.querySelectorAll(".card-item");
+				const cards = Array.from(allcards).filter(
+					(card) => card.style.display === "block"
+				);
+				const modal = document.querySelector(".modal");
+				const nextCard = direction === "next" ? id + 1 : id - 1;
+				const card = cards[nextCard];
+				if (card) {
+					const title = card.dataset.title;
+					const subTitle = card.dataset.subtitle;
+					const description = card.dataset.description;
+					const image = card.dataset.image;
+					const id = card.dataset.id;
+
+					modal.querySelector(".modal-title").textContent = title;
+					modal.querySelector("img").src = `../img/cartes/${image}`;
+					modal.querySelector("img").alt = title;
+					modal.querySelector("h6").textContent = subTitle;
+					modal.querySelector("p").textContent = description;
+					modal.querySelector("#nextCard").dataset.id = id;
+					modal.querySelector("#prevCard").dataset.id = id;
+				} else {
+					if (direction === "next") {
+						const title = cards[0].dataset.title;
+						const subTitle = cards[0].dataset.subtitle;
+						const description = cards[0].dataset.description;
+						const image = cards[0].dataset.image;
+						const id = cards[0].dataset.id;
+
+						modal.querySelector(".modal-title").textContent = title;
+						modal.querySelector("img").src = `../img/cartes/${image}`;
+						modal.querySelector("img").alt = title;
+						modal.querySelector("h6").textContent = subTitle;
+						modal.querySelector("p").textContent = description;
+						modal.querySelector("#nextCard").dataset.id = id;
+						modal.querySelector("#prevCard").dataset.id = id;
+					} else {
+						const title = cards[cards.length - 1].dataset.title;
+						const subTitle = cards[cards.length - 1].dataset.subtitle;
+						const description = cards[cards.length - 1].dataset.description;
+						const image = cards[cards.length - 1].dataset.image;
+						const id = cards[cards.length - 1].dataset.id;
+
+						modal.querySelector(".modal-title").textContent = title;
+						modal.querySelector("img").src = `../img/cartes/${image}`;
+						modal.querySelector("img").alt = title;
+						modal.querySelector("h6").textContent = subTitle;
+						modal.querySelector("p").textContent = description;
+						modal.querySelector("#nextCard").dataset.id = id;
+						modal.querySelector("#prevCard").dataset.id = id;
+					}
+				}
+			}
 			function addEventToCursorCircle(element) {
 				element.addEventListener("mouseover", () => {
 					element.style = "cursor: pointer";
