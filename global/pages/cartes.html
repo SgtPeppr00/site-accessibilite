@@ -171,6 +171,7 @@
 							button.textContent = famille.titre; // Set text content to famille.titre
 							button.addEventListener("click", () => filterCards(famille.id));
 							buttonGroup.appendChild(button);
+
 							if (famille.id == "organisation-de-la-journee") {
 								button.classList.add("bluebg");
 								button.dataset.originalBg = "bluebg";
@@ -438,6 +439,12 @@
 				ref.style.top = y - scrollTop - yoffset + "px";
 			};
 			document.addEventListener("mousemove", handleMouseMove, false);
+			document.addEventListener("mouseleave", () => {
+				cursorCircle.style.display = "none";
+			});
+			document.addEventListener("mouseenter", () => {
+				cursorCircle.style.display = "block";
+			});
 		</script>
 		<style>
 			.card-img-top:focus {
