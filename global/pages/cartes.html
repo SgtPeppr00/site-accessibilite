@@ -44,7 +44,8 @@
 				let i = 0;
 				cards.forEach((card) => {
 					const title = card.dataset.title.toLowerCase();
-					const matchesSearch = title.includes(searchTerm);
+					const id = card.dataset.image.slice(0, -4).toLowerCase();
+					const matchesSearch = title.includes(searchTerm) || id.includes(searchTerm);
 					const matchesCategory =
 						!activeCategory ||
 						card.getAttribute("data-category") === activeCategory;
@@ -225,7 +226,7 @@
 												<div class="modal-body d-flex text-center">
 													<div class="d-flex justify-content-between align-items-center w-100">
 														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}">&#11164;</button>
-														<div class="w-75">
+														<div class="w-75 me-5">
 															<img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
 														</div>
 														<div class="w-50 ms-2">
@@ -237,7 +238,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-													<button type="button" class="btn btn-info">Lire la carte</button>
+													<button type="button" class="btn btn-info">Ecouter la carte</button>
 												</div>
 											</div>
 										</div>
@@ -429,7 +430,13 @@
 
 		* {
 			font-family: "Luciole", sans-serif;
+			text-align: start;
 		}
+
+		.card-title {
+			text-align: center;
+		}
+
 
 		.subTitle {
 			font-weight: bold;

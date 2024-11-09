@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <main class="container">
         <div class="position-absolute burger-menu-container">
             <button class="navbar-toggler mt-5" type="button" data-toggle="collapse" data-target=".navbars">
                 <div class="animated-icon"><span></span><span></span><span></span></div>
@@ -140,139 +140,142 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script>
-        const animatedicon = document.querySelector('.animated-icon');
-        const navsidebar = document.querySelector('.navsidebar');
+    </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script>
+    const animatedicon = document.querySelector('.animated-icon');
+    const navsidebar = document.querySelector('.navsidebar');
 
-        document.querySelector('.navbar-toggler').addEventListener('click', function () {
-            animatedicon.classList.toggle('open');
-            navsidebar.classList.toggle('open');
-        });
-    </script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+        animatedicon.classList.toggle('open');
+        navsidebar.classList.toggle('open');
+    });
+</script>
 
-    <style>
-        @font-face {
-            font-family: "Luciole";
-            src: url("../fonts/Luciole-Regular.ttf");
-        }
+<style>
+    @font-face {
+        font-family: "Luciole";
+        src: url("../fonts/Luciole-Regular.ttf");
+    }
 
-        * {
-            font-family: "Luciole", sans-serif;
-        }
+    * {
+        font-family: "Luciole", sans-serif;
+    }
 
-        .bg-image {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    .bg-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-        .jeu-cartes-img {
-            background-image: url('https://placehold.co/1200x800/EEE/31343C');
-            height: 400px;
-        }
+    .jeu-cartes-img {
+        background-image: url('https://placehold.co/1200x800/EEE/31343C');
+        height: 400px;
+    }
 
-        .jeu-cartes-button {
-            padding: 15px;
-            border-radius: 5px;
-        }
+    .jeu-cartes-button {
+        padding: 15px;
+        border-radius: 5px;
+    }
 
-        .circle {
-            border: 3px solid #000;
-            margin-right: 20px;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-        }
+    .circle {
+        border: 3px solid #000;
+        margin-right: 20px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+    }
 
-        .burger-menu-container {
-            z-index: 9999;
-            top: 25px;
-            right: 50px;
-        }
+    .burger-menu-container {
+        z-index: 9999;
+        top: 25px;
+        right: 50px;
+    }
 
-        .navbar-toggler .animated-icon {
-            z-index: 9999;
-            width: 30px;
-            height: 20px;
-            position: relative;
-            margin: 0px;
-            transform: rotate(0deg);
-            transition: 0.5s ease-in-out;
-            cursor: pointer;
-        }
+    .navbar-toggler .animated-icon {
+        z-index: 9999;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        margin: 0px;
+        transform: rotate(0deg);
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+    }
 
-        .navbar-toggler .animated-icon span {
-            display: block;
-            position: absolute;
-            height: 3px;
-            width: 100%;
-            background: #000000;
-            border-radius: 9px;
-            opacity: 1;
-            left: 0;
-            transform: rotate(0deg);
-            transition: 0.25s ease-in-out;
-        }
+    .navbar-toggler .animated-icon span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: #000000;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: 0.25s ease-in-out;
+    }
 
-        .navbar-toggler .animated-icon span:nth-child(1) {
-            top: 0px;
-            transform-origin: left center;
-        }
+    .navbar-toggler .animated-icon span:nth-child(1) {
+        top: 0px;
+        transform-origin: left center;
+    }
 
-        .navbar-toggler .animated-icon span:nth-child(2) {
-            top: 10px;
-            transform-origin: left center;
-        }
+    .navbar-toggler .animated-icon span:nth-child(2) {
+        top: 10px;
+        transform-origin: left center;
+    }
 
-        .navbar-toggler .animated-icon span:nth-child(3) {
-            top: 20px;
-            transform-origin: left center;
-        }
+    .navbar-toggler .animated-icon span:nth-child(3) {
+        top: 20px;
+        transform-origin: left center;
+    }
 
-        .navbar-toggler .animated-icon.open span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 0px;
-            left: 8px;
-        }
+    .navbar-toggler .animated-icon.open span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 0px;
+        left: 8px;
+    }
 
-        .navbar-toggler .animated-icon.open span:nth-child(2) {
-            width: 0%;
-            opacity: 0;
-        }
+    .navbar-toggler .animated-icon.open span:nth-child(2) {
+        width: 0%;
+        opacity: 0;
+    }
 
-        .navbar-toggler .animated-icon.open span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 21px;
-            left: 8px;
-        }
+    .navbar-toggler .animated-icon.open span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 21px;
+        left: 8px;
+    }
 
-        .navsidebar {
-            z-index: 1;
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            right: -250px;
-            background-color: #f8f9fa;
-            transition: all 0.3s;
-            border-left: solid 1px #000;
+    .navsidebar {
+        z-index: 1;
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -250px;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+        border-left: solid 1px #000;
+    }
+
+    .navsidebar.open {
+        right: 0;
+    }
+
+    @media (min-width: 1000px) {
+        .navbar-toggler {
+            display: none;
         }
 
         .navsidebar.open {
-            right: 0;
+            right: -250px;
         }
+    }
+</style>
 
-        @media (min-width: 1000px) {
-            .navbar-toggler {
-                display: none;
-            }
-
-            .navsidebar.open {
-                right: -250px;
-            }
-        }
-    </style>
+</html>
