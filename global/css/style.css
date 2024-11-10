@@ -1,4 +1,9 @@
-.card-img-top {
-    object-fit: cover; /* Ensures the image covers the card */
-    height: 200px; /* Set a fixed height for the image */
+/* Navbar */
+.btn-navbar {
+    border-color: black;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+    padding-right: 15px;
+    text-align: center;
 }
+

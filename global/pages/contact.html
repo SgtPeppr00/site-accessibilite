@@ -9,86 +9,77 @@
     <header>
       <div class="container">
         <div class="row">
-          <nav class="d-flex justify-content-center">
-            <a href="./accueil.html"
-            class="btn btn-primary mb-4 mx-4 py-2 px-4">Accueil</a>
-            <a href="./atelier.html" 
-            class="btn btn-primary mb-4 mx-4 py-2 px-4">Atelier</a>
-            <a href="./cartes.html" 
-            class="btn btn-primary mb-4 mx-4 py-2 px-4">Jeu de Cartes</a>
-            <a href="#" 
-            class="btn btn-primary mb-4 mx-4 py-2 px-4">A propos</a>
-            <a href="./contact.html" 
-            class="btn btn-primary mb-4 mx-4 py-2 px-4">Contact</a>
-          </nav>
-          <div class="col-12">
-            <h1 class="text-center py-4">Contact</h1>
-          </div>
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <button class="btn-navbar"><a class="nav-link active" aria-current="page" href="./accueil.html">Accueil</a></button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn-navbar"><a class="nav-link" href="./atelier.html">Atelier</a></button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn-navbar"><a class="nav-link" href="./cartes.html">Jeu de Cartes</a></button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn-navbar"><a class="nav-link" href="#">A propos</a></button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn-navbar"><a class="nav-link" href="./contact.html">Contact</a></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
         </div>
       </div>
     </header>
     <body>
-      <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="../img/Angi.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Angi Guyard</h5>
-                                <p class="card-text">Email: #@gmail.com</p>
-                                <p class="card-text">Numero de Telephone: +33 123456789</p>
-                            </div>
-                        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nom ou Societe</label>
+                        <input type="text" class="form-control" id="name" placeholder="Votre nom">
                     </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Sujet</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Sujet de votre message">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="3" placeholder="Votre message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Envoyer</button>
+                    </form>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="../img/Emmanuelle.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Emmanuelle Aboaf</h5>
-                                <p class="card-text">Email: #@gmail.com</p>
-                                <p class="card-text">Numero de Telephone: +33 123456789</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="../img/Emilie.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Emilie Deltort</h5>
-                                <p class="card-text">Email: #@gmail.com</p>
-                                <p class="card-text">Numero de Telephone: +33 123456789</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col">
+                    <h1 class="text-center my-4">Contact</h1>
+                    <p class="text-center">bonjour@handiscope.fr</p>
+                    <h2 class="text-center my-4">Suivez-nous sur les reseaux sociaux</h2>
+                    <h3>Instagram</h3>
+                    <h3>Facebook</h3>
+                    <h3>LinkedIn</h3>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-            <nav class="d-flex justify-content-center">
-              <a href="./accueil.html" class="btn btn-primary mb-4 mx-4 py-2 px-4">Credits</a>
-              <a href="./atelier.html" class="btn btn-primary mb-4 mx-4 py-2 px-4">Ressources</a>
-            </nav>
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col">
+                <nav class="d-flex justify-content-center">
+                    <a href="./accueil.html" class="btn btn-primary mb-4 mx-4 py-2 px-4">Credits</a>
+                    <a href="./atelier.html" class="btn btn-primary mb-4 mx-4 py-2 px-4">Ressources</a>
+                </nav>
+            </div> -->
         </div>
-      </div>
     </div>
   </body>
 </html>
