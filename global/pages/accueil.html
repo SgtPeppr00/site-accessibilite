@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+</html>
 
 <head>
     <title>Site-Accessibilite</title>
@@ -9,137 +11,140 @@
 </head>
 
 <body>
-    <main class="container">
-        <div class="position-absolute burger-menu-container">
-            <button class="navbar-toggler mt-5" type="button" data-toggle="collapse" data-target=".navbars">
-                <div class="animated-icon"><span></span><span></span><span></span></div>
-            </button>
-        </div>
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light navsidebar">
-            <span class="fs-4 mt-5">Sidebar</span>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#home"></use>
-                        </svg>
-                        Accueil
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/cartes.html" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2"></use>
-                        </svg>
-                        Cartes
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/atelier.html" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#table"></use>
-                        </svg>
-                        Atelier
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages//contact.html" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#grid"></use>
-                        </svg>
-                        Contact
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link link-dark">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#people-circle"></use>
-                        </svg>
-                        A propos
-                    </a>
-                </li>
-            </ul>
-            <hr>
-        </div>
+    <main class="container" role="main"></main>
+    <div class="position-absolute burger-menu-container">
+        <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+            aria-controls="navsidebar">
+            <div class="animated-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+        </button>
+    </div>
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light navsidebar" id="navsidebar" role="navigation"
+        aria-label="Sidebar">
+        <span class="fs-4 mt-5">Sidebar</span>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#home"></use>
+                    </svg>
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="../pages/cartes.html" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#speedometer2"></use>
+                    </svg>
+                    Cartes
+                </a>
+            </li>
+            <li>
+                <a href="../pages/atelier.html" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    Atelier
+                </a>
+            </li>
+            <li>
+                <a href="../pages/contact.html" class="nav-link link-dark"></a>
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#grid"></use>
+                </svg>
+                Contact
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    <svg class="bi me-2" width="16" height="16">
+                        <use xlink:href="#people-circle"></use>
+                    </svg>
+                    A propos
+                </a>
+            </li>
+        </ul>
+        <hr>
+    </div>
 
-        <h1 class="text-center mb-5 mt-5">Site Accessibilité</h1>
-        <div class="d-flex">
-            <img class="w-50 me-5" src="https://placehold.co/600x400/EEE/31343C" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore reiciendis.
-                A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam quam?
-                Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus facilis
-                cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi! In,
-                ratione fuga.</p>
-        </div>
-        <div class="d-flex flex-row-reverse">
-            <button>Button</button>
-        </div>
-        <hr>
-        <h1 class="text-center mb-3">Titre Ici</h1>
-        <div class="d-flex">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore reiciendis.
-                A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam quam?
-                Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus facilis
-                cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi! In,
-                ratione fuga.</p>
-            <img class="w-50 ms-5" src="https://placehold.co/600x400/EEE/31343C" alt="">
-        </div>
-        <div class="d-flex ms-5">
-            <button>Button</button>
-        </div>
-        <hr>
-        <div class="d-flex justify-content-center mt-5 mb-5 flex-column align-items-center bg-image jeu-cartes-img">
-            <h1 class="mb-5">Accès au jeu de cartes</h1>
-            <button class="mb-5 mt-5 w-25 jeu-cartes-button">Button</button>
-        </div>
-        <div class="mt-5 mb-5">
-            <h1 class="text-center mt-5">Titre Ici</h1>
-            <div class="d-flex mt-5">
-                <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="">
-                <div class="d-flex flex-column justify-content-between">
-                    <div class="d-flex">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore
-                        reiciendis.
-                        A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam
-                        quam?
-                        Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus
-                        facilis
-                        cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi!
-                        In,
-                        ratione fuga.</p>
+    <h1 class="text-center mb-5 mt-5">Site Accessibilité</h1>
+    <div class="d-flex">
+        <img class="w-50 me-5" src="https://placehold.co/600x400/EEE/31343C" alt="Sample image">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore reiciendis.
+            A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam quam?
+            Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus facilis
+            cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi! In,
+            ratione fuga.</p>
+    </div>
+    <div class="d-flex flex-row-reverse">
+        <button>Button</button>
+    </div>
+    <hr>
+    <h1 class="text-center mb-3">Titre Ici</h1>
+    <div class="d-flex">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore reiciendis.
+            A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam quam?
+            Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus facilis
+            cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi! In,
+            ratione fuga.</p>
+        <img class="w-50 ms-5" src="https://placehold.co/600x400/EEE/31343C" alt="Sample image">
+    </div>
+    <div class="d-flex ms-5">
+        <button>Button</button>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center mt-5 mb-5 flex-column align-items-center bg-image jeu-cartes-img"
+        role="region" aria-label="Jeu de cartes">
+        <h1 class="mb-5">Accès au jeu de cartes</h1>
+        <button class="mb-5 mt-5 w-25 jeu-cartes-button">Button</button>
+    </div>
+    <div class="mt-5 mb-5">
+        <h1 class="text-center mt-5">Titre Ici</h1>
+        <div class="d-flex mt-5">
+            <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="Sample image">
+            <div class="d-flex flex-column justify-content-between">
+                <div class="d-flex">
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
                 </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore
+                    reiciendis.
+                    A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam
+                    quam?
+                    Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus
+                    facilis
+                    cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi!
+                    In,
+                    ratione fuga.</p>
             </div>
         </div>
-        <div class="mt-5 mb-5">
-            <div class="d-flex mt-5">
-                <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="">
-                <div class="d-flex flex-column justify-content-around">
-                    <div class="d-flex">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore
-                        reiciendis.
-                        A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam
-                        quam?
-                        Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus
-                        facilis
-                        cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi!
-                        In,
-                        ratione fuga.</p>
+    </div>
+    <div class="mt-5 mb-5">
+        <div class="d-flex mt-5">
+            <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="Sample image">
+            <div class="d-flex flex-column justify-content-around">
+                <div class="d-flex">
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
                 </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore
+                    reiciendis.
+                    A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam
+                    quam?
+                    Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus
+                    facilis
+                    cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi!
+                    In,
+                    ratione fuga.</p>
             </div>
         </div>
+    </div>
     </main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -191,6 +196,14 @@
 
     .burger-menu-container {
         z-index: 9999;
+        top: 25px;
+        right: 50px;
+        position: fixed;
+    }
+
+    .navbar-toggler {
+        z-index: 9999;
+        position: fixed;
         top: 25px;
         right: 50px;
     }
