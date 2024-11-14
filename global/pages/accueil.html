@@ -1,17 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+</html>
 
 <head>
     <title>Site-Accessibilite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container">
+    <header>
+        <button id="themebutton" class="btn btn-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+            </svg>
+        </button>
+    </header>
+    <main class="container" role="main">
+        <div class="position-absolute burger-menu-container">
+            <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="navsidebar">
+                <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
+                        class="burgerspan"></span><span class="burgerspan"></span></div>
+            </button>
+        </div>
+        <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar" id="navsidebar" role="navigation"
+            aria-label="Sidebar">
+            <span class="fs-4 mt-5">Sidebar</span>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        Accueil
+                    </a>
+                </li>
+                <li>
+                    <a href="../pages/cartes.html" class="nav-link link-dark">
+                        Cartes
+                    </a>
+                </li>
+                <li>
+                    <a href="../pages/atelier.html" class="nav-link link-dark">
+                        Atelier
+                    </a>
+                </li>
+                <li>
+                    <a href="../pages/contact.html" class="nav-link link-dark">
+                        Contact
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        A propos
+                    </a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+
         <h1 class="text-center mb-5 mt-5">Site Accessibilité</h1>
         <div class="d-flex">
-            <img class="w-50 me-5" src="https://placehold.co/600x400/EEE/31343C" alt="">
+            <img class="w-50 me-5" src="https://placehold.co/600x400/EEE/31343C" alt="Sample image">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore reiciendis.
                 A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam quam?
                 Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus facilis
@@ -29,33 +82,340 @@
                 Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus facilis
                 cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi! In,
                 ratione fuga.</p>
-            <img class="w-50 ms-5" src="https://placehold.co/600x400/EEE/31343C" alt="">
+            <img class="w-50 ms-5" src="https://placehold.co/600x400/EEE/31343C" alt="Sample image">
         </div>
         <div class="d-flex ms-5">
             <button>Button</button>
         </div>
         <hr>
-        <div class="d-flex justify-content-center mt-5 mb-5 flex-column align-items-center bg-image jeu-cartes-img">
+        <div class="d-flex justify-content-center mt-5 mb-5 flex-column align-items-center bg-image jeu-cartes-img"
+            role="region" aria-label="Jeu de cartes">
             <h1 class="mb-5">Accès au jeu de cartes</h1>
             <button class="mb-5 mt-5 w-25 jeu-cartes-button">Button</button>
         </div>
-        <div class="mt-5">
+        <div class="mt-5 mb-5">
             <h1 class="text-center mt-5">Titre Ici</h1>
+            <div class="d-flex mt-5">
+                <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="Sample image">
+                <div class="d-flex flex-column justify-content-between">
+                    <div class="d-flex">
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore
+                        reiciendis.
+                        A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam
+                        quam?
+                        Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus
+                        facilis
+                        cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi!
+                        In,
+                        ratione fuga.</p>
+                </div>
+            </div>
         </div>
-        <style>
-            .bg-image {
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
+        <div class="mt-5 mb-5">
+            <div class="d-flex mt-5">
+                <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="Sample image">
+                <div class="d-flex flex-column justify-content-around">
+                    <div class="d-flex">
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                        <div class="circle" role="img" aria-label="Circle"></div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore
+                        reiciendis.
+                        A quia consequatur nam nihil, nulla accusantium rerum laudantium, impedit illum odit laboriosam
+                        quam?
+                        Odio! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis vel, laborum natus
+                        facilis
+                        cum porro ducimus ipsam quia nostrum incidunt quis facere, ullam, laboriosam aut tempore modi!
+                        In,
+                        ratione fuga.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+                </div>
+                <div class="col-md-3">
+                    <h5>Lorem Title Blawg</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Cartes</a></li>
+                        <li><a href="#">Atelier</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">A propos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Lorem Title Blawg</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Cartes</a></li>
+                        <li><a href="#">Atelier</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">A propos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 d-flex flex-column align-items-center">
+                    <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid mb-2">
+                    <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid mb-2">
+                    <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid mb-2">
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="circle me-2" role="img" aria-label="Circle"></div>
+                    <div class="circle me-2" role="img" aria-label="Circle"></div>
+                    <div class="circle" role="img" aria-label="Circle"></div>
+                </div>
+            </div>
 
-            .jeu-cartes-img {
-                background-image: url('https://placehold.co/1200x800/EEE/31343C');
-                height: 400px;
-            }
+        </div>
+        <div class="container mt-5">
+            <div class="col text-center">
+                <div class="d-flex justify-content-evenly mb-3">
+                    <p class="mb-0">Lorem ipsum dolor</p>
+                    <p class="mb-0">Lorem ipsum dolor</p>
+                    <p class="mb-0">Lorem ipsum dolor</p>
+                    <p class="mb-0">Lorem ipsum dolor</p>
+                    <p class="mb-0">Lorem ipsum dolor</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script>
+    const animatedicon = document.querySelector('.animated-icon');
+    const navsidebar = document.querySelector('.navsidebar');
 
-            .jeu-cartes-button {
-                padding: 15px;
-                border-radius: 5px;
-            }
-        </style>
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+        animatedicon.classList.toggle('open');
+        navsidebar.classList.toggle('open');
+    });
+    const themeButton = document.getElementById('themebutton');
+    const circles = document.querySelectorAll('.circle');
+    const burgerspan = document.querySelectorAll('.burgerspan');
+    const linkdark = document.querySelectorAll('.link-dark');
+    let isDarkTheme = false;
+
+    themeButton.addEventListener('click', function () {
+        if (isDarkTheme) {
+            document.body.style.backgroundColor = '';
+            document.body.style.color = '';
+            themeButton.classList.remove('btn-dark');
+            themeButton.classList.add('btn-light');
+            navsidebar.style.background = '';
+            navsidebar.style.borderColor = 'black';
+            circles.forEach(circle => {
+                circle.style.borderColor = 'black';
+            });
+            burgerspan.forEach(span => {
+                span.style.backgroundColor = 'black';
+            });
+            linkdark.forEach(link => {
+                link.classList.add('link-dark')
+                link.classList.remove('link-light')
+            });
+
+        } else {
+            document.body.style.background = 'black';
+            document.body.style.color = 'white';
+            themeButton.classList.remove('btn-light');
+            themeButton.classList.add('btn-dark');
+            navsidebar.style.background = 'black';
+            navsidebar.style.borderColor = 'white';
+
+            circles.forEach(circle => {
+                circle.style.borderColor = 'white';
+            });
+            burgerspan.forEach(span => {
+                span.style.background = 'white';
+            });
+            linkdark.forEach(link => {
+                link.classList.remove('link-dark')
+                link.classList.add('link-light')
+            });
+        }
+        isDarkTheme = !isDarkTheme;
+    });
+</script>
+
+<style>
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .footer-top {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+
+        flex-direction: row;
+    }
+
+    .footer-top-img {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        flex-direction: column;
+    }
+
+    .footer-bottom {
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+
+        flex-direction: row;
+    }
+
+    @font-face {
+        font-family: "Luciole";
+        src: url("../fonts/Luciole-Regular.ttf");
+    }
+
+    * {
+        font-family: "Luciole", sans-serif;
+    }
+
+    .bg-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .jeu-cartes-img {
+        background-image: url('https://placehold.co/1200x800/EEE/31343C');
+        height: 400px;
+    }
+
+    .jeu-cartes-button {
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .circle {
+        border: 3px solid #000;
+        margin-right: 20px;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+    }
+
+    .burger-menu-container {
+        z-index: 9999;
+        top: 25px;
+        right: 50px;
+        position: fixed;
+    }
+
+    .navbar-toggler {
+        z-index: 9999;
+        position: fixed;
+        top: 25px;
+        right: 50px;
+    }
+
+    .navbar-toggler .animated-icon {
+        z-index: 9999;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        margin: 0px;
+        transform: rotate(0deg);
+        transition: 0.5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .navbar-toggler .animated-icon span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: #000000;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: 0.25s ease-in-out;
+    }
+
+    .navbar-toggler .animated-icon span:nth-child(1) {
+        top: 0px;
+        transform-origin: left center;
+    }
+
+    .navbar-toggler .animated-icon span:nth-child(2) {
+        top: 10px;
+        transform-origin: left center;
+    }
+
+    .navbar-toggler .animated-icon span:nth-child(3) {
+        top: 20px;
+        transform-origin: left center;
+    }
+
+    .navbar-toggler .animated-icon.open span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 0px;
+        left: 8px;
+    }
+
+    .navbar-toggler .animated-icon.open span:nth-child(2) {
+        width: 0%;
+        opacity: 0;
+    }
+
+    .navbar-toggler .animated-icon.open span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 21px;
+        left: 8px;
+    }
+
+    .navsidebar {
+        z-index: 1;
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: -250px;
+        background: #f8f9fa;
+        transition: all 0.3s;
+        border-left: solid 1px #000;
+    }
+
+    .navsidebar.open {
+        right: 0;
+    }
+
+    @media (min-width: 1000px) {
+        .navbar-toggler {
+            display: none;
+        }
+
+        .navsidebar.open {
+            right: -250px;
+        }
+    }
+</style>
+
+</html>

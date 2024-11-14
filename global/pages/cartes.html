@@ -1,356 +1,347 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Cartes</title>
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-			crossorigin="anonymous" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="../css/style.css" />
-	</head>
-	<body>
-		<div class="container mt-5">
-			<h1 class="mb-4">Cartes</h1>
-			<div></div>
-			<a
-				href="./accueil.html"
-				class="btn btn-primary mb-4"
-				>Accueil</a
-			>
-			<a
-				href="./atelier.html"
-				class="btn btn-primary mb-4"
-				>Atelier</a
-			>
-			<a
-				href="./contact.html"
-				class="btn btn-primary mb-4"
-				>Contact</a
-			>
-			<button
-				href="./cartes.html"
-				class="btn btn-primary mb-4 visually-hidden-focusable fixed-top"
-				id="skipToCards"
-				tabindex="1">
-				Passer directement aux cartes
-			</button>
-			<div class="d-flex filters justify-content-between mb-4 w-100">
-				<input
-					type="text"
-					class="form-control me-5 h-50 w-25 opacity-100"
-					placeholder="Search..."
-					id="searchBar" />
+<html lang="fr">
 
-				<div
-					class="btn-group"
-					role="group"></div>
-			</div>
+<head>
+	<title>Cartes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
 
-			<div
-				class="row"
-				id="cardGrid"></div>
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4">Cartes</h1>
+		<a href="./accueil.html" class="btn btn-primary mb-4">Accueil</a>
+		<a href="./atelier.html" class="btn btn-primary mb-4">Atelier</a>
+		<a href="./contact.html" class="btn btn-primary mb-4">Contact</a>
+		<button href="./cartes.html" class="btn btn-primary mb-4 visually-hidden-focusable fixed-top" id="skipToCards"
+			tabindex="1">
+			Passer directement aux cartes
+		</button>
+		<div class="d-flex filters justify-content-between mb-4 w-100">
+			<input type="text" class="form-control me-5 h-50 w-25 searchbar" placeholder="Rechercher..." id="searchBar"
+				aria-label="Rechercher des cartes" />
+
+			<div class="btn-group" role="group" aria-label="Filter buttons"></div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-		<script>
-			const synth = window.speechSynthesis;
-			document
-				.getElementById("searchBar")
-				.addEventListener("input", function () {
-					const searchTerm = this.value.toLowerCase();
-					const cards = document.querySelectorAll(".card-item");
-					const activeCategory = document
-						.querySelector(".btn-group .btn.btn-primary")
-						?.getAttribute("data-category");
-					let i = 0;
-					cards.forEach((card) => {
-						const title = card.dataset.title.toLowerCase();
-						const matchesSearch = title.includes(searchTerm);
-						const matchesCategory =
-							!activeCategory ||
-							card.getAttribute("data-category") === activeCategory;
 
-						if (matchesSearch && matchesCategory) {
-							card.style.display = "block";
-							card.querySelector("img").tabIndex = 0;
-							card.setAttribute("data-id", i);
-							i += 1;
-						} else {
-							card.style.display = "none";
-							card.querySelector("img").tabIndex = -1;
-							card.setAttribute("data-id", "");
-						}
-					});
-				});
-
-			function filterCards(category) {
-				const searchTerm = document
-					.getElementById("searchBar")
-					.value.toLowerCase();
+		<div class="row" id="cardGrid" role="list"></div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+	<script>
+		const synth = window.speechSynthesis;
+		document
+			.getElementById("searchBar")
+			.addEventListener("input", function () {
+				const searchTerm = this.value.toLowerCase();
 				const cards = document.querySelectorAll(".card-item");
-				const buttons = document.querySelectorAll(".btn-group .btn");
-				const activeButton = document.querySelector(
-					`.btn-group .btn.btn-primary[data-category="${category}"]`
-				);
-
-				if (activeButton) {
-					// If the clicked button is already active, remove the filter
-					cards.forEach((card) => {
-						const title = card.dataset.title.toLowerCase();
-						card.style.display = title.includes(searchTerm) ? "block" : "none";
-					});
-
-					// Reset all buttons to their original background color
-					buttons.forEach((button) => {
-						button.classList.add(button.dataset.originalBg);
-						button.classList.remove("btn-primary");
-					});
-				} else {
-					// Apply the filter
-					cards.forEach((card) => {
-						const title = card.dataset.title.toLowerCase();
-						const matchesSearch = title.includes(searchTerm);
-						const matchesCategory =
-							card.getAttribute("data-category") === category;
-
-						card.style.display =
-							matchesSearch && matchesCategory ? "block" : "none";
-					});
-
-					// Update button styles
-					buttons.forEach((button) => {
-						if (button.getAttribute("data-category") === category) {
-							button.classList.add(button.dataset.originalBg);
-							button.classList.add("btn-primary");
-						} else {
-							button.classList.remove(button.dataset.originalBg);
-						}
-					});
-				}
+				const activeCategory = document
+					.querySelector(".btn-group .btn.btn-primary")
+					?.getAttribute("data-category");
 				let i = 0;
 				cards.forEach((card) => {
-					if (card.style.display === "block") {
+					const title = card.dataset.title.toLowerCase();
+					const id = card.dataset.image.slice(0, -4).toLowerCase();
+					const matchesSearch = title.includes(searchTerm) || id.includes(searchTerm);
+					const matchesCategory =
+						!activeCategory ||
+						card.getAttribute("data-category") === activeCategory;
+
+					if (matchesSearch && matchesCategory) {
+						card.style.display = "block";
 						card.querySelector("img").tabIndex = 0;
 						card.setAttribute("data-id", i);
 						i += 1;
 					} else {
+						card.style.display = "none";
 						card.querySelector("img").tabIndex = -1;
 						card.setAttribute("data-id", "");
 					}
 				});
-			}
-
-			skipButton = document.getElementById("skipToCards");
-			["click", "keydown"].forEach(function (e) {
-				skipButton.addEventListener(e, () => {
-					if (e === "keydown" && event.key !== "Enter") {
-						return;
-					}
-					cardGrid = document.getElementById("cardGrid");
-					cardGrid.focus();
-					cardGrid.scrollIntoView();
-					skipButton.blur();
-				});
 			});
 
-			document.addEventListener("DOMContentLoaded", () => {
-				fetch("../data/cartes.json")
-					.then((response) => response.json())
-					.then((data) => {
-						const buttonGroup = document.querySelector(".btn-group");
+		function filterCards(category) {
+			const searchTerm = document
+				.getElementById("searchBar")
+				.value.toLowerCase();
+			const cards = document.querySelectorAll(".card-item");
+			const buttons = document.querySelectorAll(".btn-group .btn");
+			const activeButton = document.querySelector(
+				`.btn-group .btn.btn-primary[data-category="${category}"]`
+			);
 
-						// Create a button for each famille using famille.titre
-						data.familles.forEach((famille) => {
-							const button = document.createElement("button");
-							button.className = "btn btn-secondary me-2  rounded"; // Add 'me-2' to add margin to the end of each button
-							button.setAttribute("data-category", famille.id);
-							button.textContent = famille.titre; // Set text content to famille.titre
-							button.addEventListener("click", () => filterCards(famille.id));
-							buttonGroup.appendChild(button);
+			if (activeButton) {
+				// If the clicked button is already active, remove the filter
+				cards.forEach((card) => {
+					const title = card.dataset.title.toLowerCase();
+					card.style.display = title.includes(searchTerm) ? "block" : "none";
+				});
 
-							if (famille.id == "organisation-de-la-journee") {
-								button.classList.add("bluebg");
-								button.dataset.originalBg = "bluebg";
-							}
-							if (famille.id == "accessibilite-des-lieux") {
-								button.classList.add("redbg");
-								button.dataset.originalBg = "redbg";
-							}
-							if (famille.id == "materiel") {
-								button.classList.add("orangebg");
-								button.dataset.originalBg = "orangebg";
-							}
-							if (famille.id == "numerique") {
-								button.classList.add("greenbg");
-								button.dataset.originalBg = "greenbg";
-							}
-							if (famille.id == "evenements-sociaux-professionnels") {
-								button.classList.add("purplebg");
-								button.dataset.originalBg = "purplebg";
-							}
-						});
+				// Reset all buttons to their original background color
+				buttons.forEach((button) => {
+					button.classList.add(button.dataset.originalBg);
+					button.classList.remove("btn-primary");
+				});
+			} else {
+				// Apply the filter
+				cards.forEach((card) => {
+					const title = card.dataset.title.toLowerCase();
+					const matchesSearch = title.includes(searchTerm);
+					const matchesCategory =
+						card.getAttribute("data-category") === category;
 
-						const cardGrid = document.getElementById("cardGrid");
-						cardGrid.innerHTML = "";
-						let i = 0;
-						data.familles.forEach((famille) => {
-							famille.cartes.forEach((carte) => {
-								const card = document.createElement("div");
-								card.className = "col-md-3 mb-4 card-item";
-								card.setAttribute("data-category", famille.id);
-								card.setAttribute("data-title", carte.titre);
-								card.setAttribute("data-subtitle", carte.sousTitre);
-								card.setAttribute("data-description", carte.description);
-								card.setAttribute("data-image", `${carte.id}.png`);
-								card.setAttribute("data-id", i);
-								card.style.display = "block";
-								i += 1;
+					card.style.display =
+						matchesSearch && matchesCategory ? "block" : "none";
+				});
 
-								// Afficher uniquement l'image dans la carte
-								card.innerHTML = `
-				<div class="card h-100">
-					<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0"/>
+				// Update button styles
+				buttons.forEach((button) => {
+					if (button.getAttribute("data-category") === category) {
+						button.classList.add(button.dataset.originalBg);
+						button.classList.add("btn-primary");
+					} else {
+						button.classList.remove(button.dataset.originalBg);
+					}
+				});
+			}
+			let i = 0;
+			cards.forEach((card) => {
+				if (card.style.display === "block") {
+					card.querySelector("img").tabIndex = 0;
+					card.setAttribute("data-id", i);
+					i += 1;
+				} else {
+					card.querySelector("img").tabIndex = -1;
+					card.setAttribute("data-id", "");
+				}
+			});
+		}
+
+		skipButton = document.getElementById("skipToCards");
+		["click", "keydown"].forEach(function (e) {
+			skipButton.addEventListener(e, () => {
+				if (e === "keydown" && event.key !== "Enter") {
+					return;
+				}
+				cardGrid = document.getElementById("cardGrid");
+				cardGrid.focus();
+				cardGrid.scrollIntoView();
+				skipButton.blur();
+			});
+		});
+
+		document.addEventListener("DOMContentLoaded", () => {
+			fetch("../data/cartes.json")
+				.then((response) => response.json())
+				.then((data) => {
+					const buttonGroup = document.querySelector(".btn-group");
+
+					// Create a button for each famille using famille.titre
+					data.familles.forEach((famille) => {
+						const button = document.createElement("button");
+						button.className = "btn btn-secondary me-2  rounded"; // Add 'me-2' to add margin to the end of each button
+						button.setAttribute("data-category", famille.id);
+						button.textContent = famille.titre; // Set text content to famille.titre
+						button.addEventListener("click", () => filterCards(famille.id));
+						buttonGroup.appendChild(button);
+						button.classList.add("filter-button");
+						if (famille.id == "organisation-de-la-journee") {
+							button.classList.add("bluebg");
+							button.dataset.originalBg = "bluebg";
+						}
+						if (famille.id == "accessibilite-des-lieux") {
+							button.classList.add("redbg");
+							button.dataset.originalBg = "redbg";
+						}
+						if (famille.id == "materiel") {
+							button.classList.add("orangebg");
+							button.dataset.originalBg = "orangebg";
+						}
+						if (famille.id == "numerique") {
+							button.classList.add("greenbg");
+							button.dataset.originalBg = "greenbg";
+						}
+						if (famille.id == "evenements-sociaux-professionnels") {
+							button.classList.add("purplebg");
+							button.dataset.originalBg = "purplebg";
+						}
+					});
+
+					const cardGrid = document.getElementById("cardGrid");
+					cardGrid.innerHTML = "";
+					let i = 0;
+					data.familles.forEach((famille) => {
+						famille.cartes.forEach((carte) => {
+							const card = document.createElement("div");
+							card.className = "col-md-3 mb-4 card-item";
+							card.setAttribute("data-category", famille.id);
+							card.setAttribute("data-title", carte.titre);
+							card.setAttribute("data-subtitle", carte.sousTitre);
+							card.setAttribute("data-description", carte.description);
+							card.setAttribute("data-image", `${carte.id}.png`);
+							card.setAttribute("data-id", i);
+							card.style.display = "block";
+							i += 1;
+
+							// Afficher uniquement l'image dans la carte
+							card.innerHTML = `
+				<div class="card h-100" role="listitem" aria-labelledby="card-title-${carte.id}" aria-describedby="card-description-${carte.id}">
+					<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
 					<div class="card-body h-50">
-						<h5 class="card-title">${carte.titre}</h5>
+						<h5 class="card-title" id="card-title-${carte.id}">${carte.titre}</h5>
+					</div>
 				</div>
 			`;
 
-								cardGrid.appendChild(card);
-							});
+							cardGrid.appendChild(card);
 						});
+					});
 
-						// Ajouter des écouteurs d'événements aux images après l'ajout de toutes les cartes
-						document.querySelectorAll(".card-item img").forEach((img) => {
-							["click", "keydown"].forEach(function (e) {
-								img.addEventListener(e, () => {
-									if (e === "keydown" && event.key !== "Enter") {
-										return;
-									}
-									const card = img.closest(".card-item");
-									const title = card.dataset.title;
-									const subTitle = card.dataset.subtitle;
-									const description = card.dataset.description;
-									const id = card.dataset.id;
+					// Ajouter des écouteurs d'événements aux images après l'ajout de toutes les cartes
+					document.querySelectorAll(".card-item img").forEach((img) => {
+						["click", "keydown"].forEach(function (e) {
+							img.addEventListener(e, () => {
+								if (e === "keydown" && event.key !== "Enter") {
+									return;
+								}
+								const card = img.closest(".card-item");
+								const title = card.dataset.title;
+								const subTitle = card.dataset.subtitle;
+								const description = card.dataset.description;
+								const id = card.dataset.id;
 
-									// Création du modal avec uniquement l'image et le contenu de la carte
-									const modal = document.createElement("div");
-									modal.className = "modal fade";
-									modal.tabIndex = -1;
-									modal.innerHTML = `
-										<div class="modal-dialog modal-dialog-centered modal-xl">
+								// Création du modal avec uniquement l'image et le contenu de la carte
+								const modal = document.createElement("div");
+								modal.className = "modal fade";
+								modal.tabIndex = -1;
+								modal.innerHTML = `
+										<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title">${title}</h5>
+													<h5 class="modal-title" id="modalTitle">${title}</h5>
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
-												<div class="modal-body d-flex text-center">
+												<div class="modal-body d-flex text-center" id="modalDescription">
 													<div class="d-flex justify-content-between align-items-center w-100">
-														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}">&#11164;</button>
-														<div class="w-75">
+														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}" aria-label="Previous card">&#11164;</button>
+														<div class="w-75 me-5">
 															<img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
 														</div>
 														<div class="w-50 ms-2">
-															<h6>${subTitle}</h6>
-															<p>${description}</p>
+															<h6 class="subTitle">"${subTitle}"</h6>
+															<p class="description">${description}</p>
 														</div>
-														<button type="button" class="btn btn-secondary ms-2" id="nextCard" data-id="${id}">&#11166;</button>
+														<button type="button" class="btn btn-secondary ms-2" id="nextCard" data-id="${id}" aria-label="Next card">&#11166;</button>
 													</div>
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-													<button type="button" class="btn btn-info">Lire la carte</button>
+													<button type="button" class="btn btn-info">Ecouter la carte</button>
 												</div>
 											</div>
 										</div>
 									`;
 
-									document.body.appendChild(modal);
-									const bootstrapModal = new bootstrap.Modal(modal);
-									bootstrapModal.show();
+								document.body.appendChild(modal);
+								const bootstrapModal = new bootstrap.Modal(modal);
+								bootstrapModal.show();
 
-									// Lecture de la carte
-									modal
-										.querySelector(".btn-info")
-										.addEventListener("click", () => {
-											const utterance = new SpeechSynthesisUtterance(
-												`${title}. ${subTitle}. ${description}`
+								// Lecture de la carte
+								modal
+									.querySelector(".btn-info")
+									.addEventListener("click", () => {
+										const utterance = new SpeechSynthesisUtterance(
+											`${title}. ${subTitle}. ${description}`
+										);
+										utterance.lang = "fr-FR";
+										synth.speak(utterance);
+									});
+								modal.querySelectorAll("button").forEach((button) => {
+									addEventToCursorCircle(button);
+								});
+								modal
+									.querySelectorAll("#nextCard, #prevCard")
+									.forEach((button) => {
+										button.addEventListener("click", () => {
+											cardNavigation(
+												button.id === "nextCard" ? "next" : "prev",
+												parseInt(button.dataset.id)
 											);
-											utterance.lang = "fr-FR";
-											synth.speak(utterance);
 										});
-									modal.querySelectorAll("button").forEach((button) => {
-										addEventToCursorCircle(button);
 									});
-									modal
-										.querySelectorAll("#nextCard, #prevCard")
-										.forEach((button) => {
-											button.addEventListener("click", () => {
-												cardNavigation(
-													button.id === "nextCard" ? "next" : "prev",
-													parseInt(button.dataset.id)
-												);
-											});
-										});
-									document.addEventListener("keydown", (event) => {
-										if (event.key === "Escape") {
-											bootstrapModal.hide();
-										}
-									});
-									document.addEventListener("keydown", (event) => {
-										if (event.key === "p") {
-											synth.cancel();
-										}
-									});
+								document.addEventListener("keydown", (event) => {
+									if (event.key === "Escape") {
+										bootstrapModal.hide();
+									}
+								});
+								document.addEventListener("keydown", (event) => {
+									if (event.key === "p") {
+										synth.cancel();
+									}
+								});
 
-									// Suppression du modal après sa fermeture
-									modal.addEventListener("hidden.bs.modal", () => {
-										modal.remove();
-									});
+								// Suppression du modal après sa fermeture
+								modal.addEventListener("hidden.bs.modal", () => {
+									modal.remove();
 								});
 							});
 						});
+					});
 
-						document
-							.querySelectorAll(
-								"a, button, input, img, .btn-group .btn, .btn-info"
-							)
-							.forEach((element) => {
-								addEventToCursorCircle(element);
-							});
-					})
-					.catch((error) => console.error("Error fetching data:", error));
-			});
-			document.addEventListener("keydown", (event) => {
-				const modal = document.querySelector(".modal");
-				if (modal) {
-					if (event.key === "ArrowLeft") {
-						const id = parseInt(modal.querySelector("#prevCard").dataset.id);
-						cardNavigation("prev", id);
-					}
-					if (event.key === "ArrowRight") {
-						const id = parseInt(modal.querySelector("#nextCard").dataset.id);
-						cardNavigation("next", id);
-					}
+					document
+						.querySelectorAll(
+							"a, button, input, img, .btn-group .btn, .btn-info"
+						)
+						.forEach((element) => {
+							addEventToCursorCircle(element);
+						});
+				})
+				.catch((error) => console.error("Error fetching data:", error));
+		});
+		document.addEventListener("keydown", (event) => {
+			const modal = document.querySelector(".modal");
+			if (modal) {
+				if (event.key === "ArrowLeft") {
+					const id = parseInt(modal.querySelector("#prevCard").dataset.id);
+					cardNavigation("prev", id);
 				}
-			});
-			function cardNavigation(direction, id) {
-				const allcards = document.querySelectorAll(".card-item");
-				const cards = Array.from(allcards).filter(
-					(card) => card.style.display === "block"
-				);
-				const modal = document.querySelector(".modal");
-				const nextCard = direction === "next" ? id + 1 : id - 1;
-				const card = cards[nextCard];
-				if (card) {
-					const title = card.dataset.title;
-					const subTitle = card.dataset.subtitle;
-					const description = card.dataset.description;
-					const image = card.dataset.image;
-					const id = card.dataset.id;
+				if (event.key === "ArrowRight") {
+					const id = parseInt(modal.querySelector("#nextCard").dataset.id);
+					cardNavigation("next", id);
+				}
+			}
+		});
+		function cardNavigation(direction, id) {
+			const allcards = document.querySelectorAll(".card-item");
+			const cards = Array.from(allcards).filter(
+				(card) => card.style.display === "block"
+			);
+			const modal = document.querySelector(".modal");
+			const nextCard = direction === "next" ? id + 1 : id - 1;
+			const card = cards[nextCard];
+			if (card) {
+				const title = card.dataset.title;
+				const subTitle = card.dataset.subtitle;
+				const description = card.dataset.description;
+				const image = card.dataset.image;
+				const id = card.dataset.id;
+
+				modal.querySelector(".modal-title").textContent = title;
+				modal.querySelector("img").src = `../img/cartes/${image}`;
+				modal.querySelector("img").alt = title;
+				modal.querySelector("h6").textContent = subTitle;
+				modal.querySelector("p").textContent = description;
+				modal.querySelector("#nextCard").dataset.id = id;
+				modal.querySelector("#prevCard").dataset.id = id;
+			} else {
+				if (direction === "next") {
+					const title = cards[0].dataset.title;
+					const subTitle = cards[0].dataset.subtitle;
+					const description = cards[0].dataset.description;
+					const image = cards[0].dataset.image;
+					const id = cards[0].dataset.id;
 
 					modal.querySelector(".modal-title").textContent = title;
 					modal.querySelector("img").src = `../img/cartes/${image}`;
@@ -360,146 +351,185 @@
 					modal.querySelector("#nextCard").dataset.id = id;
 					modal.querySelector("#prevCard").dataset.id = id;
 				} else {
-					if (direction === "next") {
-						const title = cards[0].dataset.title;
-						const subTitle = cards[0].dataset.subtitle;
-						const description = cards[0].dataset.description;
-						const image = cards[0].dataset.image;
-						const id = cards[0].dataset.id;
+					const title = cards[cards.length - 1].dataset.title;
+					const subTitle = cards[cards.length - 1].dataset.subtitle;
+					const description = cards[cards.length - 1].dataset.description;
+					const image = cards[cards.length - 1].dataset.image;
+					const id = cards[cards.length - 1].dataset.id;
 
-						modal.querySelector(".modal-title").textContent = title;
-						modal.querySelector("img").src = `../img/cartes/${image}`;
-						modal.querySelector("img").alt = title;
-						modal.querySelector("h6").textContent = subTitle;
-						modal.querySelector("p").textContent = description;
-						modal.querySelector("#nextCard").dataset.id = id;
-						modal.querySelector("#prevCard").dataset.id = id;
-					} else {
-						const title = cards[cards.length - 1].dataset.title;
-						const subTitle = cards[cards.length - 1].dataset.subtitle;
-						const description = cards[cards.length - 1].dataset.description;
-						const image = cards[cards.length - 1].dataset.image;
-						const id = cards[cards.length - 1].dataset.id;
-
-						modal.querySelector(".modal-title").textContent = title;
-						modal.querySelector("img").src = `../img/cartes/${image}`;
-						modal.querySelector("img").alt = title;
-						modal.querySelector("h6").textContent = subTitle;
-						modal.querySelector("p").textContent = description;
-						modal.querySelector("#nextCard").dataset.id = id;
-						modal.querySelector("#prevCard").dataset.id = id;
-					}
+					modal.querySelector(".modal-title").textContent = title;
+					modal.querySelector("img").src = `../img/cartes/${image}`;
+					modal.querySelector("img").alt = title;
+					modal.querySelector("h6").textContent = subTitle;
+					modal.querySelector("p").textContent = description;
+					modal.querySelector("#nextCard").dataset.id = id;
+					modal.querySelector("#prevCard").dataset.id = id;
 				}
 			}
-			function addEventToCursorCircle(element) {
-				element.addEventListener("mouseover", () => {
-					element.style = "cursor: pointer";
-					cursorCircle.style.transform = "scale(2)";
-					cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-				});
-				element.addEventListener("mouseleave", () => {
-					cursorCircle.style.transform = "scale(1)";
-					cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-				});
-			}
-			const cursorCircle = document.createElement("div");
+		}
+		function addEventToCursorCircle(element) {
+			element.addEventListener("mouseover", () => {
+				element.style = "cursor: pointer";
+				cursorCircle.style.transform = "scale(2)";
+				cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+			});
+			element.addEventListener("mouseleave", () => {
+				cursorCircle.style.transform = "scale(1)";
+				cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+			});
+		}
+		const cursorCircle = document.createElement("div");
 
-			cursorCircle.style.zIndex = "9999";
-			cursorCircle.style.position = "fixed";
-			cursorCircle.style.width = "30px";
-			cursorCircle.style.height = "30px";
-			cursorCircle.style.borderRadius = "50%";
-			cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-			cursorCircle.style.pointerEvents = "none";
-			cursorCircle.style.transition = "transform 0.2s ease";
-			document.body.appendChild(cursorCircle);
-			handleMouseMove = (event) => {
-				const xoffset = 15;
-				const yoffset = 15;
-				const y = event.pageY;
-				const x = event.pageX;
-				const ref = cursorCircle;
-				const scrollLeft =
-					window.scrollX !== undefined
-						? window.scrollX
-						: (
-								document.documentElement ||
-								document.body.parentNode ||
-								document.body
-						  ).scrollLeft;
-				const scrollTop =
-					window.scrollY !== undefined
-						? window.scrollY
-						: (
-								document.documentElement ||
-								document.body.parentNode ||
-								document.body
-						  ).scrollTop;
-				ref.style.left = x - scrollLeft - xoffset + "px";
-				ref.style.top = y - scrollTop - yoffset + "px";
-			};
-			document.addEventListener("mousemove", handleMouseMove, false);
-			document.addEventListener("mouseleave", () => {
-				cursorCircle.style.display = "none";
-			});
-			document.addEventListener("mouseenter", () => {
-				cursorCircle.style.display = "block";
-			});
-		</script>
-		<style>
-			.card-img-top:focus {
-				outline: 6px solid #02007b;
+		cursorCircle.style.zIndex = "9999";
+		cursorCircle.style.position = "fixed";
+		cursorCircle.style.width = "30px";
+		cursorCircle.style.height = "30px";
+		cursorCircle.style.borderRadius = "50%";
+		cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+		cursorCircle.style.pointerEvents = "none";
+		cursorCircle.style.transition = "transform 0.2s ease";
+		document.body.appendChild(cursorCircle);
+		handleMouseMove = (event) => {
+			const xoffset = 15;
+			const yoffset = 15;
+			const y = event.pageY;
+			const x = event.pageX;
+			const ref = cursorCircle;
+			const scrollLeft =
+				window.scrollX !== undefined
+					? window.scrollX
+					: (
+						document.documentElement ||
+						document.body.parentNode ||
+						document.body
+					).scrollLeft;
+			const scrollTop =
+				window.scrollY !== undefined
+					? window.scrollY
+					: (
+						document.documentElement ||
+						document.body.parentNode ||
+						document.body
+					).scrollTop;
+			ref.style.left = x - scrollLeft - xoffset + "px";
+			ref.style.top = y - scrollTop - yoffset + "px";
+		};
+		document.addEventListener("mousemove", handleMouseMove, false);
+		document.addEventListener("mouseleave", () => {
+			cursorCircle.style.display = "none";
+		});
+		document.addEventListener("mouseenter", () => {
+			cursorCircle.style.display = "block";
+		});
+	</script>
+	<style>
+		@font-face {
+			font-family: "Luciole";
+			src: url("../fonts/Luciole-Regular.ttf");
+		}
+
+		* {
+			font-family: "Luciole", sans-serif;
+			text-align: start;
+		}
+
+		.card-title {
+			text-align: center;
+		}
+
+
+		.subTitle {
+			font-weight: bold;
+		}
+
+		.card-img-top:focus {
+			outline: 6px solid #02007b;
+		}
+
+		.bluebg {
+			background-color: #207cc4;
+			color: white;
+		}
+
+		.bluebg:hover,
+		.bluebg:focus {
+			background-color: #1a5f90;
+			color: white;
+		}
+
+		.redbg {
+			background-color: #c0245c;
+			color: white;
+		}
+
+		.redbg:hover,
+		.redbg:focus {
+			background-color: #8e1b45;
+			color: white;
+		}
+
+		.greenbg {
+			background-color: #78c444;
+			color: white;
+		}
+
+		.greenbg:hover,
+		.greenbg:focus {
+			background-color: #5c9333;
+			color: white;
+		}
+
+		.orangebg {
+			background-color: #f09424;
+			color: white;
+		}
+
+		.orangebg:hover,
+		.orangebg:focus {
+			background-color: #b36e1b;
+			color: white;
+		}
+
+		.purplebg {
+			background-color: #68449c;
+			color: white;
+		}
+
+		.purplebg:hover,
+		.purplebg:focus {
+			background-color: #4e3474;
+			color: white;
+		}
+
+		@media (min-width: 1000px) {
+			.subTitle {
+				font-size: 1.4rem;
 			}
-			.bluebg {
-				background-color: #207cc4;
-				color: white;
+
+			.description {
+				font-size: 1.2rem;
 			}
-			.bluebg:hover,
-			.bluebg:focus {
-				background-color: #1a5f90;
-				color: white;
+		}
+
+		@media (max-width: 1000px) {
+			.filters {
+				flex-direction: column;
 			}
-			.redbg {
-				background-color: #c0245c;
-				color: white;
+
+			.modal-dialog {
+				max-width: 100% !important;
 			}
-			.redbg:hover,
-			.redbg:focus {
-				background-color: #8e1b45;
-				color: white;
+
+			.filter-button {
+				margin-top: 1rem;
+				font-size: 0.8rem;
 			}
-			.greenbg {
-				background-color: #78c444;
-				color: white;
+
+			#searchBar {
+				width: 100% !important;
 			}
-			.greenbg:hover,
-			.greenbg:focus {
-				background-color: #5c9333;
-				color: white;
-			}
-			.orangebg {
-				background-color: #f09424;
-				color: white;
-			}
-			.orangebg:hover,
-			.orangebg:focus {
-				background-color: #b36e1b;
-				color: white;
-			}
-			.purplebg {
-				background-color: #68449c;
-				color: white;
-			}
-			.purplebg:hover,
-			.purplebg:focus {
-				background-color: #4e3474;
-				color: white;
-			}
-			@media (max-width: 900px) {
-				.filters {
-					flex-direction: column;
-				}
-			}
-		</style>
-	</body>
+		}
+	</style>
+</body>
+
 </html>
