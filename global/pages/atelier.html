@@ -1,324 +1,316 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wireframe</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <style>
-      .flip-card {
-        perspective: 1000px;
-      }
 
-      .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wireframe</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <style>
+    .flip-card {
+      perspective: 1000px;
+    }
 
-      .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-      }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
 
-      .flip-card-front,
-      .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-      }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
 
-      .flip-card-back {
-        transform: rotateY(180deg);
-        background-color: green;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50">
-    <main class="max-w-4xl mx-auto p-8">
-      <section
-        aria-labelledby="section1-title"
-        class="flex flex-col md:flex-row items-center md:space-x-8 mt-20"
-      >
-        <div class="md:w-2/3 mb-4 md:mb-0">
-          <h3
-            id="section1-title"
-            class="text-xl font-semibold"
-            data-aos="zoom-in-right"
-          >
-            Lorem ipsum dolor sit amet, consectetur
-          </h3>
-          <p class="text-gray-600 mt-2" data-aos="zoom-in-up">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-          </p>
-          <div class="flex justify-start space-x-7 mt-10">
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="YouTube">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-youtube text-red-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <main class="max-w-4xl mx-auto p-8">
+    <section aria-labelledby="section1-title" class="flex flex-col md:flex-row items-center md:space-x-8 mt-20">
+      <div class="md:w-2/3 mb-4 md:mb-0">
+        <h3 id="section1-title" class="text-xl font-semibold" data-aos="zoom-in-right">
+          Lorem ipsum dolor sit amet, consectetur
+        </h3>
+        <p class="text-gray-600 mt-2" data-aos="zoom-in-up">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+        </p>
+        <div class="flex justify-start space-x-7 mt-10">
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="YouTube">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-youtube text-red-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Facebook">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-facebook-f text-blue-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Facebook">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-facebook-f text-blue-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="LinkedIn">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-linkedin-in text-blue-700 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="LinkedIn">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-linkedin-in text-blue-700 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Twitter">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-twitter text-blue-400 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Twitter">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-twitter text-blue-400 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Instagram">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-instagram text-pink-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Instagram">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-instagram text-pink-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
           </div>
         </div>
-        <figure
-          aria-label="Image illustrative"
-          role="img"
-          class="md:w-1/3 h-72 bg-gray-200"
-          data-aos="fade-up"
-        ></figure>
-      </section>
+      </div>
+      <figure aria-label="Image illustrative" role="img" class="md:w-1/3 h-72 bg-gray-200" data-aos="fade-up"></figure>
+    </section>
 
-      </section>
+    </section>
 
-      <section
-        aria-labelledby="section2-title"
-        class="flex flex-col md:flex-row items-center md:space-x-8 mt-40"
-      >
-        <figure
-          aria-label="Image illustrative"
-          role="img"
-          class="md:w-1/3 h-72 bg-gray-200"
-          data-aos="fade-up"
-        ></figure>
-        <div class="md:w-2/3">
-          <h3
-            id="section2-title"
-            class="text-xl font-semibold"
-            data-aos="zoom-in-left"
-          >
-            Lorem ipsum dolor sit amet, consectetur
-          </h3>
-          <p class="text-gray-600 mt-2" data-aos="zoom-in-up">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-          </p>
-          <div class="flex justify-start space-x-7 mt-10">
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="YouTube">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-youtube text-red-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+    <section aria-labelledby="section2-title" class="flex flex-col md:flex-row items-center md:space-x-8 mt-40">
+      <figure aria-label="Image illustrative" role="img" class="md:w-1/3 h-72 bg-gray-200" data-aos="fade-up"></figure>
+      <div class="md:w-2/3">
+        <h3 id="section2-title" class="text-xl font-semibold" data-aos="zoom-in-left">
+          Lorem ipsum dolor sit amet, consectetur
+        </h3>
+        <p class="text-gray-600 mt-2" data-aos="zoom-in-up">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+        </p>
+        <div class="flex justify-start space-x-7 mt-10">
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="YouTube">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-youtube text-red-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Facebook">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-facebook-f text-blue-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Facebook">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-facebook-f text-blue-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="LinkedIn">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-linkedin-in text-blue-700 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="LinkedIn">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-linkedin-in text-blue-700 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Twitter">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-twitter text-blue-400 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Twitter">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-twitter text-blue-400 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Instagram">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-instagram text-pink-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Instagram">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-instagram text-pink-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section
-        aria-labelledby="section3-title"
-        class="flex flex-col md:flex-row items-center md:space-x-8 mt-40"
-      >
-        <div class="md:w-2/3 mb-4 md:mb-0">
-          <h3
-            id="section3-title"
-            class="text-xl font-semibold"
-            data-aos="zoom-in-right"
-          >
-            Lorem ipsum dolor sit amet, consectetur
-          </h3>
-          <p class="text-gray-600 mt-2" data-aos="zoom-in-up">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
-            posuere urna diam, eget egestas ex fermentum id.
-          </p>
-          <div class="flex justify-start space-x-7 mt-10">
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="YouTube">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-youtube text-red-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+    <section aria-labelledby="section3-title" class="flex flex-col md:flex-row items-center md:space-x-8 mt-40">
+      <div class="md:w-2/3 mb-4 md:mb-0">
+        <h3 id="section3-title" class="text-xl font-semibold" data-aos="zoom-in-right">
+          Lorem ipsum dolor sit amet, consectetur
+        </h3>
+        <p class="text-gray-600 mt-2" data-aos="zoom-in-up">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+          feugiat faucibus risus, eu accumsan velit facilisis ac. Suspendisse
+          posuere urna diam, eget egestas ex fermentum id.
+        </p>
+        <div class="flex justify-start space-x-7 mt-10">
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="YouTube">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-youtube text-red-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Facebook">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-facebook-f text-blue-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Facebook">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-facebook-f text-blue-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="LinkedIn">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-linkedin-in text-blue-700 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="LinkedIn">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-linkedin-in text-blue-700 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Twitter">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-twitter text-blue-400 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Twitter">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-twitter text-blue-400 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
-            <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Instagram">
-              <div class="flip-card-inner">
-                <div class="flip-card-front bg-gray-300">
-                  <i class="fab fa-instagram text-pink-600 text-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="flip-card-back">
-                  <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
-                </div>
+          </div>
+          <div class="w-12 h-12 flip-card" tabindex="0" aria-label="Instagram">
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-gray-300">
+                <i class="fab fa-instagram text-pink-600 text-2xl" aria-hidden="true"></i>
+              </div>
+              <div class="flip-card-back">
+                <i class="fas fa-check text-white text-2xl" aria-hidden="true"></i>
               </div>
             </div>
           </div>
         </div>
-        <figure
-          aria-label="Image illustrative"
-          role="img"
-          class="md:w-1/3 h-72 bg-gray-200"
-          data-aos="fade-up"
-        ></figure>
-      </section>
-    </main>
-  </body>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  </script>
+      </div>
+      <figure aria-label="Image illustrative" role="img" class="md:w-1/3 h-72 bg-gray-200" data-aos="fade-up"></figure>
+    </section>
+  </main>
+  <footer class="py-5">
+    <div class="container d-flex flex-column">
+      <div class="d-flex justify-content-evenly align-items-center">
+        <div class="logo">
+          <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+        </div>
+        <ul class="nav flex-row">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cartes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Atelier</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">A propos</a>
+          </li>
+        </ul>
+        <div class="logo">
+          <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+        </div>
+      </div>
+      <div class="d-flex justify-content-evenly align-items-center mt-5">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+</script>
+
 </html>

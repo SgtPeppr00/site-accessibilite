@@ -214,7 +214,7 @@
 							card.innerHTML = `
 				<div class="card h-100" role="listitem" aria-labelledby="card-title-${carte.id}" aria-describedby="card-description-${carte.id}">
 					<img src="../img/cartes_new/${carte.id}-${addon}0${idNum}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
-					<div class="card-body h-50">
+					<div class="card-body h-45">
 						<h5 class="card-title" id="card-title-${carte.id}">${carte.titre}</h5>
 					</div>
 				</div>
@@ -455,6 +455,10 @@
 
 		#skipToCards {
 			border-radius: 0 0 50px 50px;
+		}
+
+		.h-45 {
+			height: 45%;
 		}
 
 		* {
