@@ -5,18 +5,6 @@
 			"titre": "Organisation de la journée",
 			"cartes": [
 				{
-					"id": "daily-meeting",
-					"titre": "Daily meeting",
-					"sousTitre": "Est-ce qu'on pourrait s'asseoir pour le daily ?",
-					"description": " 4 personnes sont debout, une femme est en train de parler en direction de deux hommes qui l'écoute attentivement, et la quatrième personne a une canne, des éclairs sont dessiné vers son dos pour signifier la douleur ou l'inconfort."
-				},
-				{
-					"id": "emploi-du-temps",
-					"titre": "Emploi du temps",
-					"sousTitre": "- Tu te rappelles qu'on a notre point quicky à 15h30 ? \n - Ah, je l'avais pas noté. \n - Es-tu disponible pour un point quicky maintenant ?",
-					"description": "Deux personnes sont devant un tableau de planning pleins de post-its, avec des flèches qui lient des post-it entre eux. Une des personnes désigne sa montre, l'autre personne regarde le tableau d'un air interrogatif."
-				},
-				{
 					"id": "fatigabilite",
 					"titre": "Fatigabilité",
 					"sousTitre": "Allez, plus qu'une heure...",
@@ -33,6 +21,18 @@
 					"titre": "Réunion",
 					"sousTitre": "Je n'arrive pas à suivre.",
 					"description": "Dans une réunion, une personne face à trois personnes qui parlent sans interruption. Il y a un point d'interrogation et un point d'exclamation sur la personne qui n'arrive pas à suivre."
+				},
+				{
+					"id": "daily-meeting",
+					"titre": "Daily meeting",
+					"sousTitre": "Est-ce qu'on pourrait s'asseoir pour le daily ?",
+					"description": " 4 personnes sont debout, une femme est en train de parler en direction de deux hommes qui l'écoute attentivement, et la quatrième personne a une canne, des éclairs sont dessiné vers son dos pour signifier la douleur ou l'inconfort."
+				},
+				{
+					"id": "emploi-du-temps",
+					"titre": "Emploi du temps",
+					"sousTitre": "- Tu te rappelles qu'on a notre point quicky à 15h30 ? \n - Ah, je l'avais pas noté. \n - Es-tu disponible pour un point quicky maintenant ?",
+					"description": "Deux personnes sont devant un tableau de planning pleins de post-its, avec des flèches qui lient des post-it entre eux. Une des personnes désigne sa montre, l'autre personne regarde le tableau d'un air interrogatif."
 				}
 			]
 		},
@@ -41,16 +41,10 @@
 			"titre": "Accessibilité des lieux",
 			"cartes": [
 				{
-					"id": "acces-a-la-medecine-du-travail",
-					"titre": "Accès à la médecine du travail",
-					"sousTitre": "J'ai besoin d'aménager mon poste mais il faudrait aménager le médecin.",
-					"description": "La personne est en fauteuil roulant devant la porte du cabinet médicale avec des escaliers pour y accéder."
-				},
-				{
-					"id": "alarmes",
-					"titre": "Alarmes",
-					"sousTitre": "- Pourquoi tout le monde panique ? \n - C'est trop fort !",
-					"description": "Dans un open space, une personne est à son bureau et s'étonne fortement en voyant tout le monde se boucher les oreilles et se lever pour se diriger vers la sortie."
+					"id": "open-space",
+					"titre": "Open space",
+					"sousTitre": "Je ne peux pas me concentrer !",
+					"description": "Dans un open space, une personne est à son bureau et bouche ses oreilles avec ses mains à cause des multiples bruits qui circulent dans l'open space : une personne tape sur son téléphone, de nombreux personnes discutent aux quatre coins de la pièce, des bruits  \"buzz buzz\" venant de l'aération, des bruits  \"buzz buzz\" venant des lampadaires, des bruits du clavier et des bruits des notifications de l'ordinateur."
 				},
 				{
 					"id": "bruits",
@@ -58,17 +52,19 @@
 					"sousTitre": "J'ai besoin de silence !",
 					"description": "Dans une pièce, une personne avec un casque est très perturbée par de nombreux bruits qu'elle entend telles que les bruits de conversations, du téléphone, de la voiture à cause de la fenètre ouverte, du bruit venant de l'aération et du bruit venant du lampadaire."
 				},
-				{
-					"id": "chauffage-climatisation",
-					"titre": "Chauffage / climatisation",
-					"sousTitre": "J'ai chaud / froid.",
-					"description": "Deux cases : une personne a un éventail qu'elle agite et derrière elle, une climatisateur et une autre personne avec son manteau et son bonnet et essaie de se réchauffer devant le chauffage"
-				},
+
 				{
 					"id": "escaliers",
 					"titre": "Escaliers",
 					"sousTitre": "Je vais apprendre à me téléporter.",
 					"description": "Une personne en fauteuil roulant se tient devant un escalier et un ascenseur qui a un écriteau sur lequel est écrit \"en panne\"."
+				},
+
+				{
+					"id": "alarmes",
+					"titre": "Alarmes",
+					"sousTitre": "- Pourquoi tout le monde panique ? \n - C'est trop fort !",
+					"description": "Dans un open space, une personne est à son bureau et s'étonne fortement en voyant tout le monde se boucher les oreilles et se lever pour se diriger vers la sortie."
 				},
 				{
 					"id": "la-lumiere",
@@ -88,11 +84,18 @@
 					"sousTitre": "Pourquoi la salle de la réunion était aussi loin ?",
 					"description": "La personne arrive en courant vers la porte d'entrée des toilettes."
 				},
+
 				{
-					"id": "open-space",
-					"titre": "Open space",
-					"sousTitre": "Je ne peux pas me concentrer !",
-					"description": "Dans un open space, une personne est à son bureau et bouche ses oreilles avec ses mains à cause des multiples bruits qui circulent dans l'open space : une personne tape sur son téléphone, de nombreux personnes discutent aux quatre coins de la pièce, des bruits  \"buzz buzz\" venant de l'aération, des bruits  \"buzz buzz\" venant des lampadaires, des bruits du clavier et des bruits des notifications de l'ordinateur."
+					"id": "chauffage-climatisation",
+					"titre": "Chauffage / climatisation",
+					"sousTitre": "J'ai chaud / froid.",
+					"description": "Deux cases : une personne a un éventail qu'elle agite et derrière elle, une climatisateur et une autre personne avec son manteau et son bonnet et essaie de se réchauffer devant le chauffage"
+				},
+				{
+					"id": "acces-a-la-medecine-du-travail",
+					"titre": "Accès à la médecine du travail",
+					"sousTitre": "J'ai besoin d'aménager mon poste mais il faudrait aménager le médecin.",
+					"description": "La personne est en fauteuil roulant devant la porte du cabinet médicale avec des escaliers pour y accéder."
 				}
 			]
 		},
@@ -100,24 +103,6 @@
 			"id": "materiel",
 			"titre": "Matériel",
 			"cartes": [
-				{
-					"id": "bureau",
-					"titre": "Bureau",
-					"sousTitre": "Je ne vois pas mon écran !",
-					"description": "Le bureau est en hauteur avec trois ordinateurs et trois chaises hautes, deux personnes travaillent mais une troisième personne de petite taille ne peut pas accéder à l'ordinateur."
-				},
-				{
-					"id": "chaise-fauteuil-avec-accoudoir",
-					"titre": "Chaise / fauteuil avec accoudoir",
-					"sousTitre": "Non bah je vais m'asseoir par terre.",
-					"description": ""
-				},
-				{
-					"id": "connexion-wifi-qualite-materiel",
-					"titre": "Connexion wifi / qualité du matériel",
-					"sousTitre": "Je ne peux pas lire sur les lèvres !",
-					"description": "La personne est devant son ordinateur en visio et voit les vignettes de différentes personnes tout pixelisées."
-				},
 				{
 					"id": "sac-ordinateur",
 					"titre": "Sac d'ordinateur",
@@ -135,6 +120,25 @@
 					"titre": "Matériel : souris / clavier / ordinateur",
 					"sousTitre": "Je ne peux pas utiliser cet outil à cause de mon handicap.",
 					"description": "La personne est devant son ordinateur et prend par le fil de la souris filiaire ne sachant pas quoi faire avec."
+				},
+
+				{
+					"id": "connexion-wifi-qualite-materiel",
+					"titre": "Connexion wifi / qualité du matériel",
+					"sousTitre": "Je ne peux pas lire sur les lèvres !",
+					"description": "La personne est devant son ordinateur en visio et voit les vignettes de différentes personnes tout pixelisées."
+				},
+				{
+					"id": "bureau",
+					"titre": "Bureau",
+					"sousTitre": "Je ne vois pas mon écran !",
+					"description": "Le bureau est en hauteur avec trois ordinateurs et trois chaises hautes, deux personnes travaillent mais une troisième personne de petite taille ne peut pas accéder à l'ordinateur."
+				},
+				{
+					"id": "chaise-fauteuil-avec-accoudoir",
+					"titre": "Chaise / fauteuil avec accoudoir",
+					"sousTitre": "Non bah je vais m'asseoir par terre.",
+					"description": ""
 				}
 			]
 		},

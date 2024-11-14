@@ -20,7 +20,7 @@
             </svg>
         </button>
     </header>
-    <main class="container" role="main">
+    <main class="container" role="main" style="width: 70%;">
         <div class="position-absolute burger-menu-container">
             <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
                 aria-controls="navsidebar">
@@ -120,7 +120,7 @@
         <div class="mt-5 mb-5">
             <div class="d-flex mt-5">
                 <img class="me-5" src="https://placehold.co/200x200/EEE/31343C" alt="Sample image">
-                <div class="d-flex flex-column justify-content-around">
+                <div class="d-flex flex-column justify-content-between">
                     <div class="d-flex">
                         <div class="circle" role="img" aria-label="Circle"></div>
                         <div class="circle" role="img" aria-label="Circle"></div>
@@ -141,7 +141,8 @@
             </div>
         </div>
     </main>
-    <footer class="py-5">
+
+    <!--<footer class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-1">
@@ -192,10 +193,45 @@
             </div>
         </div>
     </footer>
+-->
+    <footer class="py-5">
+        <div class="container d-flex flex-column">
+            <div class="d-flex justify-content-evenly align-items-center">
+                <div class="logo">
+                    <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+                </div>
+                <ul class="nav flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cartes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Atelier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">A propos</a>
+                    </li>
+                </ul>
+                <div class="logo">
+                    <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+                </div>
+            </div>
+            <div class="d-flex justify-content-evenly align-items-center mt-5">
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+
+
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 <script>
     const animatedicon = document.querySelector('.animated-icon');
     const navsidebar = document.querySelector('.navsidebar');

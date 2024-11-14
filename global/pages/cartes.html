@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<div class="container mt-5">
+	<div class="container mt-5" style="width: 70%;">
 		<h1 class="mb-4">Cartes</h1>
 		<a href="./accueil.html" class="btn btn-primary mb-4">Accueil</a>
 		<a href="./atelier.html" class="btn btn-primary mb-4">Atelier</a>
@@ -172,23 +172,48 @@
 					const cardGrid = document.getElementById("cardGrid");
 					cardGrid.innerHTML = "";
 					let i = 0;
+					let previousfamily = "";
+					let idNum = 0;
 					data.familles.forEach((famille) => {
 						famille.cartes.forEach((carte) => {
+							if (previousfamily != famille.id) {
+								idNum = 0;
+							}
+							idNum += 1;
+							let addon = "";
+							console.log(famille.id);
+							if (famille.id == "organisation-de-la-journee") {
+								addon = "BL";
+							}
+							if (famille.id == "accessibilite-des-lieux") {
+								addon = "RO";
+							}
+							if (famille.id == "materiel") {
+								addon = "OR";
+							}
+							if (famille.id == "numerique") {
+								addon = "VE";
+							}
+							if (famille.id == "evenements-sociaux-professionnels") {
+								addon = "VI";
+							}
 							const card = document.createElement("div");
 							card.className = "col-md-3 mb-4 card-item";
 							card.setAttribute("data-category", famille.id);
 							card.setAttribute("data-title", carte.titre);
 							card.setAttribute("data-subtitle", carte.sousTitre);
 							card.setAttribute("data-description", carte.description);
-							card.setAttribute("data-image", `${carte.id}.png`);
+							card.setAttribute("data-image", `${carte.id}-${addon}0${idNum}.png`);
 							card.setAttribute("data-id", i);
+
 							card.style.display = "block";
 							i += 1;
+							previousfamily = famille.id;
 
 							// Afficher uniquement l'image dans la carte
 							card.innerHTML = `
 				<div class="card h-100" role="listitem" aria-labelledby="card-title-${carte.id}" aria-describedby="card-description-${carte.id}">
-					<img src="../img/cartes/${carte.id}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
+					<img src="../img/cartes_new/${carte.id}-${addon}0${idNum}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
 					<div class="card-body h-50">
 						<h5 class="card-title" id="card-title-${carte.id}">${carte.titre}</h5>
 					</div>
@@ -227,7 +252,7 @@
 													<div class="d-flex justify-content-between align-items-center w-100">
 														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}" aria-label="Previous card">&#11164;</button>
 														<div class="w-75 me-5">
-															<img src="../img/cartes/${card.dataset.image}" class="img-fluid" alt="${title}" />
+															<img src="../img/cartes_new/${card.dataset.image}" class="img-fluid" alt="${title}" />
 														</div>
 														<div class="w-50 ms-2">
 															<h6 class="subTitle">"${subTitle}"</h6>
@@ -329,7 +354,7 @@
 				const id = card.dataset.id;
 
 				modal.querySelector(".modal-title").textContent = title;
-				modal.querySelector("img").src = `../img/cartes/${image}`;
+				modal.querySelector("img").src = `../img/cartes_new/${image}`;
 				modal.querySelector("img").alt = title;
 				modal.querySelector("h6").textContent = subTitle;
 				modal.querySelector("p").textContent = description;
@@ -344,7 +369,7 @@
 					const id = cards[0].dataset.id;
 
 					modal.querySelector(".modal-title").textContent = title;
-					modal.querySelector("img").src = `../img/cartes/${image}`;
+					modal.querySelector("img").src = `../img/cartes_new/${image}`;
 					modal.querySelector("img").alt = title;
 					modal.querySelector("h6").textContent = subTitle;
 					modal.querySelector("p").textContent = description;
@@ -358,7 +383,7 @@
 					const id = cards[cards.length - 1].dataset.id;
 
 					modal.querySelector(".modal-title").textContent = title;
-					modal.querySelector("img").src = `../img/cartes/${image}`;
+					modal.querySelector("img").src = `../img/cartes_new/${image}`;
 					modal.querySelector("img").alt = title;
 					modal.querySelector("h6").textContent = subTitle;
 					modal.querySelector("p").textContent = description;
@@ -428,9 +453,17 @@
 			src: url("../fonts/Luciole-Regular.ttf");
 		}
 
+		#skipToCards {
+			border-radius: 0 0 50px 50px;
+		}
+
 		* {
 			font-family: "Luciole", sans-serif;
 			text-align: start;
+		}
+
+		*:focus-visible {
+			outline: 6px solid #02007b !important;
 		}
 
 		.card-title {
