@@ -1,10 +1,11 @@
 /* Navbar */
 .btn-navbar {
     border-color: black;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
     margin-right: 15px;
-    padding-right: 15px;
-    text-align: center;
+    padding: 3px 25px 3px 25px;
 }
+
+
 
 /* Ressources */
