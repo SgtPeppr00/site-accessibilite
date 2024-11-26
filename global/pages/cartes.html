@@ -32,22 +32,18 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 	<script>
 		const synth = window.speechSynthesis;
-		document
-			.getElementById("searchBar")
-			.addEventListener("input", function () {
+
+		function initializeSearchBar() {
+			document.getElementById("searchBar").addEventListener("input", function () {
 				const searchTerm = this.value.toLowerCase();
 				const cards = document.querySelectorAll(".card-item");
-				const activeCategory = document
-					.querySelector(".btn-group .btn.btn-primary")
-					?.getAttribute("data-category");
+				const activeCategory = document.querySelector(".btn-group .btn.btn-primary")?.getAttribute("data-category");
 				let i = 0;
 				cards.forEach((card) => {
 					const title = card.dataset.title.toLowerCase();
 					const id = card.dataset.image.slice(0, -4).toLowerCase();
 					const matchesSearch = title.includes(searchTerm) || id.includes(searchTerm);
-					const matchesCategory =
-						!activeCategory ||
-						card.getAttribute("data-category") === activeCategory;
+					const matchesCategory = !activeCategory || card.getAttribute("data-category") === activeCategory;
 
 					if (matchesSearch && matchesCategory) {
 						card.style.display = "block";
@@ -61,16 +57,13 @@
 					}
 				});
 			});
+		}
 
 		function filterCards(category) {
-			const searchTerm = document
-				.getElementById("searchBar")
-				.value.toLowerCase();
+			const searchTerm = document.getElementById("searchBar").value.toLowerCase();
 			const cards = document.querySelectorAll(".card-item");
 			const buttons = document.querySelectorAll(".btn-group .btn");
-			const activeButton = document.querySelector(
-				`.btn-group .btn.btn-primary[data-category="${category}"]`
-			);
+			const activeButton = document.querySelector(`.btn-group .btn.btn-primary[data-category="${category}"]`);
 
 			if (activeButton) {
 				// If the clicked button is already active, remove the filter
@@ -89,11 +82,9 @@
 				cards.forEach((card) => {
 					const title = card.dataset.title.toLowerCase();
 					const matchesSearch = title.includes(searchTerm);
-					const matchesCategory =
-						card.getAttribute("data-category") === category;
+					const matchesCategory = card.getAttribute("data-category") === category;
 
-					card.style.display =
-						matchesSearch && matchesCategory ? "block" : "none";
+					card.style.display = matchesSearch && matchesCategory ? "block" : "none";
 				});
 
 				// Update button styles
@@ -119,20 +110,22 @@
 			});
 		}
 
-		skipButton = document.getElementById("skipToCards");
-		["click", "keydown"].forEach(function (e) {
-			skipButton.addEventListener(e, () => {
-				if (e === "keydown" && event.key !== "Enter") {
-					return;
-				}
-				cardGrid = document.getElementById("cardGrid");
-				cardGrid.focus();
-				cardGrid.scrollIntoView();
-				skipButton.blur();
+		function setupSkipButton() {
+			const skipButton = document.getElementById("skipToCards");
+			["click", "keydown"].forEach(function (e) {
+				skipButton.addEventListener(e, () => {
+					if (e === "keydown" && event.key !== "Enter") {
+						return;
+					}
+					const cardGrid = document.getElementById("cardGrid");
+					cardGrid.focus();
+					cardGrid.scrollIntoView();
+					skipButton.blur();
+				});
 			});
-		});
+		}
 
-		document.addEventListener("DOMContentLoaded", () => {
+		function fetchAndDisplayCards() {
 			fetch("../data/cartes.json")
 				.then((response) => response.json())
 				.then((data) => {
@@ -274,28 +267,19 @@
 								bootstrapModal.show();
 
 								// Lecture de la carte
-								modal
-									.querySelector(".btn-info")
-									.addEventListener("click", () => {
-										const utterance = new SpeechSynthesisUtterance(
-											`${title}. ${subTitle}. ${description}`
-										);
-										utterance.lang = "fr-FR";
-										synth.speak(utterance);
-									});
+								modal.querySelector(".btn-info").addEventListener("click", () => {
+									const utterance = new SpeechSynthesisUtterance(`${title}. ${subTitle}. ${description}`);
+									utterance.lang = "fr-FR";
+									synth.speak(utterance);
+								});
 								modal.querySelectorAll("button").forEach((button) => {
 									addEventToCursorCircle(button);
 								});
-								modal
-									.querySelectorAll("#nextCard, #prevCard")
-									.forEach((button) => {
-										button.addEventListener("click", () => {
-											cardNavigation(
-												button.id === "nextCard" ? "next" : "prev",
-												parseInt(button.dataset.id)
-											);
-										});
+								modal.querySelectorAll("#nextCard, #prevCard").forEach((button) => {
+									button.addEventListener("click", () => {
+										handleCardNavigation(button.id === "nextCard" ? "next" : "prev", parseInt(button.dataset.id));
 									});
+								});
 								document.addEventListener("keydown", (event) => {
 									if (event.key === "Escape") {
 										bootstrapModal.hide();
@@ -315,34 +299,16 @@
 						});
 					});
 
-					document
-						.querySelectorAll(
-							"a, button, input, img, .btn-group .btn, .btn-info"
-						)
-						.forEach((element) => {
-							addEventToCursorCircle(element);
-						});
+					document.querySelectorAll("a, button, input, img, .btn-group .btn, .btn-info").forEach((element) => {
+						addEventToCursorCircle(element);
+					});
 				})
 				.catch((error) => console.error("Error fetching data:", error));
-		});
-		document.addEventListener("keydown", (event) => {
-			const modal = document.querySelector(".modal");
-			if (modal) {
-				if (event.key === "ArrowLeft") {
-					const id = parseInt(modal.querySelector("#prevCard").dataset.id);
-					cardNavigation("prev", id);
-				}
-				if (event.key === "ArrowRight") {
-					const id = parseInt(modal.querySelector("#nextCard").dataset.id);
-					cardNavigation("next", id);
-				}
-			}
-		});
-		function cardNavigation(direction, id) {
+		}
+
+		function handleCardNavigation(direction, id) {
 			const allcards = document.querySelectorAll(".card-item");
-			const cards = Array.from(allcards).filter(
-				(card) => card.style.display === "block"
-			);
+			const cards = Array.from(allcards).filter((card) => card.style.display === "block");
 			const modal = document.querySelector(".modal");
 			const nextCard = direction === "next" ? id + 1 : id - 1;
 			const card = cards[nextCard];
@@ -392,6 +358,7 @@
 				}
 			}
 		}
+
 		function addEventToCursorCircle(element) {
 			element.addEventListener("mouseover", () => {
 				element.style = "cursor: pointer";
@@ -403,48 +370,64 @@
 				cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 			});
 		}
-		const cursorCircle = document.createElement("div");
 
-		cursorCircle.style.zIndex = "9999";
-		cursorCircle.style.position = "fixed";
-		cursorCircle.style.width = "30px";
-		cursorCircle.style.height = "30px";
-		cursorCircle.style.borderRadius = "50%";
-		cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-		cursorCircle.style.pointerEvents = "none";
-		cursorCircle.style.transition = "transform 0.2s ease";
-		document.body.appendChild(cursorCircle);
-		handleMouseMove = (event) => {
-			const xoffset = 15;
-			const yoffset = 15;
-			const y = event.pageY;
-			const x = event.pageX;
-			const ref = cursorCircle;
-			const scrollLeft =
-				window.scrollX !== undefined
-					? window.scrollX
-					: (
-						document.documentElement ||
-						document.body.parentNode ||
-						document.body
-					).scrollLeft;
-			const scrollTop =
-				window.scrollY !== undefined
-					? window.scrollY
-					: (
-						document.documentElement ||
-						document.body.parentNode ||
-						document.body
-					).scrollTop;
-			ref.style.left = x - scrollLeft - xoffset + "px";
-			ref.style.top = y - scrollTop - yoffset + "px";
-		};
-		document.addEventListener("mousemove", handleMouseMove, false);
-		document.addEventListener("mouseleave", () => {
-			cursorCircle.style.display = "none";
-		});
-		document.addEventListener("mouseenter", () => {
-			cursorCircle.style.display = "block";
+		function setupCursorCircle() {
+			const cursorCircle = document.createElement("div");
+
+			cursorCircle.style.zIndex = "9999";
+			cursorCircle.style.position = "fixed";
+			cursorCircle.style.width = "30px";
+			cursorCircle.style.height = "30px";
+			cursorCircle.style.borderRadius = "50%";
+			cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+			cursorCircle.style.pointerEvents = "none";
+			cursorCircle.style.transition = "transform 0.2s ease";
+			document.body.appendChild(cursorCircle);
+
+			function handleMouseMove(event) {
+				const xoffset = 15;
+				const yoffset = 15;
+				const y = event.pageY;
+				const x = event.pageX;
+				const ref = cursorCircle;
+				const scrollLeft = window.scrollX !== undefined ? window.scrollX : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+				const scrollTop = window.scrollY !== undefined ? window.scrollY : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+				ref.style.left = x - scrollLeft - xoffset + "px";
+				ref.style.top = y - scrollTop - yoffset + "px";
+			}
+
+			document.addEventListener("mousemove", handleMouseMove, false);
+			document.addEventListener("mouseleave", () => {
+				cursorCircle.style.display = "none";
+			});
+			document.addEventListener("mouseenter", () => {
+				cursorCircle.style.display = "block";
+			});
+		}
+
+		function handleKeyEvents() {
+			document.addEventListener("keydown", (event) => {
+				const modal = document.querySelector(".modal");
+				if (modal) {
+					if (event.key === "ArrowLeft") {
+						const id = parseInt(modal.querySelector("#prevCard").dataset.id);
+						handleCardNavigation("prev", id);
+					}
+					if (event.key === "ArrowRight") {
+						const id = parseInt(modal.querySelector("#nextCard").dataset.id);
+						handleCardNavigation("next", id);
+					}
+				}
+			});
+		}
+
+		// Initialize functions on DOMContentLoaded
+		document.addEventListener("DOMContentLoaded", () => {
+			initializeSearchBar();
+			setupSkipButton();
+			fetchAndDisplayCards();
+			setupCursorCircle();
+			handleKeyEvents();
 		});
 	</script>
 	<style>
