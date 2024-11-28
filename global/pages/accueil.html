@@ -8,10 +8,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .navbar-nav .nav-link {
+            transition: background-color 0.3s, color 0.3s;
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 1rem;
+            margin: 0 0.3rem;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus,
+        .nav-link.active {
+            background-color: white;
+            color: #343a40;
+            /* Bootstrap's dark color */
+        }
+
+        .navbar {
+            min-height: 80px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            padding: 1rem 1rem;
+        }
+    </style>
 </head>
 
 <body>
     <header>
+        <!-- Desktop Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top d-none d-lg-block">
+            <div class="container">
+                <a class="navbar-brand" href="accueil.html">Panorama-Handicap</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active text-black" aria-current="page" href="accueil.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="atelier.html">Atelier</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cartes.html">Cartes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ressources.html">Ressources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="a-propos.html">À propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="credit.html">Credit</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <button id="themebutton" class="btn btn-light">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
                 viewBox="0 0 16 16">
@@ -20,49 +79,54 @@
             </svg>
         </button>
     </header>
-    <main class="container" role="main" style="width: 70%;">
-        <div class="position-absolute burger-menu-container">
-            <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
-                aria-controls="navsidebar">
-                <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
-                        class="burgerspan"></span><span class="burgerspan"></span></div>
-            </button>
-        </div>
-        <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar" id="navsidebar" role="navigation"
-            aria-label="Sidebar">
-            <span class="fs-4 mt-5">Sidebar</span>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" aria-current="page">
-                        Accueil
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/cartes.html" class="nav-link link-dark">
-                        Cartes
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/atelier.html" class="nav-link link-dark">
-                        Atelier
-                    </a>
-                </li>
-                <li>
-                    <a href="../pages/contact.html" class="nav-link link-dark">
-                        Contact
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link link-dark">
-                        A propos
-                    </a>
-                </li>
-            </ul>
-            <hr>
-        </div>
 
-        <h1 class="text-center mb-5 mt-5">Site Accessibilité</h1>
+    <!-- Mobile Sidebar Toggle -->
+    <div class="position-absolute burger-menu-container d-lg-none">
+        <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+            aria-controls="navsidebar">
+            <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
+                    class="burgerspan"></span><span class="burgerspan"></span></div>
+        </button>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
+        aria-label="Sidebar">
+        <span class="fs-4 mt-5">Sidebar</span>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="../pages/cartes.html" class="nav-link link-dark">
+                    Cartes
+                </a>
+            </li>
+            <li>
+                <a href="../pages/atelier.html" class="nav-link link-dark">
+                    Atelier
+                </a>
+            </li>
+            <li>
+                <a href="../pages/contact.html" class="nav-link link-dark">
+                    Contact
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link link-dark">
+                    A propos
+                </a>
+            </li>
+        </ul>
+        <hr>
+    </div>
+
+    <main class="container mt-5" role="main" style="width: 70%;">
+        <div class="mt-5 mb-5 opacity-0">.</div>
+        <h1 class="text-center mb-5 mt-5">Site Accessibilit&eacute;</h1>
         <div class="d-flex">
             <img class="w-50 me-5" src="https://placehold.co/600x400/EEE/31343C" alt="Sample image">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum eligendi quae aut quasi, dolore reiciendis.
@@ -90,7 +154,7 @@
         <hr>
         <div class="d-flex justify-content-center mt-5 mb-5 flex-column align-items-center bg-image jeu-cartes-img"
             role="region" aria-label="Jeu de cartes">
-            <h1 class="mb-5">Accès au jeu de cartes</h1>
+            <h1 class="mb-5">Acc&egrave;s au jeu de cartes</h1>
             <button class="mb-5 mt-5 w-25 jeu-cartes-button">Button</button>
         </div>
         <div class="mt-5 mb-5">
@@ -430,7 +494,7 @@
     }
 
     .navsidebar {
-        z-index: 1;
+        z-index: 1001;
         width: 250px;
         height: 100vh;
         position: fixed;
@@ -446,13 +510,17 @@
     }
 
     @media (min-width: 1000px) {
-        .navbar-toggler {
+        .burger-menu-container {
             display: none;
         }
 
         .navsidebar.open {
             right: -250px;
         }
+    }
+
+    .navbar {
+        z-index: 1000;
     }
 </style>
 
