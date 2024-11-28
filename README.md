@@ -1,8 +1,10 @@
+# Site Accessibilité
+
+## Contributors
+
 - LANGUEPIN August
 - MAOUCHI Ilan
 - DIOP Cheikh
-
-# Site Accessibilité
 
 A web application focused on accessibility awareness and education through
 interactive cards and workshops.
