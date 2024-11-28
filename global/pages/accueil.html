@@ -20,7 +20,7 @@
         .navbar-nav .nav-link:focus,
         .nav-link.active {
             background-color: white;
-            color: #343a40;
+            color: #343a40 !important;
             /* Bootstrap's dark color */
         }
 
@@ -35,6 +35,7 @@
             padding: 1rem 1rem;
         }
     </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -46,7 +47,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active text-black" aria-current="page" href="accueil.html">Accueil</a>
+                            <a class="nav-link active" aria-current="page" href="accueil.html">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="atelier.html">Atelier</a>
@@ -96,28 +97,38 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="../pages/accueil.html" class="nav-link active" aria-current="page">
                     Accueil
                 </a>
             </li>
             <li>
-                <a href="../pages/cartes.html" class="nav-link link-dark">
+                <a href="../pages/cartes.html" class="nav-link">
                     Cartes
                 </a>
             </li>
             <li>
-                <a href="../pages/atelier.html" class="nav-link link-dark">
+                <a href="../pages/atelier.html" class="nav-link">
                     Atelier
                 </a>
             </li>
             <li>
-                <a href="../pages/contact.html" class="nav-link link-dark">
+                <a href="../pages/contact.html" class="nav-link">
                     Contact
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link link-dark">
+                <a href="../pages/a-propos.html" class="nav-link">
                     A propos
+                </a>
+            </li>
+            <li>
+                <a href="../pages/credit.html" class="nav-link">
+                    Credit
+                </a>
+            </li>
+            <li>
+                <a href="../pages/ressources.html" class="nav-link">
+                    Ressources
                 </a>
             </li>
         </ul>
@@ -354,174 +365,5 @@
     });
 </script>
 
-<style>
-    .footer-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .footer-top {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-
-        flex-direction: row;
-    }
-
-    .footer-top-img {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-
-        flex-direction: column;
-    }
-
-    .footer-bottom {
-        margin-top: 5%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-
-        flex-direction: row;
-    }
-
-    @font-face {
-        font-family: "Luciole";
-        src: url("../fonts/Luciole-Regular.ttf");
-    }
-
-    * {
-        font-family: "Luciole", sans-serif;
-    }
-
-    .bg-image {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .jeu-cartes-img {
-        background-image: url('https://placehold.co/1200x800/EEE/31343C');
-        height: 400px;
-    }
-
-    .jeu-cartes-button {
-        padding: 15px;
-        border-radius: 5px;
-    }
-
-    .circle {
-        border: 3px solid #000;
-        margin-right: 20px;
-        border-radius: 50%;
-        width: 35px;
-        height: 35px;
-    }
-
-    .burger-menu-container {
-        z-index: 9999;
-        top: 25px;
-        right: 50px;
-        position: fixed;
-    }
-
-    .navbar-toggler {
-        z-index: 9999;
-        position: fixed;
-        top: 25px;
-        right: 50px;
-    }
-
-    .navbar-toggler .animated-icon {
-        z-index: 9999;
-        width: 30px;
-        height: 20px;
-        position: relative;
-        margin: 0px;
-        transform: rotate(0deg);
-        transition: 0.5s ease-in-out;
-        cursor: pointer;
-    }
-
-    .navbar-toggler .animated-icon span {
-        display: block;
-        position: absolute;
-        height: 3px;
-        width: 100%;
-        background: #000000;
-        border-radius: 9px;
-        opacity: 1;
-        left: 0;
-        transform: rotate(0deg);
-        transition: 0.25s ease-in-out;
-    }
-
-    .navbar-toggler .animated-icon span:nth-child(1) {
-        top: 0px;
-        transform-origin: left center;
-    }
-
-    .navbar-toggler .animated-icon span:nth-child(2) {
-        top: 10px;
-        transform-origin: left center;
-    }
-
-    .navbar-toggler .animated-icon span:nth-child(3) {
-        top: 20px;
-        transform-origin: left center;
-    }
-
-    .navbar-toggler .animated-icon.open span:nth-child(1) {
-        transform: rotate(45deg);
-        top: 0px;
-        left: 8px;
-    }
-
-    .navbar-toggler .animated-icon.open span:nth-child(2) {
-        width: 0%;
-        opacity: 0;
-    }
-
-    .navbar-toggler .animated-icon.open span:nth-child(3) {
-        transform: rotate(-45deg);
-        top: 21px;
-        left: 8px;
-    }
-
-    .navsidebar {
-        z-index: 1001;
-        width: 250px;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        right: -250px;
-        background: #f8f9fa;
-        transition: all 0.3s;
-        border-left: solid 1px #000;
-    }
-
-    .navsidebar.open {
-        right: 0;
-    }
-
-    @media (min-width: 1000px) {
-        .burger-menu-container {
-            display: none;
-        }
-
-        .navsidebar.open {
-            right: -250px;
-        }
-    }
-
-    .navbar {
-        z-index: 1000;
-    }
-</style>
 
 </html>
