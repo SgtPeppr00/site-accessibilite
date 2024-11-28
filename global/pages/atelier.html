@@ -314,40 +314,45 @@
       <figure aria-label="Image illustrative" role="img" class="md:w-1/3 h-72 bg-gray-200" data-aos="fade-up"></figure>
     </section>
   </main>
-  <footer class="py-5">
-    <div class="container d-flex flex-column">
-      <div class="d-flex justify-content-evenly align-items-center">
+  <footer class="py-5 bg-gray-100">
+    <div class="container mx-auto flex flex-col items-center space-y-10">
+      <!-- Première ligne -->
+      <div class="flex justify-evenly items-center w-full max-w-4xl">
+        <!-- Logo gauche -->
         <div class="logo">
-          <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+          <img src="https://placehold.co/50x50/EEE/31343C" alt="Logo gauche" class="w-12 h-12">
         </div>
-        <ul class="nav flex-row">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Accueil</a>
+        <!-- Liens de navigation -->
+        <ul class="flex space-x-8">
+          <li>
+            <a href="#" class="text-blue-600 hover:text-blue-800">Accueil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Cartes</a>
+          <li>
+            <a href="#" class="text-blue-600 hover:text-blue-800">Cartes</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Atelier</a>
+          <li>
+            <a href="#" class="text-blue-600 hover:text-blue-800">Atelier</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+          <li>
+            <a href="#" class="text-blue-600 hover:text-blue-800">Contact</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">A propos</a>
+          <li>
+            <a href="#" class="text-blue-600 hover:text-blue-800">À propos</a>
           </li>
         </ul>
+        <!-- Logo droit -->
         <div class="logo">
-          <img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+          <img src="https://placehold.co/50x50/EEE/31343C" alt="Logo droit" class="w-12 h-12">
         </div>
       </div>
-      <div class="d-flex justify-content-evenly align-items-center mt-5">
+      <!-- Deuxième ligne -->
+      <div class="flex justify-evenly items-center w-full max-w-4xl text-gray-700">
         <p>Lorem ipsum dolor sit amet.</p>
         <p>Lorem ipsum dolor sit amet.</p>
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
     </div>
-  </footer>
+  </footer>  
 </body>
 <script>
   AOS.init({
