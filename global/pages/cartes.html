@@ -106,17 +106,19 @@
 		<hr>
 	</div>
 
+	<p class="mt-5 opacity-0">.</p>
 	<div class="container mt-5" style="width: 70%;">
 
 		<button href="./cartes.html" class="btn btn-primary mb-4 visually-hidden-focusable fixed-top" id="skipToCards"
 			tabindex="1">
 			Passer directement aux cartes
 		</button>
-		<div class="d-flex filters justify-content-between mb-4 w-100">
+		<div class="d-flex filters justify-content-between mt-5 mb-4 w-100">
 			<input type="text" class="form-control me-5 h-50 w-25 searchbar" placeholder="Rechercher..." id="searchBar"
 				aria-label="Rechercher des cartes" />
 
-			<div class="btn-group" role="group" aria-label="Filter buttons"></div>
+			<div class="btn-group col-5 d-flex gap-2 w-100" role="group" aria-label="Filter buttons">
+			</div>
 		</div>
 
 		<div class="row" id="cardGrid" role="list"></div>
@@ -229,31 +231,38 @@
 					// Create a button for each famille using famille.titre
 					data.familles.forEach((famille) => {
 						const button = document.createElement("button");
-						button.className = "btn btn-secondary me-2  rounded"; // Add 'me-2' to add margin to the end of each button
+						button.className = "btn btn-secondary me-1 rounded"; // Add 'me-2' to add margin to the end of each button
 						button.setAttribute("data-category", famille.id);
 						button.textContent = famille.titre; // Set text content to famille.titre
 						button.addEventListener("click", () => filterCards(famille.id));
 						buttonGroup.appendChild(button);
 						button.classList.add("filter-button");
+						button.style = "width: 20%";
+						button.setAttribute("title", `Filtrer par ${famille.titre}`);
 						if (famille.id == "organisation-de-la-journee") {
 							button.classList.add("bluebg");
 							button.dataset.originalBg = "bluebg";
+							button.textContent = "Bleu";
 						}
 						if (famille.id == "accessibilite-des-lieux") {
 							button.classList.add("redbg");
 							button.dataset.originalBg = "redbg";
+							button.textContent = "Rouge";
 						}
 						if (famille.id == "materiel") {
 							button.classList.add("orangebg");
 							button.dataset.originalBg = "orangebg";
+							button.textContent = "Orange";
 						}
 						if (famille.id == "numerique") {
 							button.classList.add("greenbg");
 							button.dataset.originalBg = "greenbg";
+							button.textContent = "Vert";
 						}
 						if (famille.id == "evenements-sociaux-professionnels") {
 							button.classList.add("purplebg");
 							button.dataset.originalBg = "purplebg";
+							button.textContent = "Violet";
 						}
 					});
 
@@ -286,7 +295,7 @@
 								addon = "VI";
 							}
 							const card = document.createElement("div");
-							card.className = "col-md-3 mb-4 card-item";
+							card.className = "col-lg-3 col-md-6 col-6 mb-4 card-item";
 							card.setAttribute("data-category", famille.id);
 							card.setAttribute("data-title", carte.titre);
 							card.setAttribute("data-subtitle", carte.sousTitre);
