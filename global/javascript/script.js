@@ -7,14 +7,19 @@ document
 		animatedicon.classList.toggle("open");
 		navsidebar.classList.toggle("open");
 	});
+
 const themeButton = document.getElementById("themebutton");
+const themeButtonMobile = document.getElementById("themebuttonmobile");
 const circles = document.querySelectorAll(".circle");
 const burgerspan = document.querySelectorAll(".burgerspan");
 const linkdark = document.querySelectorAll(".link-dark");
-let isDarkTheme = false;
+let isDarkTheme = localStorage.getItem("darkTheme") === "true";
 
-themeButton.addEventListener("click", function () {
-	if (isDarkTheme) {
+themeButtonMobile.addEventListener("click", changeTheme);
+themeButton.addEventListener("click", changeTheme);
+
+function applyTheme(isDark) {
+	if (!isDark) {
 		document.body.style.backgroundColor = "";
 		document.body.style.color = "";
 		themeButton.classList.remove("btn-dark");
@@ -49,5 +54,13 @@ themeButton.addEventListener("click", function () {
 			link.classList.add("link-light");
 		});
 	}
+}
+
+function changeTheme() {
 	isDarkTheme = !isDarkTheme;
-});
+	localStorage.setItem("darkTheme", isDarkTheme);
+	applyTheme(isDarkTheme);
+}
+
+// Apply theme on page load
+applyTheme(isDarkTheme);

@@ -12,102 +12,110 @@
 </head>
 
 <body class="bg-gray-50">
-  <div class="mx-auto p-8">
-    <header>
-      <!-- Desktop Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top d-none d-lg-block">
-        <div class="container">
-          <a class="navbar-brand" href="accueil.html">Panorama-Handicap</a>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="accueil.html">Accueil</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="atelier.html">Atelier</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="cartes.html">Cartes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="ressources.html">Ressources</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active text-white" aria-current="page" href="a-propos.html">À propos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="credit.html">Credit</a>
-              </li>
-            </ul>
-          </div>
+  <header>
+    <!-- Desktop Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+      <div class="container">
+        <a class="navbar-brand" href="accueil.html">Panorama-Handicap</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="accueil.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="atelier.html">Atelier</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cartes.html">Cartes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ressources.html">Ressources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="a-propos.html">À propos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="credit.html">Credit</a>
+            </li>
+          </ul>
+          <button id="themebutton" class="btn btn-light ms-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
+              viewBox="0 0 16 16">
+              <path
+                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+            </svg>
+          </button>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <button id="themebutton" class="btn btn-light">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
-          viewBox="0 0 16 16">
-          <path
-            d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-        </svg>
-      </button>
-    </header>
+  </header>
 
-    <!-- Mobile Sidebar Toggle -->
-    <div class="position-absolute burger-menu-container d-lg-none">
-      <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
-        aria-controls="navsidebar">
-        <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
-            class="burgerspan"></span><span class="burgerspan"></span></div>
-      </button>
-    </div>
+  <!-- Mobile Sidebar Toggle -->
+  <div class="position-absolute burger-menu-container d-lg-none">
+    <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+      aria-controls="navsidebar">
+      <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
+          class="burgerspan"></span><span class="burgerspan"></span></div>
+    </button>
+  </div>
 
-    <!-- Mobile Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
-      aria-label="Sidebar">
-      <span class="fs-4 mt-5">Sidebar</span>
-      <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-        <li>
-          <a href="../pages/accueil.html" class="nav-link">
-            Accueil
-          </a>
-        </li>
-        <li>
-          <a href="../pages/cartes.html" class="nav-link">
-            Cartes
-          </a>
-        </li>
-        <li>
-          <a href="../pages/atelier.html" class="nav-link">
-            Atelier
-          </a>
-        </li>
-        <li>
-          <a href="../pages/contact.html" class="nav-link">
-            Contact
-          </a>
-        </li>
-        <li>
-          <a href="../pages/a-propos.html" class="nav-link active" aria-current="page">
-            À propos
-          </a>
-        </li>
-        <li>
-          <a href="../pages/credit.html" class="nav-link">
-            Credit
-          </a>
-        </li>
-        <li>
-          <a href="../pages/ressources.html" class="nav-link">
-            Ressources
-          </a>
-        </li>
-      </ul>
-      <hr>
-    </div>
+  <!-- Mobile Sidebar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
+    aria-label="Sidebar">
+    <span class="fs-4 mt-5">Sidebar</span>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li>
+        <a href="../pages/accueil.html" class="nav-link">
+          Accueil
+        </a>
+      </li>
+      <li>
+        <a href="../pages/cartes.html" class="nav-link">
+          Cartes
+        </a>
+      </li>
+      <li>
+        <a href="../pages/atelier.html" class="nav-link">
+          Atelier
+        </a>
+      </li>
+      <li>
+        <a href="../pages/contact.html" class="nav-link">
+          Contact
+        </a>
+      </li>
+      <li>
+        <a href="../pages/a-propos.html" class="nav-link active" aria-current="page">
+          À propos
+        </a>
+      </li>
+      <li>
+        <a href="../pages/credit.html" class="nav-link">
+          Credit
+        </a>
+      </li>
+      <li>
+        <a href="../pages/ressources.html" class="nav-link">
+          Ressources
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <button id="themebuttonmobile" class="btn btn-light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="mx-auto p-8">
     <div class="flex flex-col items-center mt-16">
       <h1 class="font-bold text-center text-3xl">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris

@@ -41,6 +41,10 @@
 	flex-direction: row;
 }
 
+.filter-button {
+	width: 20%;
+}
+
 @font-face {
 	font-family: "Luciole";
 	src: url("../fonts/Luciole-Regular.ttf");
@@ -86,10 +90,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 100%;
-	padding: 2rem;
-	height: 1.5rem;
-	width: 1.5rem;
+	border-radius: 50%;
+	padding: 0;
+	height: 60px;
+	width: 60px;
 	z-index: 9999;
 	position: fixed;
 	top: 25px;
@@ -101,10 +105,11 @@
 	width: 30px;
 	height: 20px;
 	position: relative;
-	margin: 0px;
+	margin: 0;
 	transform: rotate(0deg);
 	transition: 0.5s ease-in-out;
 	cursor: pointer;
+	left: 0;
 }
 
 .navbar-toggler .animated-icon span {
@@ -115,33 +120,34 @@
 	background: #000000;
 	border-radius: 9px;
 	opacity: 1;
-	left: -14px;
+	left: 0;
 	transform: rotate(0deg);
 	transition: 0.25s ease-in-out;
+	transform-origin: center center;
 }
 
 .navbar-toggler .animated-icon span:nth-child(1) {
 	top: 0px;
 	transform-origin: left center;
-	left: -12px;
+	left: 0;
 }
 
 .navbar-toggler .animated-icon span:nth-child(2) {
 	top: 10px;
-	transform-origin: left center;
-	left: -12px;
+	transform-origin: center center;
+	left: 0;
 }
 
 .navbar-toggler .animated-icon span:nth-child(3) {
 	top: 20px;
-	transform-origin: left center;
-	left: -12px;
+	transform-origin: right center;
+	left: 0;
 }
 
 .navbar-toggler .animated-icon.open span:nth-child(1) {
 	transform: rotate(45deg);
 	top: 0px;
-	left: -12px;
+	left: 4px;
 }
 
 .navbar-toggler .animated-icon.open span:nth-child(2) {
@@ -151,8 +157,8 @@
 
 .navbar-toggler .animated-icon.open span:nth-child(3) {
 	transform: rotate(-45deg);
-	top: 21px;
-	left: -12px;
+	top: 0px;
+	left: -4px;
 }
 
 .navsidebar {
@@ -185,7 +191,11 @@
 		right: -250px;
 	}
 }
-
+@media screen and (max-width: 1000px) {
+	.filter-button {
+		height: 50px;
+	}
+}
 .navbar {
 	z-index: 1000;
 }
