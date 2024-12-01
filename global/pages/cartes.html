@@ -147,6 +147,7 @@
 		const synth = window.speechSynthesis;
 		const cursorCircle = document.createElement("div");
 		let activeFilter = document.querySelector(".btn-group .btn.btn-primary")?.getAttribute("data-category");
+		let isHovering = false;
 		function initalizeScrollUpButton() {
 			const scrollBtn = document.getElementById('scrollTopBtn');
 
@@ -253,15 +254,20 @@
 				skipButton.addEventListener(e, () => {
 					if (e === "keydown" && event.key !== "Enter") {
 						return;
+					}	
+					const firstVisibleCard = Array.from(document.querySelectorAll('.card-item')).find(card =>
+						window.getComputedStyle(card).display !== 'none')?.querySelector('img');
+					console.log(firstVisibleCard);
+					if (firstVisibleCard) {
+						firstVisibleCard.focus();
+						firstVisibleCard.scrollIntoView();
 					}
-					const cardGrid = document.getElementById("cardGrid");
-					cardGrid.focus();
-					cardGrid.scrollIntoView();
 					skipButton.blur();
 				});
 			});
 		}
 		function displayFamilyName(familyName) {
+			isHovering = true;
 			const nameDiv = document.querySelector('#nameOfFamily');
 			const alertDiv = nameDiv.parentElement;
 
@@ -286,6 +292,7 @@
 				nameDiv.style.color = 'white';
 			}
 		}
+
 		function updateDisplayedText() {
 			const activeFamilyName = getActiveFamilyName();
 			if (activeFamilyName) {
@@ -294,6 +301,7 @@
 				hideFamilyName();
 			}
 		}
+
 		function getActiveFamilyName() {
 			if (activeFilter) {
 				console.log(activeFilter);
@@ -302,10 +310,25 @@
 			}
 			return null;
 		}
+
+		let hideTimeout;
+
 		function hideFamilyName() {
-			const nameDiv = document.querySelector('#nameOfFamily');
-			nameDiv.parentElement.classList.add('d-none');
+			isHovering = false;
+			clearTimeout(hideTimeout);
+			hideTimeout = setTimeout(() => {
+				if (!activeFilter && !isHovering) {
+					const nameDiv = document.querySelector('#nameOfFamily');
+					nameDiv.parentElement.classList.add('d-none');
+				}
+			}, 1000);
 		}
+
+		function handleButtonHover() {
+			isHovering = true;
+			clearTimeout(hideTimeout);
+		}
+
 		function fetchAndDisplayCards() {
 			fetch("../data/cartes.json")
 				.then((response) => response.json())
@@ -629,6 +652,11 @@
 		});
 	</script>
 	<style>
+		#cardGrid:focus {
+			background-color: #207cc4;
+
+		}
+
 		@font-face {
 			font-family: "Luciole";
 			src: url("../fonts/Luciole-Regular.ttf");
