@@ -85,6 +85,13 @@
 	position: fixed;
 }
 
+#navbarNav .btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+}
+
 .navbar-toggler {
 	background-color: whitesmoke;
 	display: flex;
@@ -182,6 +189,10 @@
 	right: 0;
 }
 
+.burgerspan {
+	background-color: black !important;
+}
+
 @media (min-width: 1000px) {
 	.burger-menu-container {
 		display: none;
@@ -202,9 +213,9 @@
 
 .navbar-nav .nav-link {
 	transition: background-color 0.3s, color 0.3s;
-	padding: 0.5rem 1.5rem !important;
+	padding: 0.5rem 1rem !important;
 	border-radius: 1rem;
-	margin: 0 0.3rem;
+	margin: 0 0.2rem;
 }
 
 .navbar-nav .nav-link:hover,

@@ -126,8 +126,11 @@
 			<div class="btn-group col-12 col-lg-9 d-flex gap-2" role="group" aria-label="Filter buttons">
 			</div>
 		</div>
-
+		<div class="alert alert-info p-4 mb-4 text-center d-none" role="alert">
+			<p class="h4 mb-0" id="nameOfFamily"></p>
+		</div>
 		<div class="row" id="cardGrid" role="list"></div>
+
 	</div>
 	<button class="btn btn-primary rounded-circle position-fixed bottom-0 end-0 m-4 d-none" id="scrollTopBtn"
 		style="z-index: 1000; width: 50px; height: 50px; padding: 10px;" style="z-index: 1000;"
@@ -143,7 +146,7 @@
 	<script>
 		const synth = window.speechSynthesis;
 		const cursorCircle = document.createElement("div");
-
+		let activeFilter = document.querySelector(".btn-group .btn.btn-primary")?.getAttribute("data-category");
 		function initalizeScrollUpButton() {
 			const scrollBtn = document.getElementById('scrollTopBtn');
 
@@ -197,7 +200,7 @@
 			const cards = document.querySelectorAll(".card-item");
 			const buttons = document.querySelectorAll(".btn-group .btn");
 			const activeButton = document.querySelector(`.btn-group .btn.btn-primary[data-category="${category}"]`);
-
+			activeFilter = category;
 			if (activeButton) {
 				// If the clicked button is already active, remove the filter
 				cards.forEach((card) => {
@@ -210,6 +213,7 @@
 					button.classList.add(button.dataset.originalBg);
 					button.classList.remove("btn-primary");
 				});
+				activeFilter = null;
 			} else {
 				// Apply the filter
 				cards.forEach((card) => {
@@ -257,7 +261,51 @@
 				});
 			});
 		}
+		function displayFamilyName(familyName) {
+			const nameDiv = document.querySelector('#nameOfFamily');
+			const alertDiv = nameDiv.parentElement;
 
+			nameDiv.textContent = familyName;
+			alertDiv.classList.remove('d-none');
+
+			// Set colors based on family name
+			if (familyName.toLowerCase().includes('journée')) {
+				alertDiv.style.backgroundColor = '#207cc4';
+				nameDiv.style.color = 'white';
+			} else if (familyName.toLowerCase().includes('accessibilité')) {
+				alertDiv.style.backgroundColor = '#c0245c';
+				nameDiv.style.color = 'white';
+			} else if (familyName.toLowerCase().includes('matériel')) {
+				alertDiv.style.backgroundColor = '#f09424';
+				nameDiv.style.color = 'white';
+			} else if (familyName.toLowerCase().includes('numérique')) {
+				alertDiv.style.backgroundColor = '#78c444';
+				nameDiv.style.color = 'white';
+			} else if (familyName.toLowerCase().includes('événements')) {
+				alertDiv.style.backgroundColor = '#68449c';
+				nameDiv.style.color = 'white';
+			}
+		}
+		function updateDisplayedText() {
+			const activeFamilyName = getActiveFamilyName();
+			if (activeFamilyName) {
+				displayFamilyName(activeFamilyName);
+			} else {
+				hideFamilyName();
+			}
+		}
+		function getActiveFamilyName() {
+			if (activeFilter) {
+				console.log(activeFilter);
+				const button = document.querySelector(`.filter-button[data-category="${activeFilter}"]`);
+				return button ? button.getAttribute("familyName") : null;
+			}
+			return null;
+		}
+		function hideFamilyName() {
+			const nameDiv = document.querySelector('#nameOfFamily');
+			nameDiv.parentElement.classList.add('d-none');
+		}
 		function fetchAndDisplayCards() {
 			fetch("../data/cartes.json")
 				.then((response) => response.json())
@@ -272,6 +320,7 @@
 						button.addEventListener("click", () => filterCards(famille.id));
 						buttonGroup.appendChild(button);
 						button.classList.add("filter-button");
+						button.setAttribute("familyName", famille.titre);
 						button.setAttribute("title", `Filtrer par ${famille.titre}`);
 						if (famille.id == "organisation-de-la-journee") {
 							button.classList.add("bluebg");
@@ -308,6 +357,8 @@
 								button.textContent = "Violet";
 							}
 						}
+						button.addEventListener("mouseover", () => displayFamilyName(famille.titre));
+						button.addEventListener("mouseout", updateDisplayedText);
 					});
 
 					const cardGrid = document.getElementById("cardGrid");
