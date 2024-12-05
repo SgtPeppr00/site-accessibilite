@@ -254,7 +254,7 @@
 				skipButton.addEventListener(e, () => {
 					if (e === "keydown" && event.key !== "Enter") {
 						return;
-					}	
+					}
 					const firstVisibleCard = Array.from(document.querySelectorAll('.card-item')).find(card =>
 						window.getComputedStyle(card).display !== 'none')?.querySelector('img');
 					console.log(firstVisibleCard);
@@ -583,7 +583,7 @@
 
 		function addEventToCursorCircle(element) {
 			element.addEventListener("mouseover", () => {
-				element.style = "cursor: pointer";
+				element.style.cursor = "pointer";
 				cursorCircle.style.transform = "scale(2)";
 				cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
 			});
@@ -594,14 +594,16 @@
 		}
 
 		function setupCursorCircle() {
-			cursorCircle.style.zIndex = "9999";
-			cursorCircle.style.position = "fixed";
-			cursorCircle.style.width = "30px";
-			cursorCircle.style.height = "30px";
-			cursorCircle.style.borderRadius = "50%";
-			cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-			cursorCircle.style.pointerEvents = "none";
-			cursorCircle.style.transition = "transform 0.2s ease";
+			cursorCircle.style.cssText = `
+				z-index: 9999;
+				position: fixed;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				background-color: rgba(0, 0, 0, 0.5);
+				pointer-events: none;
+				transition: transform 0.2s ease;
+			`;
 			document.body.appendChild(cursorCircle);
 
 			function handleMouseMove(event) {
