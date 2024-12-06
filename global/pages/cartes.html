@@ -46,6 +46,14 @@
 								d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
 						</svg>
 					</button>
+					<div>
+						<input type="checkbox" class="checkbox" id="checkbox">
+						<label for="checkbox" class="checkbox-label">
+							<i class="fas fa-moon"></i>
+							<i class="fas fa-sun"></i>
+							<span class="ball"></span>
+						</label>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -120,16 +128,16 @@
 			Passer directement aux cartes
 		</button>
 		<div class="d-flex filters justify-content-between mt-5 mb-4 w-100">
-			<input type="text" class="form-control me-5 h-50 w-25 searchbar" placeholder="Rechercher..." id="searchBar"
-				aria-label="Rechercher des cartes" />
+			<input type="text" class="form-control me-5 h-50 searchbar rounded-pill" placeholder="Rechercher..."
+				id="searchBar" aria-label="Rechercher des cartes" />
 
-			<div class="btn-group col-12 col-lg-9 d-flex gap-2" role="group" aria-label="Filter buttons">
+			<div class="btn-group col-12 col-lg-8 d-flex gap-2" role="group" aria-label="Filter buttons">
 			</div>
 		</div>
 		<div class="alert alert-info p-4 mb-4 text-center d-none" role="alert">
 			<p class="h4 mb-0" id="nameOfFamily"></p>
 		</div>
-		<div class="row" id="cardGrid" role="list"></div>
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gx-5 gy-5" id="cardGrid" role="list"></div>
 
 	</div>
 	<button class="btn btn-primary rounded-circle position-fixed bottom-0 end-0 m-4 d-none" id="scrollTopBtn"
@@ -143,6 +151,174 @@
 	</button>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+	<style>
+		#cardGrid:focus {
+			background-color: #207cc4;
+
+		}
+
+		@font-face {
+			font-family: "Luciole";
+			src: url("../fonts/Luciole-Regular.ttf");
+		}
+
+		#skipToCards {
+			border-radius: 0 0 50px 50px;
+		}
+
+		.h-45 {
+			height: 45%;
+		}
+
+		* {
+			font-family: "Luciole", sans-serif;
+			text-align: start;
+		}
+
+		*:focus-visible {
+			outline: 6px solid #02007b !important;
+		}
+
+		.card-title {
+			text-align: center;
+		}
+
+
+		.subTitle {
+			font-weight: bold;
+		}
+
+		.card-img-top:focus {
+			outline: 6px solid #02007b;
+		}
+
+		.bluebg {
+			background-color: transparent;
+			border: 0.2em solid #207cc4;
+			color: #207cc4;
+		}
+
+		.bluebg:hover,
+		.bluebg:focus {
+			background-color: #1a5f90;
+			color: white;
+		}
+
+		.redbg {
+			background-color: transparent;
+			border: 0.2em solid #c0245c;
+			color: #c0245c;
+		}
+
+		.redbg:hover,
+		.redbg:focus {
+			background-color: #8e1b45;
+			color: white;
+		}
+
+		.greenbg {
+			background-color: transparent;
+			border: 0.2em solid #78c444;
+			color: #78c444;
+		}
+
+		.greenbg:hover,
+		.greenbg:focus {
+			background-color: #5c9333;
+			color: white;
+		}
+
+		.orangebg {
+			background-color: transparent;
+			border: 0.2em solid #f09424;
+			color: #f09424;
+		}
+
+		.orangebg:hover,
+		.orangebg:focus {
+			background-color: #b36e1b;
+			color: white;
+		}
+
+		.purplebg {
+			background-color: transparent;
+			border: 0.2em solid #68449c;
+			color: #68449c;
+		}
+
+		.purplebg:hover,
+		.purplebg:focus {
+			background-color: #4e3474;
+			color: white;
+		}
+
+		@media (min-width: 1000px) {
+			.subTitle {
+				font-size: 1.4rem;
+			}
+
+			.description {
+				font-size: 1.2rem;
+			}
+		}
+
+		@media (max-width: 1000px) {
+			.filters {
+				flex-direction: column;
+			}
+
+			.modal-dialog {
+				max-width: 100% !important;
+			}
+
+			.filter-button {
+				margin-top: 1rem;
+				font-size: 0.8rem;
+			}
+
+			#searchBar {
+				width: 100% !important;
+			}
+		}
+	</style>
+	<footer class="py-5">
+		<div class="container d-flex flex-column">
+			<div class="d-flex justify-content-evenly align-items-center">
+				<div class="logo">
+					<img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+				</div>
+				<ul class="nav flex-row">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Cartes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Atelier</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">A propos</a>
+					</li>
+				</ul>
+				<div class="logo">
+					<img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
+				</div>
+			</div>
+			<div class="d-flex justify-content-evenly align-items-center mt-5">
+				<p>Lorem ipsum dolor sit amet.</p>
+				<p>Lorem ipsum dolor sit amet.</p>
+				<p>Lorem ipsum dolor sit amet.</p>
+			</div>
+		</div>
+	</footer>
+	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+		</script>
+	<script src="../javascript/script.js"></script>
 	<script>
 		const synth = window.speechSynthesis;
 		const cursorCircle = document.createElement("div");
@@ -338,7 +514,7 @@
 					// Create a button for each famille using famille.titre
 					data.familles.forEach((famille) => {
 						const button = document.createElement("button");
-						button.className = "btn btn-secondary me-1 rounded filter-button"; // Add 'me-2' to add margin to the end of each button
+						button.className = "btn btn-secondary me-1 rounded-pill filter-button"; // Add 'me-2' to add margin to the end of each button
 						button.setAttribute("data-category", famille.id);
 						button.addEventListener("click", () => filterCards(famille.id));
 						buttonGroup.appendChild(button);
@@ -413,7 +589,7 @@
 								addon = "VI";
 							}
 							const card = document.createElement("div");
-							card.className = "col-lg-3 col-md-6 col-6 mb-4 card-item";
+							card.className = "col card-item";
 							card.setAttribute("data-category", famille.id);
 							card.setAttribute("data-title", carte.titre);
 							card.setAttribute("data-subtitle", carte.sousTitre);
@@ -427,13 +603,11 @@
 
 							// Afficher uniquement l'image dans la carte
 							card.innerHTML = `
-				<div class="card h-100" role="listitem" aria-labelledby="card-title-${carte.id}" aria-describedby="card-description-${carte.id}">
-					<img src="../img/cartes_new/${carte.id}-${addon}0${idNum}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
-					<div class="card-body h-45">
-						<h5 class="card-title" id="card-title-${carte.id}">${carte.titre}</h5>
-					</div>
-				</div>
-			`;
+						<div class="card h-100" role="listitem" aria-labelledby="card-title-${carte.id}" aria-describedby="card-description-${carte.id}">
+							<img src="../img/cartes_new/${carte.id}-${addon}0${idNum}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
+
+						</div>
+					`;
 
 							cardGrid.appendChild(card);
 						});
@@ -457,32 +631,32 @@
 								modal.className = "modal fade";
 								modal.tabIndex = -1;
 								modal.innerHTML = `
-										<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="modalTitle">${title}</h5>
-													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body d-flex text-center" id="modalDescription">
-													<div class="d-flex justify-content-between align-items-center w-100">
-														<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}" aria-label="Previous card">&#11164;</button>
-														<div class="w-75 me-5">
-															<img src="../img/cartes_new/${card.dataset.image}" class="img-fluid" alt="${title}" />
+												<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="modalTitle">${title}</h5>
+															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
-														<div class="w-50 ms-2">
-															<h6 class="subTitle">"${subTitle}"</h6>
-															<p class="description">${description}</p>
+														<div class="modal-body d-flex text-center" id="modalDescription">
+															<div class="d-flex justify-content-between align-items-center w-100">
+																<button type="button" class="btn btn-secondary me-2" id="prevCard" data-id="${id}" aria-label="Previous card">&#11164;</button>
+																<div class="w-75 me-5">
+																	<img src="../img/cartes_new/${card.dataset.image}" class="img-fluid" alt="${title}" />
+																</div>
+																<div class="w-50 ms-2">
+																	<h6 class="subTitle">"${subTitle}"</h6>
+																	<p class="description">${description}</p>
+																</div>
+																<button type="button" class="btn btn-secondary ms-2" id="nextCard" data-id="${id}" aria-label="Next card">&#11166;</button>
+															</div>
 														</div>
-														<button type="button" class="btn btn-secondary ms-2" id="nextCard" data-id="${id}" aria-label="Next card">&#11166;</button>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+															<button type="button" class="btn btn-info">Ecouter la carte</button>
+														</div>
 													</div>
 												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-													<button type="button" class="btn btn-info">Ecouter la carte</button>
-												</div>
-											</div>
-										</div>
-									`;
+											`;
 
 								document.body.appendChild(modal);
 								const bootstrapModal = new bootstrap.Modal(modal);
@@ -595,15 +769,15 @@
 
 		function setupCursorCircle() {
 			cursorCircle.style.cssText = `
-				z-index: 9999;
-				position: fixed;
-				width: 30px;
-				height: 30px;
-				border-radius: 50%;
-				background-color: rgba(0, 0, 0, 0.5);
-				pointer-events: none;
-				transition: transform 0.2s ease;
-			`;
+						z-index: 9999;
+						position: fixed;
+						width: 30px;
+						height: 30px;
+						border-radius: 50%;
+						background-color: rgba(0, 0, 0, 0.5);
+						pointer-events: none;
+						transition: transform 0.2s ease;
+					`;
 			document.body.appendChild(cursorCircle);
 
 			function handleMouseMove(event) {
@@ -653,169 +827,7 @@
 			handleKeyEvents();
 		});
 	</script>
-	<style>
-		#cardGrid:focus {
-			background-color: #207cc4;
 
-		}
-
-		@font-face {
-			font-family: "Luciole";
-			src: url("../fonts/Luciole-Regular.ttf");
-		}
-
-		#skipToCards {
-			border-radius: 0 0 50px 50px;
-		}
-
-		.h-45 {
-			height: 45%;
-		}
-
-		* {
-			font-family: "Luciole", sans-serif;
-			text-align: start;
-		}
-
-		*:focus-visible {
-			outline: 6px solid #02007b !important;
-		}
-
-		.card-title {
-			text-align: center;
-		}
-
-
-		.subTitle {
-			font-weight: bold;
-		}
-
-		.card-img-top:focus {
-			outline: 6px solid #02007b;
-		}
-
-		.bluebg {
-			background-color: #207cc4;
-			color: white;
-		}
-
-		.bluebg:hover,
-		.bluebg:focus {
-			background-color: #1a5f90;
-			color: white;
-		}
-
-		.redbg {
-			background-color: #c0245c;
-			color: white;
-		}
-
-		.redbg:hover,
-		.redbg:focus {
-			background-color: #8e1b45;
-			color: white;
-		}
-
-		.greenbg {
-			background-color: #78c444;
-			color: white;
-		}
-
-		.greenbg:hover,
-		.greenbg:focus {
-			background-color: #5c9333;
-			color: white;
-		}
-
-		.orangebg {
-			background-color: #f09424;
-			color: white;
-		}
-
-		.orangebg:hover,
-		.orangebg:focus {
-			background-color: #b36e1b;
-			color: white;
-		}
-
-		.purplebg {
-			background-color: #68449c;
-			color: white;
-		}
-
-		.purplebg:hover,
-		.purplebg:focus {
-			background-color: #4e3474;
-			color: white;
-		}
-
-		@media (min-width: 1000px) {
-			.subTitle {
-				font-size: 1.4rem;
-			}
-
-			.description {
-				font-size: 1.2rem;
-			}
-		}
-
-		@media (max-width: 1000px) {
-			.filters {
-				flex-direction: column;
-			}
-
-			.modal-dialog {
-				max-width: 100% !important;
-			}
-
-			.filter-button {
-				margin-top: 1rem;
-				font-size: 0.8rem;
-			}
-
-			#searchBar {
-				width: 100% !important;
-			}
-		}
-	</style>
-	<footer class="py-5">
-		<div class="container d-flex flex-column">
-			<div class="d-flex justify-content-evenly align-items-center">
-				<div class="logo">
-					<img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
-				</div>
-				<ul class="nav flex-row">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Accueil</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Cartes</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Atelier</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">A propos</a>
-					</li>
-				</ul>
-				<div class="logo">
-					<img src="https://placehold.co/50x50/EEE/31343C" alt="Sample image" class="img-fluid">
-				</div>
-			</div>
-			<div class="d-flex justify-content-evenly align-items-center mt-5">
-				<p>Lorem ipsum dolor sit amet.</p>
-				<p>Lorem ipsum dolor sit amet.</p>
-				<p>Lorem ipsum dolor sit amet.</p>
-			</div>
-		</div>
-	</footer>
-	<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-		</script>
-	<script src="../javascript/script.js"></script>
 </body>
 
 </html>

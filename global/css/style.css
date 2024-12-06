@@ -22,7 +22,10 @@
 
 	flex-direction: row;
 }
-
+.subTitle,
+.description {
+	color: #000;
+}
 .footer-top-img {
 	display: flex;
 	justify-content: space-evenly;
@@ -235,4 +238,45 @@
 .navbar-brand {
 	font-size: 1.5rem;
 	padding: 1rem 1rem;
+}
+
+.checkbox {
+	opacity: 0;
+	position: absolute;
+}
+
+.checkbox-label {
+	background-color: #273099;
+	width: 50px;
+	height: 26px;
+	border-radius: 50px;
+	position: relative;
+	padding: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.fa-moon {
+	color: #f1c40f;
+}
+
+.fa-sun {
+	color: #f39c12;
+}
+
+.checkbox-label .ball {
+	background-color: #fff;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	border-radius: 50%;
+	transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .checkbox-label .ball {
+	transform: translateX(24px);
 }

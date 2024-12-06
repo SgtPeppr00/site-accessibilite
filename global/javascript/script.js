@@ -11,14 +11,17 @@ document
 const themeButton = document.getElementById("themebutton");
 const themeButtonMobile = document.getElementById("themebuttonmobile");
 const circles = document.querySelectorAll(".circle");
+const checkbox = document.getElementById("checkbox");
 const burgerspan = document.querySelectorAll(".burgerspan");
 const linkdark = document.querySelectorAll(".link-dark");
 let isDarkTheme = localStorage.getItem("darkTheme") === "true";
-
+console.log(checkbox);
 themeButtonMobile.addEventListener("click", changeTheme);
 themeButton.addEventListener("click", changeTheme);
+checkbox.addEventListener("change", changeTheme);
 
 function applyTheme(isDark) {
+	console.log(isDark);
 	if (!isDark) {
 		document.body.style.backgroundColor = "";
 		document.body.style.color = "";
