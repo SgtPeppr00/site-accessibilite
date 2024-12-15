@@ -8,25 +8,26 @@ document
 		navsidebar.classList.toggle("open");
 	});
 
-const themeButton = document.getElementById("themebutton");
-const themeButtonMobile = document.getElementById("themebuttonmobile");
-const circles = document.querySelectorAll(".circle");
 const checkbox = document.getElementById("checkbox");
+const checkboxMobile = document.getElementById("checkboxmobile");
+const circles = document.querySelectorAll(".circle");
 const burgerspan = document.querySelectorAll(".burgerspan");
 const linkdark = document.querySelectorAll(".link-dark");
 let isDarkTheme = localStorage.getItem("darkTheme") === "true";
 console.log(checkbox);
-themeButtonMobile.addEventListener("click", changeTheme);
-themeButton.addEventListener("click", changeTheme);
+
+checkboxMobile.addEventListener("change", changeTheme);
 checkbox.addEventListener("change", changeTheme);
+
+// Set initial checkbox state based on stored theme
+checkbox.checked = isDarkTheme;
+checkboxMobile.checked = isDarkTheme;
 
 function applyTheme(isDark) {
 	console.log(isDark);
 	if (!isDark) {
 		document.body.style.backgroundColor = "";
 		document.body.style.color = "";
-		themeButton.classList.remove("btn-dark");
-		themeButton.classList.add("btn-light");
 		navsidebar.style.background = "";
 		navsidebar.style.borderColor = "black";
 		circles.forEach((circle) => {
@@ -42,8 +43,6 @@ function applyTheme(isDark) {
 	} else {
 		document.body.style.background = "black";
 		document.body.style.color = "white";
-		themeButton.classList.remove("btn-light");
-		themeButton.classList.add("btn-dark");
 		navsidebar.style.background = "black";
 		navsidebar.style.borderColor = "white";
 		circles.forEach((circle) => {
