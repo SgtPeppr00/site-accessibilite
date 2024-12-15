@@ -185,9 +185,9 @@
 }
 
 .navsidebar .nav-link {
-	color: white;
 	position: relative;
 	transition: all 0.3s;
+	color: white;
 }
 
 .navsidebar .nav-link::after {
@@ -253,6 +253,7 @@
 	height: 2px;
 	bottom: 0;
 	left: 50%;
+	background-color: white;
 	transition: all 0.3s ease;
 	transform: translateX(-50%);
 }
@@ -329,4 +330,121 @@
 
 .checkbox:checked + .checkbox-label .ball {
 	transform: translateX(24px);
+}
+/* Theme Switch Styles */
+.theme-switch {
+	position: relative;
+	width: 70px;
+	height: 35px;
+	margin-left: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.theme-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	display: flex;
+	position: relative;
+	width: 70px;
+	height: 35px;
+	background-color: #ffd43b;
+	border-radius: 34px;
+	cursor: pointer;
+	transition: all 0.4s;
+}
+
+.slider-circle {
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	width: 40px;
+	height: 40px;
+	background-color: #cda514;
+	border-radius: 50%;
+	transition: transform 0.4s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	transition: all 0.4s ease;
+}
+
+.sun-icon {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	fill: white;
+	stroke: white;
+	stroke-width: 2;
+	stroke-linecap: round;
+	transition: opacity 0.4s, transform 0.4s;
+}
+
+.moon-icon {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	fill: white;
+	opacity: 0;
+	transition: opacity 0.4s;
+}
+
+input:checked + .slider {
+	background-color: #343a40;
+}
+
+input:checked + .slider .slider-circle {
+	transform: translateX(35px);
+	background-color: #41484f;
+}
+
+input:checked + .slider .sun-icon {
+	opacity: 0;
+}
+
+input:checked + .slider .moon-icon {
+	opacity: 1;
+}
+
+/* Hero Section Styles */
+.hero-section {
+	position: relative;
+	height: 50vh;
+	min-height: 400px;
+	background: url("/img/imagehero.png") center/cover no-repeat;
+}
+
+.hero-section::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-title {
+	color: white;
+	font-size: 3.5rem;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+	.hero-section {
+		height: 40vh;
+		min-height: 300px;
+	}
+
+	.hero-title {
+		font-size: 2.5rem;
+	}
+}
+
+/* Add this to your existing styles */
+.container-site {
+	max-width: 1140px !important;
+	margin: 0 auto;
 }
