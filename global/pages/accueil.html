@@ -8,18 +8,66 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .navbar-nav .nav-link {
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s;
             padding: 0.5rem 1.5rem !important;
-            border-radius: 1rem;
             margin: 0 0.3rem;
+            position: relative;
+            color: white !important;
         }
 
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link:focus,
-        .nav-link.active {
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
             background-color: white;
-            color: #343a40 !important;
-            /* Bootstrap's dark color */
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link:focus::after {
+            width: 70%;
+        }
+
+        .navbar-nav .nav-link.active {
+            background-color: transparent !important;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            width: 70%;
+            background-color: #ff4444;
+        }
+
+        /* Update mobile sidebar styles as well */
+        .navsidebar .nav-link {
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .navsidebar .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: currentColor;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navsidebar .nav-link:hover::after,
+        .navsidebar .nav-link:focus::after {
+            width: 70%;
+        }
+
+        .navsidebar .nav-link.active::after {
+            width: 70%;
+            background-color: #ff4444;
         }
 
         .navbar {
