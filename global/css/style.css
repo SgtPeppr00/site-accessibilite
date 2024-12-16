@@ -1,7 +1,9 @@
 /* Navbar */
 .btn-navbar {
-	border-color: black;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+	border-color: #BD1D59;
+	color: black;
+	background-color: #BD1D59;
+	border-radius: 12px;
 	margin-right: 15px;
 	padding: 3px 25px 3px 25px;
 }
