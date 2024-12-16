@@ -53,7 +53,7 @@
                                 <line x1="17.66" y1="6.36" x2="19.07" y2="4.94" />
                             </svg>
                             <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z" />
                             </svg>
                         </span>
                     </span>
@@ -121,7 +121,7 @@
                         <line x1="17.66" y1="6.36" x2="19.07" y2="4.94" />
                     </svg>
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z" />
                     </svg>
                 </span>
             </span>
@@ -175,71 +175,230 @@
                 <button class="btn btn-pill text-white rounded-pill" style="background-color: #BD1D59;">
                     D&eacute;couvrir toutes nos cartes</button>
             </div>
-            <div class="row mt-5 mb-5">
+            <div id="reviewsCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
                 <h2 class="text-center mb-4">Avis des utilisateurs</h2>
+                <style>
+                    .carousel-control-prev-icon,
+                    .carousel-control-next-icon {
+                        background-color: #BD1D59;
+                        border-radius: 50%;
+                        padding: 25px;
+                        border: 1rem solid #BD1D59;
+                    }
 
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="/img/reviewpic.png" class="rounded-circle me-3" alt="Photo de profil"
-                                    width="40" height="40">
-                                <div>
-                                    <h5 class="card-title mb-1 fw-bold fs-6">Caisse d'Epargne Marines</h5>
-                                    <div class="text-warning fs-5" style="letter-spacing: 3px;">
-                                        ★★★★★
+                    .carousel-control-next-icon {
+                        transform: translate(7rem, 2rem);
+                    }
+
+                    .carousel-control-prev-icon {
+                        transform: translate(-7rem, 2rem);
+                    }
+
+
+
+                    .carousel-indicators {
+                        bottom: -50px;
+                    }
+
+                    .carousel-indicators [data-bs-target] {
+                        background-color: #BD1D59;
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                    }
+
+                    @media (max-width: 768px) {
+                        .carousel-item .row>div {
+                            margin-bottom: 20px;
+                        }
+                    }
+                </style>
+
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1" aria-label="Slide 2">
+                    </button>
+                    <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="2" aria-label="Slide 3">
+                    </button>
+                </div>
+
+                <div class="carousel-inner px-3" style="height: 250px;">
+                    <!-- First slide -->
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Sophie Martin</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★★</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"L'atelier a transformé notre approche du handicap au
+                                            travail. Les activités interactives ont permis à notre équipe de mieux
+                                            comprendre les défis quotidiens."</p>
                                     </div>
                                 </div>
                             </div>
-                            <p class="card-text">"Je suis très satisfait du service proposé par cette entreprise pour
-                                apprendre sur le handicap. C'est une excellente
-                                initiative qui permet de mieux comprendre les enjeux liés au handicap et d'être plus
-                                inclusif ..."</p>
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Thomas Dubois</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★☆</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Une expérience enrichissante qui nous a ouvert les yeux
+                                            sur
+                                            l'importance de l'accessibilité. Les exercices pratiques étaient
+                                            particulièrement pertinents."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Marie Petit</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★★</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Formation exceptionnelle qui a changé notre vision de
+                                            l'inclusion. Les outils fournis sont précieux pour notre développement
+                                            professionnel."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Second slide -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Lucas Renaud</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★★</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Une formation qui devrait être obligatoire dans toutes les
+                                            entreprises. La qualité des intervenants et le contenu sont remarquables."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Emma Blanc</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★☆</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Les mises en situation sont très réalistes et nous ont
+                                            permis de mieux appréhender les différentes formes de handicap."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Antoine Durand</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★★</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Excellente initiative qui sensibilise efficacement aux
+                                            enjeux de l'inclusion. Le format est dynamique et engageant."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third slide -->
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Claire Moreau</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★★</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Une approche pédagogique innovante qui permet de
+                                            comprendre concrètement les défis quotidiens liés au handicap."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Hugo Lambert</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★★</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Les ateliers ont transformé notre perception du handicap.
+                                            Une expérience enrichissante pour toute l'équipe."</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="/img/reviewpic.png" class="rounded-circle me-3"
+                                                alt="Photo de profil" width="40" height="40">
+                                            <div>
+                                                <h5 class="card-title mb-1 fw-bold fs-6">Julie Rousseau</h5>
+                                                <div class="text-warning fs-5" style="letter-spacing: 3px;">★★★★☆</div>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">"Formation complète et interactive qui nous a donné des
+                                            outils concrets pour améliorer l'accessibilité au quotidien."</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="/img/reviewpic.png" class="rounded-circle me-3" alt="Photo de profil"
-                                    width="40" height="40">
-                                <div>
-                                    <h5 class="card-title mb-1 fw-bold fs-6">Caisse d'Epargne Marines</h5>
-                                    <div class="text-warning fs-5" style="letter-spacing: 3px;">
-                                        ★★★★☆
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="card-text">"Je suis très satisfait du service proposé par cette entreprise pour
-                                apprendre sur le handicap. C'est une excellente
-                                initiative qui permet de mieux comprendre les enjeux liés au handicap et d'être plus
-                                inclusif ..."</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100 rounded-4" style="background-color: #f8f9fa;">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="/img/reviewpic.png" class="rounded-circle me-3" alt="Photo de profil"
-                                    width="40" height="40">
-                                <div>
-                                    <h5 class="card-title mb-1 fw-bold fs-6">Caisse d'Epargne Marines</h5>
-                                    <div class="text-warning fs-5" style="letter-spacing: 3px;">
-                                        ★★★★★
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="card-text">"Je suis très satisfait du service proposé par cette entreprise pour
-                                apprendre sur le handicap. C'est une excellente
-                                initiative qui permet de mieux comprendre les enjeux liés au handicap et d'être plus
-                                inclusif ..."</p>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel"
+                    data-bs-slide="prev" aria-label="Previous">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel"
+                    data-bs-slide="next" aria-label="Next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
             <div class="d-flex">
                 <button class="btn btn-pill text-white rounded-pill" style="background-color: #BD1D59;">En
@@ -271,7 +430,7 @@
                 <div class="col-md-2 text-end">
                     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
                         class="btn btn-pill text-white rounded-pill" style="background-color: #BD1D59;">
-                        ↑ Retour en haut
+                        <span style="position: relative; top: -2px;">↑</span> Retour en haut
                     </button>
                 </div>
             </div>
