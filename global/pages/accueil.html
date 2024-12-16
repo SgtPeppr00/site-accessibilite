@@ -24,11 +24,12 @@
                             <a class="nav-link active" aria-current="page" href="accueil.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="atelier.html">Atelier</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="cartes.html">Cartes</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="atelier.html">Atelier</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
@@ -178,23 +179,14 @@
             <div id="reviewsCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
                 <h2 class="text-center mb-4">Avis des utilisateurs</h2>
                 <style>
-                    .carousel-control-prev-icon,
                     .carousel-control-next-icon {
-                        background-color: #BD1D59;
-                        border-radius: 50%;
-                        padding: 25px;
-                        border: 1rem solid #BD1D59;
-                    }
-
-                    .carousel-control-next-icon {
-                        transform: translate(7rem, 2rem);
+                        transform: translate(6.5rem, 1rem);
                     }
 
                     .carousel-control-prev-icon {
-                        transform: translate(-7rem, 2rem);
+                        transform: translate(-7rem, 1rem);
+
                     }
-
-
 
                     .carousel-indicators {
                         bottom: -50px;
@@ -393,11 +385,23 @@
 
                 <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel"
                     data-bs-slide="prev" aria-label="Previous">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#BD1D59"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                        </svg>
+                    </span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel"
                     data-bs-slide="next" aria-label="Next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#BD1D59"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </span>
                 </button>
             </div>
             <div class="d-flex">
@@ -407,7 +411,7 @@
 
         </div>
     </main>
-    <footer class="py-5 bg-light">
+    <footer class="py-2 bg-dark text-white">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Logo -->

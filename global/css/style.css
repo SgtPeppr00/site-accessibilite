@@ -209,7 +209,7 @@
 
 .navsidebar .nav-link.active::after {
 	width: 70%;
-	background-color: #ff4444;
+	background-color: #bd1d59;
 }
 
 .navsidebar.open {
