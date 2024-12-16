@@ -1,9 +1,19 @@
-/* Navbar */
-.btn-navbar {
-	border-color: black;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-right: 15px;
-	padding: 3px 25px 3px 25px;
+.btn-rose {
+	border-radius: 15px;
+	padding: 3px 15px 3px 15px;
+	background-color: #BD1D59;
+	color: white;
+	width: 20%;
+	align-self: flex-end;
+}
+
+.text-contact {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.form-control::placeholder {
+	color: #1578BE;
 }
 
 .footer-container {
