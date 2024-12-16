@@ -352,7 +352,7 @@
 	position: relative;
 	width: 70px;
 	height: 35px;
-	background-color: #ffd43b;
+	background-color: #f5c677;
 	border-radius: 34px;
 	cursor: pointer;
 	transition: all 0.4s;
@@ -364,7 +364,7 @@
 	left: -3px;
 	width: 40px;
 	height: 40px;
-	background-color: #cda514;
+	background-color: #ea9506;
 	border-radius: 50%;
 	transition: transform 0.4s;
 	display: flex;
@@ -432,6 +432,27 @@ input:checked + .slider .moon-icon {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Add this to your existing styles */
+.container-site {
+	max-width: 1140px !important;
+	margin: 0 auto;
+}
+
+.carousel {
+	margin-bottom: 4rem;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+	width: 10%;
+}
+
+@media (max-width: 1200px) {
+	.carousel-control-next,
+	.carousel-control-prev {
+		width: 20%;
+	}
+}
 @media (max-width: 768px) {
 	.hero-section {
 		height: 40vh;
@@ -441,10 +462,47 @@ input:checked + .slider .moon-icon {
 	.hero-title {
 		font-size: 2.5rem;
 	}
-}
+	/* Update carousel layout for mobile */
+	.carousel-inner {
+		height: auto !important;
+		min-height: 300px;
+	}
 
-/* Add this to your existing styles */
-.container-site {
-	max-width: 1140px !important;
-	margin: 0 auto;
+	.carousel-item .row {
+		flex-direction: column;
+	}
+
+	.carousel-item .col-md-4 {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+
+	.carousel-item .col-md-4:not(:first-child) {
+		display: none;
+	}
+
+	/* Fix navigation controls */
+	.carousel-control-next-icon,
+	.carousel-control-prev-icon {
+		display: none;
+	}
+
+	.carousel-control-next-icon {
+		right: -1rem;
+	}
+
+	.carousel-control-prev-icon {
+		left: -1rem;
+	}
+
+	/* Adjust card spacing */
+	.card {
+		margin: 0 1rem;
+		height: auto;
+	}
+
+	/* Update indicators position */
+	.carousel-indicators {
+		bottom: -3rem;
+	}
 }
