@@ -49,6 +49,7 @@ function applyTheme(isDark) {
 		pinkButtons.forEach((button) => {
 			button.style.backgroundColor = "#BD1D59";
 		});
+		cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 	} else {
 		document.body.style.background = "black";
 		document.body.style.color = "white";
@@ -71,6 +72,7 @@ function applyTheme(isDark) {
 		pinkButtons.forEach((button) => {
 			button.style.backgroundColor = "#D76891";
 		});
+		cursorCircle.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
 	}
 }
 
@@ -80,18 +82,19 @@ function changeTheme() {
 	applyTheme(isDarkTheme);
 }
 
-// Apply theme on page load
-applyTheme(isDarkTheme);
-
 function addEventToCursorCircle(element) {
 	element.addEventListener("mouseover", () => {
 		element.style.cursor = "pointer";
 		cursorCircle.style.transform = "scale(2)";
-		cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+		cursorCircle.style.backgroundColor = isDarkTheme
+			? "rgba(255, 255, 255, 0.7)"
+			: "rgba(0, 0, 0, 0.7)";
 	});
 	element.addEventListener("mouseleave", () => {
 		cursorCircle.style.transform = "scale(1)";
-		cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+		cursorCircle.style.backgroundColor = isDarkTheme
+			? "rgba(255, 255, 255, 0.5)"
+			: "rgba(0, 0, 0, 0.5)";
 	});
 }
 const cursorCircle = document.createElement("div");
@@ -153,4 +156,5 @@ document.addEventListener("DOMContentLoaded", () => {
 		.forEach((element) => {
 			addEventToCursorCircle(element);
 		});
+	applyTheme(isDarkTheme);
 });
