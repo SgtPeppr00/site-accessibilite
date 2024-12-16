@@ -416,7 +416,6 @@ input:checked + .slider .moon-icon {
 	position: relative;
 	height: 50vh;
 	min-height: 400px;
-	background: url("/img/imagehero.png") center/cover no-repeat;
 }
 
 .hero-section::before {
