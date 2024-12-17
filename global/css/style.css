@@ -7,6 +7,11 @@
 	align-self: flex-end;
 }
 
+.btn-rose:hover {
+	background-color: #9C1A4A;
+	color: white;
+}
+
 .text-contact {
 	font-size: 25px;
 	font-weight: bold;
