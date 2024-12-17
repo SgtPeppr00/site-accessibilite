@@ -1,9 +1,24 @@
-/* Navbar */
-.btn-navbar {
-	border-color: black;
-	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-right: 15px;
-	padding: 3px 25px 3px 25px;
+.btn-rose {
+	border-radius: 15px;
+	padding: 3px 15px 3px 15px;
+	background-color: #bd1d59;
+	color: white;
+	width: 20%;
+	align-self: flex-end;
+}
+
+.btn-rose:hover {
+	background-color: #9C1A4A;
+	color: white;
+}
+
+.text-contact {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.form-control::placeholder {
+	color: #1578be;
 }
 
 .footer-container {
@@ -207,11 +222,6 @@
 	width: 70%;
 }
 
-.navsidebar .nav-link.active::after {
-	width: 70%;
-	background-color: #ff4444;
-}
-
 .navsidebar.open {
 	right: 0;
 }
@@ -268,16 +278,16 @@
 	color: white !important;
 }
 
-.navbar-nav .nav-link.active::after {
-	width: 70%;
-	background-color: #ff4444;
-}
-
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus,
 .nav-link.active {
 	color: #c4c4c4 !important;
 	/* Bootstrap's dark color */
+}
+
+.navbar-nav .nav-link.active::after,
+.navsidebar .nav-link.active::after {
+	width: 70% !important;
 }
 
 .navbar {
@@ -352,7 +362,7 @@
 	position: relative;
 	width: 70px;
 	height: 35px;
-	background-color: #ffd43b;
+	background-color: #f5c677;
 	border-radius: 34px;
 	cursor: pointer;
 	transition: all 0.4s;
@@ -364,7 +374,7 @@
 	left: -3px;
 	width: 40px;
 	height: 40px;
-	background-color: #cda514;
+	background-color: #ea9506;
 	border-radius: 50%;
 	transition: transform 0.4s;
 	display: flex;
@@ -416,7 +426,6 @@ input:checked + .slider .moon-icon {
 	position: relative;
 	height: 50vh;
 	min-height: 400px;
-	background: url("/img/imagehero.png") center/cover no-repeat;
 }
 
 .hero-section::before {
@@ -432,6 +441,36 @@ input:checked + .slider .moon-icon {
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Add this to your existing styles */
+.container-site {
+	max-width: 1140px !important;
+	margin: 0 auto;
+}
+
+.carousel {
+	margin-bottom: 4rem;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+	width: 10%;
+}
+*:focus-visible {
+	outline: 6px solid #0400ff !important;
+}
+
+@media (max-width: 1200px) {
+	.carousel-control-next,
+	.carousel-control-prev {
+		width: 20%;
+	}
+}
+@media (max-width: 992px) {
+	.carousel-inner {
+		height: auto !important;
+		min-height: 300px;
+	}
+}
 @media (max-width: 768px) {
 	.hero-section {
 		height: 40vh;
@@ -441,10 +480,47 @@ input:checked + .slider .moon-icon {
 	.hero-title {
 		font-size: 2.5rem;
 	}
-}
+	/* Update carousel layout for mobile */
+	.carousel-inner {
+		height: auto !important;
+		min-height: 200px;
+	}
 
-/* Add this to your existing styles */
-.container-site {
-	max-width: 1140px !important;
-	margin: 0 auto;
+	.carousel-item .row {
+		flex-direction: column;
+	}
+
+	.carousel-item .col-md-4 {
+		width: 100%;
+		margin-bottom: 1rem;
+	}
+
+	.carousel-item .col-md-4:not(:first-child) {
+		display: none;
+	}
+
+	/* Fix navigation controls */
+	.carousel-control-next-icon,
+	.carousel-control-prev-icon {
+		display: none;
+	}
+
+	.carousel-control-next-icon {
+		right: -1rem;
+	}
+
+	.carousel-control-prev-icon {
+		left: -1rem;
+	}
+
+	/* Adjust card spacing */
+	.card {
+		margin: 0 1rem;
+		height: auto;
+	}
+
+	/* Update indicators position */
+	.carousel-indicators {
+		bottom: -3rem;
+	}
 }
