@@ -17,34 +17,34 @@
 </head>
 
 <body>
-	<header>
+	<header role="banner">
 		<!-- Desktop Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block" role="navigation">
 			<div class="container d-flex align-items-center">
-				<a class="navbar-brand" href="accueil.html">
-					<img src="/img/logo.png" alt="Sample image" class="img-fluid" width="69" height="69">
+				<a class="navbar-brand" href="accueil.html" aria-label="Retour à l'accueil">
+					<img src="/img/logo.png" alt="Logo HandiScope" class="img-fluid" width="69" height="69">
 				</a>
 				<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="accueil.html">Accueil</a>
+					<ul class="navbar-nav" role="menubar">
+						<li class="nav-item" role="none">
+							<a class="nav-link" aria-current="page" href="accueil.html" role="menuitem">Accueil</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link active" href="cartes.html">Cartes</a>
+						<li class="nav-item" role="none">
+							<a class="nav-link active" href="cartes.html" role="menuitem" aria-current="page">Cartes</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="atelier.html">Atelier</a>
+						<li class="nav-item" role="none">
+							<a class="nav-link" href="atelier.html" role="menuitem">Atelier</a>
 						</li>
 
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
+						<li class="nav-item" role="none">
+							<a class="nav-link" href="contact.html" role="menuitem">Contact</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="a-propos.html">A propos</a>
+						<li class="nav-item" role="none">
+							<a class="nav-link" href="a-propos.html" role="menuitem">A propos</a>
 						</li>
 					</ul>
 				</div>
-				<label class="theme-switch">
+				<label class="theme-switch" for="checkbox" aria-label="Changer le thème">
 					<input type="checkbox" id="checkbox">
 					<span class="slider">
 						<span class="slider-circle">
@@ -72,7 +72,7 @@
 
 	<!-- Mobile Sidebar Toggle -->
 	<div class="position-absolute burger-menu-container d-lg-none">
-		<button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+		<button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
 			aria-controls="navsidebar">
 			<div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
 					class="burgerspan"></span><span class="burgerspan"></span></div>
@@ -81,7 +81,7 @@
 
 	<!-- Mobile Sidebar -->
 	<div class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
-		aria-label="Sidebar">
+		aria-label="Menu mobile">
 		<span class="fs-4 mt-5">Sidebar</span>
 		<hr>
 		<ul class="nav nav-pills flex-column mb-auto">
@@ -134,38 +134,50 @@
 			</span>
 		</label>
 	</div>
-	<main>
-		<div class="hero-section d-flex align-items-center justify-content-center mb-5"
+	<main role="main">
+		<div class="hero-section d-flex align-items-center justify-content-center mb-5" role="banner"
+			aria-label="En-tête de la page des cartes"
 			style="background: url('/img/carteshero.png') center/cover no-repeat;">
-			>
 			<h1 class="hero-title fw-bold text-center position-relative">Notre jeu de cartes</h1>
 		</div>
 		<div class="container mt-5" style="width: 90%;">
 
-			<button href="./cartes.html" class="button button-primary mb-4 visually-hidden-focusable fixed-top"
-				id="skipToCards" tabindex="1">
+			<button href="./cartes.html" class="btn btn-primary mb-4 visually-hidden-focusable fixed-top"
+				id="skipToCards" tabindex="1" aria-label="Passer directement aux cartes">
 				Passer directement aux cartes
 			</button>
-			<div class="d-flex filters justify-content-between mt-5 mb-4 w-100">
-				<input type="text" class="form-control me-5 h-50 searchbar rounded-pill" placeholder="Rechercher..."
-					id="searchBar" aria-label="Rechercher des cartes" />
+			<div class="d-flex filters justify-content-between mt-5 mb-4 w-100" role="search">
+				<div class="col-12 col-lg-4 d-flex gap-2 me-3" role="group" aria-label="Filtres de cartes">
+					<div class="input-group col-12 col-lg-3 me-5 h-50">
+						<span class="input-group-text rounded-start-pill bg-white border-end-0">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+								class="bi bi-search" viewBox="0 0 16 16">
+								<path
+									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+							</svg>
+						</span>
+						<input type="text" class="form-control rounded-end-pill border-start-0"
+							placeholder="Rechercher..." id="searchBar" aria-label="Rechercher des cartes" />
+					</div>
+				</div>
 
-				<div class="button-group col-12 col-lg-8 d-flex gap-2" role="group" aria-label="Filter buttons">
+
+				<div class="button-group col-12 col-lg-8 d-flex gap-2" role="group" aria-label="Filtres de cartes">
 				</div>
 			</div>
-			<div class="alert alert-info p-4 mb-4 text-center d-none" role="alert">
+			<div class="alert alert-info p-4 mb-4 text-center d-none" role="status" aria-live="polite">
 				<p class="h4 mb-0" id="nameOfFamily"></p>
 			</div>
 			<h2 id="familytitle" class="text-center mt-5 mb-5">Toutes les cartes</h2>
-			<div class="row row-cols-2 row-cols-lg-4 gx-0 gy-4 gx-md-5 g-lg-5 mb-5" id="cardGrid" role="list">
+			<div class="row row-cols-2 row-cols-lg-4 gx-0 gy-4 gx-md-5 g-lg-5 mb-5" id="cardGrid" role="list"
+				aria-label="Grille des cartes">
 			</div>
 
 		</div>
 		<button class="button button-primary rounded-circle position-fixed bottom-0 end-0 m-4 d-none" id="scrollTopBtn"
-			style="z-index: 1000; width: 50px; height: 50px; padding: 10px;" style="z-index: 1000;"
-			aria-label="Retour en haut">
+			style="z-index: 1000; width: 50px; height: 50px; padding: 10px;" aria-label=" Retour en haut de la page">
 			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up"
-				viewBox="0 0 16 16">
+				viewBox="0 0 16 16" aria-hidden="true">
 				<path fill-rule="evenodd"
 					d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
 			</svg>
@@ -332,7 +344,7 @@
 			}
 		}
 	</style>
-	<footer class="py-2 bg-dark text-white">
+	<footer class="py-2 bg-dark text-white" role="contentinfo">
 		<div class="container">
 			<div class="row align-items-center">
 				<!-- Logo -->
@@ -354,8 +366,9 @@
 				<!-- Back to top button -->
 				<div class="col-md-2 col-12 text-center mt-3 mt-md-0">
 					<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-						class="btn btn-pill text-white rounded-pill" style="background-color: #BD1D59;">
-						<span style="position: relative; top: -2px;">↑</span> Retour en haut
+						class="btn btn-pill text-white rounded-pill" style="background-color: #BD1D59;"
+						aria-label="Retour en haut de la page">
+						<span aria-hidden="true" style="position: relative; top: -2px;">↑</span> Retour en haut
 					</button>
 				</div>
 			</div>
@@ -611,11 +624,11 @@
 						const button = document.createElement("button");
 						button.className = "button button-secondary me-1 rounded-pill filter-button";
 						button.setAttribute("data-category", famille.id);
-						button.addEventListener("click", () => filterCards(famille.id));
-						buttonGroup.appendChild(button);
-						button.classList.add("filter-button");
+						button.setAttribute("role", "button");
+						button.setAttribute("aria-pressed", "false");
 						button.setAttribute("familyName", famille.titre);
-						button.setAttribute("title", `Filtrer par ${famille.titre}`);
+						button.setAttribute("aria-label", `Filtrer par ${famille.titre}`);
+						button.addEventListener("click", () => filterCards(famille.id));
 
 						if (famille.id == "organisation-de-la-journee") {
 							button.classList.add("bluebg");
@@ -651,10 +664,13 @@
 						button.addEventListener("mouseout", updateDisplayedText);
 						button.addEventListener("focus", () => displayFamilyName(famille.titre));
 						button.addEventListener("mouseleave", () => removeFocus());
+						buttonGroup.appendChild(button);
 					});
 
 					const cardGrid = document.getElementById("cardGrid");
 					cardGrid.innerHTML = "";
+					cardGrid.setAttribute("role", "grid");
+					cardGrid.setAttribute("aria-label", "Grille des cartes du jeu");
 					let i = 0;
 					let previousfamily = "";
 					let idNum = 0;
@@ -694,10 +710,13 @@
 							previousfamily = famille.id;
 
 							// Afficher uniquement l'image dans la carte
+							const cardId = `card-${famille.id}-${i}`;
 							card.innerHTML = `
-						<div class="card h-100" role="listitem" aria-labelledby="card-title-${carte.id}" aria-describedby="card-description-${carte.id}">
-							<img src="../img/cartes_new/${carte.id}-${addon}0${idNum}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" aria-labelledby="card-title-${carte.id}" />
-
+						<div class="card h-100" role="gridcell" aria-labelledby="${cardId}-title" aria-describedby="${cardId}-desc">
+							<img src="../img/cartes_new/${carte.id}-${addon}0${idNum}.png" class="card-img-top h-100" alt="${carte.titre}" tabindex="0" role="button" aria-label="${carte.titre} - Cliquez pour voir les détails" aria-expanded="false" />
+							<div id="${cardId}-desc" class="visually-hidden">
+								${carte.sousTitre}. ${carte.description}
+							</div>
 						</div>
 					`;
 
@@ -719,37 +738,7 @@
 								const id = card.dataset.id;
 
 								// Création du modal avec uniquement l'image et le contenu de la carte
-								const modal = document.createElement("div");
-								modal.className = "modal fade";
-								modal.tabIndex = -1;
-								modal.innerHTML = `
-												<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h5 class="modal-title" id="modalTitle">${title}</h5>
-															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-														</div>
-														<div class="modal-body d-flex text-center" id="modalDescription">
-															<div class="d-flex justify-content-between align-items-center w-100">
-																<button type="button" class="button button-secondary me-2" id="prevCard" data-id="${id}" aria-label="Previous card">&#11164;</button>
-																<div class="w-75 me-5">
-																	<img src="../img/cartes_new/${card.dataset.image}" class="img-fluid" alt="${title}" />
-																</div>
-																<div class="w-50 ms-2">
-																	<h6 class="subTitle">"${subTitle}"</h6>
-																	<p class="description">${description}</p>
-																</div>
-																<button type="button" class="button button-secondary ms-2" id="nextCard" data-id="${id}" aria-label="Next card">&#11166;</button>
-															</div>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="button button-secondary" data-bs-dismiss="modal">Fermer</button>
-															<button type="button" class="button button-info">Ecouter la carte</button>
-														</div>
-													</div>
-												</div>
-											`;
-
+								const modal = createAccessibleModal(card);
 								document.body.appendChild(modal);
 								const bootstrapModal = new bootstrap.Modal(modal);
 								bootstrapModal.show();
@@ -796,6 +785,67 @@
 
 				})
 				.catch((error) => console.error("Error fetching data:", error));
+		}
+
+		function createAccessibleModal(card) {
+			const modal = document.createElement("div");
+			modal.className = "modal fade";
+			modal.setAttribute("role", "dialog");
+			modal.setAttribute("aria-modal", "true");
+
+			const title = card.dataset.title;
+			const modalId = `modal-${Date.now()}`;
+
+			modal.innerHTML = `
+				<div class="modal-dialog modal-dialog-centered modal-xl">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="${modalId}-title">${title}</h5>
+							<button type="button" 
+								class="btn-close" 
+								data-bs-dismiss="modal" 
+								aria-label="Fermer la fenêtre">
+							</button>
+						</div>
+						<div class="modal-body d-flex text-center">
+							<div class="d-flex justify-content-between align-items-center w-100">
+								<button type="button" 
+									class="button button-secondary me-2" 
+									id="prevCard" 
+									data-id="${card.dataset.id}" 
+									aria-label="Carte précédente">&#11164;
+								</button>
+								<div class="w-75 me-5" role="img" aria-label="${title}">
+									<img src="../img/cartes_new/${card.dataset.image}" 
+										class="img-fluid" 
+										alt="${title}" 
+										aria-hidden="true" />
+								</div>
+								<div class="w-50 ms-2">
+									<h6 class="subTitle" aria-label="Sous-titre">"${card.dataset.subtitle}"</h6>
+									<p class="description" aria-label="Description">${card.dataset.description}</p>
+								</div>
+								<button type="button" 
+									class="button button-secondary ms-2" 
+									id="nextCard" 
+									data-id="${card.dataset.id}" 
+									aria-label="Carte suivante">&#11166;
+								</button>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" 
+								class="button button-secondary" 
+								data-bs-dismiss="modal"
+								aria-label="Fermer la fenêtre">Fermer</button>
+							<button type="button" 
+								class="button button-info"
+								aria-label="Écouter la description de la carte">Écouter la carte</button>
+						</div>
+					</div>
+				</div>`;
+
+			return modal;
 		}
 
 		function handleCardNavigation(direction, id) {
@@ -850,8 +900,6 @@
 				}
 			}
 		}
-
-
 
 		function handleKeyEvents() {
 			document.addEventListener("keydown", (event) => {

@@ -50,6 +50,21 @@ function applyTheme(isDark) {
 			button.style.backgroundColor = "#BD1D59";
 		});
 		cursorCircle.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+
+		document
+			.querySelectorAll(".carousel-indicators [data-bs-target]")
+			.forEach((indicator) => {
+				indicator.style.backgroundColor = "#BD1D59";
+			});
+		// Update carousel controls
+		document
+			.querySelectorAll(
+				".carousel-control-next-icon, .carousel-control-prev-icon"
+			)
+			.forEach((icon) => {
+				icon.classList.remove("dark-theme");
+				icon.classList.add("light-theme");
+			});
 	} else {
 		document.body.style.background = "black";
 		document.body.style.color = "white";
@@ -73,6 +88,21 @@ function applyTheme(isDark) {
 			button.style.backgroundColor = "#D76891";
 		});
 		cursorCircle.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+
+		document
+			.querySelectorAll(".carousel-indicators [data-bs-target]")
+			.forEach((indicator) => {
+				indicator.style.backgroundColor = "#D76891";
+			});
+		// Update carousel controls
+		document
+			.querySelectorAll(
+				".carousel-control-next-icon, .carousel-control-prev-icon"
+			)
+			.forEach((icon) => {
+				icon.classList.remove("light-theme");
+				icon.classList.add("dark-theme");
+			});
 	}
 }
 
