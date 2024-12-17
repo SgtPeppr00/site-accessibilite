@@ -18,6 +18,14 @@
 
 <body>
 	<header>
+		<!-- Mobile Navbar -->
+		<nav class="mobile-header fixed-top navbar navbar-dark bg-dark py-2 d-lg-none">
+			<div class="container mb-2 d-flex justify-content-center align-items-center">
+				<a class="navbar-brand m-0" href="accueil.html"></a>
+				<img src="/img/logo.png" alt="Sample image" class="img-fluid" width="69" height="69">
+				</a>
+			</div>
+		</nav>
 		<!-- Desktop Navbar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
 			<div class="container d-flex align-items-center">
@@ -75,7 +83,7 @@
 
 	<!-- Mobile Sidebar Toggle -->
 	<div class="position-absolute burger-menu-container d-lg-none">
-		<button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+		<button class="navbar-toggler" type="button" aria-label="Toggle navigation" aria-expanded="false"
 			aria-controls="navsidebar">
 			<div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
 					class="burgerspan"></span><span class="burgerspan"></span></div>
@@ -149,11 +157,21 @@
 				id="skipToCards" tabindex="1">
 				Passer directement aux cartes
 			</button>
-			<div class="d-flex filters justify-content-between mt-5 mb-4 w-100">
-				<input type="text" class="form-control me-5 h-50 searchbar rounded-pill" placeholder="Rechercher..."
-					id="searchBar" aria-label="Rechercher des cartes" />
-
-				<div class="button-group col-12 col-lg-8 d-flex gap-2" role="group" aria-label="Filter buttons">
+			<div class="d-flex filters justify-content-between mt-5 mb-4 w-100 h-50 h-sm-25" role="search">
+				<div class="col-12 col-lg-4 me-5" role="group" aria-label="Filtres de cartes">
+					<div class="input-group">
+						<span class="input-group-text rounded-start-pill bg-white border-end-0">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+								class="bi bi-search" viewBox="0 0 16 16">
+								<path
+									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+							</svg>
+						</span>
+						<input type="text" class="form-control rounded-end-pill border-start-0"
+							placeholder="Rechercher..." id="searchBar" aria-label="Rechercher des cartes" />
+					</div>
+				</div>
+				<div class="btn-group col-12 col-lg-8 d-flex gap-2" role="group" aria-label="Filtres de cartes">
 				</div>
 			</div>
 			<div class="alert alert-info p-4 mb-4 text-center d-none" role="alert">
@@ -330,7 +348,6 @@
 			}
 
 			#searchBar {
-				width: 100% !important;
 				height: 50.4px;
 			}
 		}
@@ -378,7 +395,7 @@
 	<script src="../javascript/script.js"></script>
 	<script>
 		const synth = window.speechSynthesis;
-		let activeFilter = document.querySelector(".button-group .button.button-primary")?.getAttribute("data-category");
+		let activeFilter = document.querySelector(".btn-group .button.button-primary")?.getAttribute("data-category");
 		let isHovering = false;
 		function initalizeScrollUpButton() {
 			const scrollBtn = document.getElementById('scrollTopBtn');
@@ -406,7 +423,7 @@
 			document.getElementById("searchBar").addEventListener("input", function () {
 				const searchTerm = this.value.toLowerCase();
 				const cards = document.querySelectorAll(".card-item");
-				const activeCategory = document.querySelector(".button-group .button.button-primary")?.getAttribute("data-category");
+				const activeCategory = document.querySelector(".btn-group .button.button-primary")?.getAttribute("data-category");
 				let i = 0;
 				cards.forEach((card) => {
 					const title = card.dataset.title.toLowerCase();
@@ -431,9 +448,9 @@
 		function filterCards(category) {
 			const searchTerm = document.getElementById("searchBar").value.toLowerCase();
 			const cards = document.querySelectorAll(".card-item");
-			const buttons = document.querySelectorAll(".button-group .button");
-			const activeButton = document.querySelector(`.button-group .button.button-primary[data-category="${category}"]`);
-			const button = document.querySelector(`.button-group .button[data-category="${category}"]`);
+			const buttons = document.querySelectorAll(".btn-group .button");
+			const activeButton = document.querySelector(`.btn-group .button.button-primary[data-category="${category}"]`);
+			const button = document.querySelector(`.btn-group .button[data-category="${category}"]`);
 			activeFilter = category;
 			console.log(activeFilter);
 			console.log(button);
@@ -595,7 +612,7 @@
 			fetch("../data/cartes.json")
 				.then((response) => response.json())
 				.then((data) => {
-					const buttonGroup = document.querySelector(".button-group");
+					const buttonGroup = document.querySelector(".btn-group");
 
 					// Define the desired order of categories
 					const categoryOrder = [
@@ -612,10 +629,9 @@
 						if (!famille) return;
 
 						const button = document.createElement("button");
-						button.className = "button button-secondary me-1 rounded-pill filter-button";
+						button.className = "button button-secondary mx-1 rounded-pill filter-button";
 						button.setAttribute("data-category", famille.id);
 						button.addEventListener("click", () => filterCards(famille.id));
-						buttonGroup.appendChild(button);
 						button.classList.add("filter-button");
 						button.setAttribute("familyName", famille.titre);
 						button.setAttribute("title", `Filtrer par ${famille.titre}`);
@@ -654,6 +670,8 @@
 						button.addEventListener("mouseout", updateDisplayedText);
 						button.addEventListener("focus", () => displayFamilyName(famille.titre));
 						button.addEventListener("mouseleave", () => removeFocus());
+						buttonGroup.appendChild(button);
+
 					});
 
 					const cardGrid = document.getElementById("cardGrid");
@@ -726,32 +744,46 @@
 								modal.className = "modal fade";
 								modal.tabIndex = -1;
 								modal.innerHTML = `
-												<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-													<div class="modal-content">
+												<div class="modal-dialog modal-dialog-centered modal-xl px-5" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+													<div class="modal-content position-relative px-5">
+														<button type="button" class="btn btn-secondary position-absolute start-0 top-50 translate-middle-y" 
+																style="z-index: 1000; margin-left: 25px;" 
+																id="prevCard" data-id="${id}" 
+																aria-label="Previous card">&#11164;</button>
+
+														<button type="button" class="btn btn-secondary position-absolute end-0 top-50 translate-middle-y" 
+																style="z-index: 1000; margin-right: 25px;" 
+																id="nextCard" data-id="${id}" 
+																aria-label="Next card">&#11166;</button>
+
 														<div class="modal-header">
 															<h5 class="modal-title" id="modalTitle">${title}</h5>
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
-														<div class="modal-body d-flex text-center" id="modalDescription">
-															<div class="d-flex justify-content-between align-items-center w-100">
-																<button type="button" class="button button-secondary me-2" id="prevCard" data-id="${id}" aria-label="Previous card">&#11164;</button>
-																<div class="w-75 me-5">
-																	<img src="../img/cartes_new/${card.dataset.image}" class="img-fluid" alt="${title}" />
+														<div class="modal-body" id="modalDescription">
+															<div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+																<div class="position-relative w-100 w-lg-75 mb-3 mb-lg-0" style="max-width: 80%;">
+																	<img src="../img/cartes_new/${card.dataset.image}" class="img-fluid mx-auto d-block" style="max-width: 95%;" alt="${title}" />
 																</div>
-																<div class="w-50 ms-2">
+
+																<div class="w-100 w-lg-50 text-center text-lg-start px-3">
 																	<h6 class="subTitle">"${subTitle}"</h6>
 																	<p class="description">${description}</p>
+																	<button type="button" class="btn btn-info button-info mb-3" aria-label="Écouter la carte">
+																		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+																			<path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+																			<path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+																		</svg>
+																	</button>
 																</div>
-																<button type="button" class="button button-secondary ms-2" id="nextCard" data-id="${id}" aria-label="Next card">&#11166;</button>
 															</div>
 														</div>
 														<div class="modal-footer">
-															<button type="button" class="button button-secondary" data-bs-dismiss="modal">Fermer</button>
-															<button type="button" class="button button-info">Ecouter la carte</button>
+															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
 														</div>
 													</div>
 												</div>
-											`;
+												`;
 
 								document.body.appendChild(modal);
 								const bootstrapModal = new bootstrap.Modal(modal);
@@ -791,7 +823,7 @@
 					});
 					document
 						.querySelectorAll(
-							"a, button, input, img, .button-group .button, .button-info, input, .slider"
+							"a, button, input, img, .btn-group .button, .button-info, input, .slider"
 						)
 						.forEach((element) => {
 							addCursorEffect(element);
