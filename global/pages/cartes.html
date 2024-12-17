@@ -44,11 +44,13 @@
 						</li>
 					</ul>
 				</div>
-				<label class="theme-switch" for="checkbox" aria-label="Changer le thème">
-					<input type="checkbox" id="checkbox">
+				<div class="theme-switch" role="switch" tabindex="0" aria-checked="false" aria-label="Changer le thème"
+					onkeypress="if(event.key === 'Enter' || event.key === ' ') { document.getElementById('checkbox').click(); event.preventDefault(); }">
+					<input type="checkbox" id="checkbox" aria-hidden="true" tabindex="-1">
 					<span class="slider">
 						<span class="slider-circle">
-							<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+								aria-hidden="true">
 								<circle cx="12" cy="12" r="4" />
 								<line x1="12" y1="3" x2="12" y2="5" />
 								<line x1="12" y1="19" x2="12" y2="21" />
@@ -59,12 +61,13 @@
 								<line x1="6.36" y1="17.66" x2="4.94" y2="19.07" />
 								<line x1="17.66" y1="6.36" x2="19.07" y2="4.94" />
 							</svg>
-							<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+								aria-hidden="true">
 								<path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z" />
 							</svg>
 						</span>
 					</span>
-				</label>
+				</div>
 			</div>
 		</nav>
 
@@ -209,10 +212,6 @@
 			}
 		}
 
-		#cardGrid:focus {
-			background-color: #207cc4;
-
-		}
 
 		@font-face {
 			font-family: "Luciole";
@@ -232,9 +231,6 @@
 			text-align: start;
 		}
 
-		*:focus-visible {
-			outline: 6px solid #02007b !important;
-		}
 
 		.card-title {
 			text-align: center;

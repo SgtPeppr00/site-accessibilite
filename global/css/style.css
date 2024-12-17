@@ -1,7 +1,7 @@
 .btn-rose {
 	border-radius: 15px;
 	padding: 3px 15px 3px 15px;
-	background-color: #BD1D59;
+	background-color: #bd1d59;
 	color: white;
 	width: 20%;
 	align-self: flex-end;
@@ -13,7 +13,7 @@
 }
 
 .form-control::placeholder {
-	color: #1578BE;
+	color: #1578be;
 }
 
 .footer-container {
@@ -449,6 +449,9 @@ input:checked + .slider .moon-icon {
 .carousel-control-next,
 .carousel-control-prev {
 	width: 10%;
+}
+*:focus-visible {
+	outline: 6px solid #0400ff !important;
 }
 
 @media (max-width: 1200px) {
