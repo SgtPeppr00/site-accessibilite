@@ -46,11 +46,13 @@
                         </li>
                     </ul>
                 </div>
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" aria-label="Changer le thème">
+                <div class="theme-switch" role="switch" tabindex="0" aria-checked="false" aria-label="Changer le thème"
+                    onkeypress="if(event.key === 'Enter' || event.key === ' ') { document.getElementById('checkbox').click(); event.preventDefault(); }">
+                    <input type="checkbox" id="checkbox" aria-hidden="true" tabindex="-1">
                     <span class="slider">
                         <span class="slider-circle">
-                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                aria-hidden="true">
                                 <circle cx="12" cy="12" r="4" />
                                 <line x1="12" y1="3" x2="12" y2="5" />
                                 <line x1="12" y1="19" x2="12" y2="21" />
@@ -61,12 +63,13 @@
                                 <line x1="6.36" y1="17.66" x2="4.94" y2="19.07" />
                                 <line x1="17.66" y1="6.36" x2="19.07" y2="4.94" />
                             </svg>
-                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                aria-hidden="true">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z" />
                             </svg>
                         </span>
                     </span>
-                </label>
+                </div>
             </div>
         </nav>
 
@@ -178,9 +181,9 @@
             <div id="backdropaccueil" class="d-flex justify-content-center align-items-center mt-5 mb-5 w-100"
                 role="complementary" aria-label="Section jeu de cartes"
                 style="background: url('/img/imageaccueilbg.png') center/contain no-repeat; height: 500px;">
-                <button class="btn btn-pill text-white rounded-pill pink-button" style="background-color: #BD1D59;"
-                    aria-label="Découvrir toutes nos cartes">
-                    D&eacute;couvrir toutes nos cartes</button>
+                <a href="cartes.html" class="btn btn-pill text-white rounded-pill pink-button"
+                    style="background-color: #BD1D59;" aria-label="Découvrir toutes nos cartes">
+                    D&eacute;couvrir toutes nos cartes</a>
             </div>
             <section id="reviewsCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel" data-bs-touch="true"
                 data-bs-interval="4000" role="region" aria-label="Carousel d'avis utilisateurs">
@@ -188,12 +191,29 @@
                 <style>
                     .carousel-control-next-icon {
                         transform: translate(4rem, 1rem);
-                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23BD1D59'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--carousel-control-color)'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
                     }
 
                     .carousel-control-prev-icon {
                         transform: translate(-4.5rem, 1rem);
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='var(--carousel-control-color)'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+                    }
+
+                    /* Add these new classes */
+                    .carousel-control-next-icon.light-theme {
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23BD1D59'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+                    }
+
+                    .carousel-control-prev-icon.light-theme {
                         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23BD1D59'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+                    }
+
+                    .carousel-control-next-icon.dark-theme {
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23D76891'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+                    }
+
+                    .carousel-control-prev-icon.dark-theme {
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23D76891'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
                     }
 
                     .carousel-indicators {
