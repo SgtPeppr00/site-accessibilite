@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <title>Immersion Handicap</title>
@@ -17,14 +17,14 @@
     </style>
 </head>
 
-
 <body>
-    <header>
+    <header role="banner">
         <!-- Desktop Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block" role="navigation"
+            aria-label="Navigation principale">
             <div class="container d-flex align-items-center">
-                <a class="navbar-brand" href="accueil.html">
-                    <img src="/img/logo.png" alt="Sample image" class="img-fluid" width="69" height="69">
+                <a class="navbar-brand" href="accueil.html" aria-label="Retour à l'accueil">
+                    <img src="/img/logo.png" alt="Logo HandiScope" class="img-fluid" width="69" height="69">
                 </a>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
@@ -46,8 +46,8 @@
                         </li>
                     </ul>
                 </div>
-                <label class="theme-switch">
-                    <input type="checkbox" id="checkbox">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" aria-label="Changer le thème">
                     <span class="slider">
                         <span class="slider-circle">
                             <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -74,7 +74,7 @@
 
     <!-- Mobile Sidebar Toggle -->
     <div class="position-absolute burger-menu-container d-lg-none">
-        <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
+        <button class="navbar-toggler mt-5" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
             aria-controls="navsidebar">
             <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
                     class="burgerspan"></span><span class="burgerspan"></span></div>
@@ -82,8 +82,8 @@
     </div>
 
     <!-- Mobile Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
-        aria-label="Sidebar">
+    <nav class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
+        aria-label="Menu mobile">
         <span class="fs-4 mt-5">Sidebar</span>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
@@ -135,11 +135,12 @@
                 </span>
             </span>
         </label>
-    </div>
+    </nav>
 
-    <main role="main">
+    <main role="main" id="main-content">
         <div class="hero-section d-flex align-items-center justify-content-center mb-5"
-            style="background: url('/img/accueilhero.png') center/cover no-repeat;">
+            style="background: url('/img/accueilhero.png') center/cover no-repeat;" role="banner"
+            aria-label="Hero section">
             <h1 class="hero-title fw-bold text-center position-relative">Immersion Handicap</h1>
         </div>
 
@@ -167,7 +168,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid" src="/img/cardspic.png" alt="Sample image">
+                    <img class="img-fluid" src="/img/cardspic.png" alt="Photo de l'atelier">
                 </div>
             </div>
 
@@ -175,13 +176,14 @@
             <h1 class="text-center mt-5 mb-1">Acc&egrave;s au jeu de cartes</h1>
 
             <div id="backdropaccueil" class="d-flex justify-content-center align-items-center mt-5 mb-5 w-100"
-                role="region" aria-label="Jeu de cartes"
+                role="complementary" aria-label="Section jeu de cartes"
                 style="background: url('/img/imageaccueilbg.png') center/contain no-repeat; height: 500px;">
-                <button class="btn btn-pill text-white rounded-pill pink-button" style="background-color: #BD1D59;">
+                <button class="btn btn-pill text-white rounded-pill pink-button" style="background-color: #BD1D59;"
+                    aria-label="Découvrir toutes nos cartes">
                     D&eacute;couvrir toutes nos cartes</button>
             </div>
-            <div id="reviewsCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel" data-bs-touch="true"
-                data-bs-interval="4000">
+            <section id="reviewsCarousel" class="carousel slide mt-5 mb-5" data-bs-ride="carousel" data-bs-touch="true"
+                data-bs-interval="4000" role="region" aria-label="Carousel d'avis utilisateurs">
                 <h2 class="text-center mb-4">Avis des utilisateurs</h2>
                 <style>
                     .carousel-control-next-icon {
@@ -397,11 +399,11 @@
                     data-bs-slide="next" aria-label="Next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
-            </div>
+            </section>
 
         </div>
     </main>
-    <footer class="py-2 bg-dark text-white">
+    <footer class="py-2 bg-dark text-white" role="contentinfo">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Logo -->
@@ -423,8 +425,9 @@
                 <!-- Back to top button -->
                 <div class="col-md-2 col-12 text-center mt-3 mt-md-0">
                     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-                        class="btn btn-pill text-white rounded-pill pink-button" style="background-color: #BD1D59;">
-                        <span style="position: relative; top: -2px;">↑</span> Retour en haut
+                        class="btn btn-pill text-white rounded-pill pink-button" style="background-color: #BD1D59;"
+                        aria-label="Retour en haut de la page">
+                        <span aria-hidden="true" style="position: relative; top: -2px;">↑</span> Retour en haut
                     </button>
                 </div>
             </div>
