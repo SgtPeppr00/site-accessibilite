@@ -1,275 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .gallery {
+        width: 100%;
+      }
+      .gallery-container {
+        align-items: center;
+        display: flex;
+        height: 400px;
+        margin: 0 auto;
+        max-width: 1000px;
+        position: relative;
+      }
+      .gallery-item {
+        height: 200px;
+        opacity: 0;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        width: 330px;
+        z-index: 0;
+        border-radius: 15px;
+        background-size: contain;
+      }
+      .gallery-item-1 {
+        left: 15%;
+        opacity: 0.4;
+        transform: translateX(-50%);
+      }
+      .gallery-item-2,
+      .gallery-item-4 {
+        height: 250px;
+        opacity: 0.8;
+        width: 380px;
+        z-index: 1;
+      }
+      .gallery-item-2 {
+        left: 30%;
+        transform: translateX(-50%);
+      }
+      .gallery-item-3 {
+        box-shadow: -2px 5px 33px 6px rgba(0, 0, 0, 0.35);
+        height: 300px;
+        left: 50%;
+        opacity: 1;
+        transform: translateX(-50%);
+        width: 400px;
+        z-index: 2;
+      }
+      .gallery-item-4 {
+        left: 70%;
+        transform: translateX(-50%);
+      }
+      .gallery-item-5 {
+        left: 85%;
+        opacity: 0.4;
+        transform: translateX(-50%);
+      }
+      .gallery-controls {
+        display: flex;
+        justify-content: center;
+        margin: 25px 0;
+        height: 100px;
+      }
+      .gallery-controls button {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        font-size: 30px;
+        margin: 50px;
+        padding: 0 12px;
+        text-transform: capitalize;
+        position: relative;
+      }
+      .gallery-controls-previous::before {
+        border: solid black;
+        border-width: 0 5px 5px 0;
+        content: "";
+        display: inline-block;
+        height: 5px;
+        padding: 10px;
+        position: absolute;
+        left: -30px;
+        transform: rotate(135deg);
+        width: 5px;
+      }
+      .gallery-controls-next::before {
+        border: solid black;
+        border-width: 0 5px 5px 0;
+        content: "";
+        display: inline-block;
+        height: 5px;
+        padding: 10px;
+        position: absolute;
+        right: -30px;
+        transform: rotate(-45deg);
+        width: 5px;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A propos</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/style.css">
-</head>
+  <body class="bg-gray-100">
+    <!--Section avec image de fond -->
+    <div class="relative w-full h-[500px]">
+      <img
+        class="object-cover w-full h-full"
+        src="/images/05b3b0cefe2aff29e8b76f6b910aa489.jpg"
+        alt="Bandeau"
+      />
+      <div
+        class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50"
+      >
+        <!-- Largeur du texte ajustée -->
+        <div class="w-full max-w-5xl px-4 md:px-8 text-center">
+          <h1 class="text-white font-black text-3xl md:text-5xl mb-4">
+            L’atelier
+          </h1>
+        </div>
+      </div>
+    </div>
 
-<body class="bg-gray-50">
-  <header>
-    <!-- Desktop Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
-      <div class="container">
-        <a class="navbar-brand" href="accueil.html">Panorama-Handicap</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="accueil.html">Accueil</a>
+    <!-- Section texte en dessous -->
+    <div class="w-5/6 mx-auto mt-8 p-6">
+      <h2 class="font-bold text-lg md:text-2xl mb-4">
+        <span class="font-black">L’atelier</span>
+      </h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        Cet atelier collaboratif vise à autonomiser les participant·e·s pour
+        détecter les situations de handicap et trouver des adaptations
+        possibles.
+      </p>
+      <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+        Plongez au cœur des situations de handicap avec notre atelier
+        interactif. À travers un panorama dynamique, vous serez activement
+        engagé·e·s dans l’exploration des défis que rencontrent certaines
+        personnes au quotidien. En naviguant ensemble à travers ces situations,
+        nous allons collaborativement approfondir chaque cas pour identifier des
+        solutions pratiques pour favoriser l’inclusion.
+      </p>
+      <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+        L’objectif principal est de sensibiliser au handicap en se concentrant
+        sur les situations concrètes. À la fin de cet atelier, vous développerez
+        un nouveau regard sur votre quotidien, cherchant à le rendre plus
+        inclusif, que ce soit dans la vie quotidienne ou au travail. En sortant
+        de cet atelier, vous serez mieux équipé·e·s pour créer un environnement
+        plus accueillant et accessible pour vous et vos collègues.
+      </p>
+    </div>
+    <!-- Carrousel -->
+    <div class="gallery">
+        <div class="gallery-container">
+           <img class="gallery-item gallery-item-1" src="/images/Bandeau.png" data-index="1">
+           <img class="gallery-item gallery-item-2" src="/images/Capture.PNG" data-index="2">
+           <img class="gallery-item gallery-item-3" src="/images/Capture3.PNG" data-index="3">
+           <img class="gallery-item gallery-item-4" src="/images/Capture4.PNG" data-index="4">
+           <img class="gallery-item gallery-item-5" src="/images/Capture5.PNG" data-index="5">
+        </div>
+     </div>
+     <div class="gallery-controls"></div>
+
+      <!-- Section texte en dessous -->
+
+      <!-- erreur dessous   -->
+      <div class="w-5/6 mx-auto mt-8 p-6">
+        <section aria-labelledby="deroulement-atelier">
+          <h2
+            id="deroulement-atelier"
+            class="font-bold text-lg md:text-2xl mb-4"
+          >
+            <span class="font-black">Déroulement de l'atelier</span>
+          </h2>
+          <h3 class="font-bold text-lg md:text-xl mb-4">
+            <span class="font-black">Règles</span>
+          </h3>
+          <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+            Vous avez à votre disposition des cartes représentant diverses
+            situations du quotidien et du travail.
+          </p>
+          <p class="mt-2 text-gray-700 text-lg md:text-xl leading-relaxed">
+            Ces situations peuvent constituer des sources de handicap pour
+            certaines personnes.
+          </p>
+          <p class="mt-2 text-gray-700 text-lg md:text-xl leading-relaxed">
+            Votre rôle est de réfléchir ensemble à :
+          </p>
+          <ul
+            class="list-disc ml-6 mt-2 text-gray-700 text-lg md:text-xl leading-relaxed"
+          >
+            <li>
+              Qui pourrait être impacté par ces situations ? (Quels types de
+              handicaps ? Quelles caractéristiques ou troubles ?)
             </li>
-            <li class="nav-item">
-              <a class="nav-link active text-white" href="atelier.html">Atelier</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cartes.html">Cartes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="a-propos.html">A propos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+            <li>
+              Quelles adaptations pourraient être mises en place pour limiter
+              ces situations de handicap et rendre ces situations accessibles au
+              plus grand nombre ?
             </li>
           </ul>
-          <button id="themebutton" class="btn btn-light ms-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
-              viewBox="0 0 16 16">
-              <path
-                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-            </svg>
-          </button>
-        </div>
+          <p class="mt-4 text-gray-700 text-lg md:text-xl leading-relaxed">
+            L’illustration sur chaque carte est là pour donner une idée de la
+            situation, mais elle ne représente pas toutes les personnes
+            potentiellement impactées.
+          </p>
+          <p class="mt-2 text-gray-700 text-lg md:text-xl leading-relaxed">
+            Pensez au-delà de ce que vous voyez et lisez !
+          </p>
+        </section>
+
+        <section aria-labelledby="personae">
+          <h3 id="personae" class="font-bold text-lg md:text-xl mt-6 mb-2">
+            Personae
+          </h3>
+          <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+            Ces personae ne sont pas exhaustifs. Ils ne servent que de support
+            pour vous aider à réfléchir à différentes situations de handicap.
+          </p>
+          <p class="mt-2 text-gray-700 text-lg md:text-xl leading-relaxed">
+            Par exemple, sur ce visuel, vous voyez qu’il n’y a pas de personae à
+            mobilité réduite avec son fauteuil roulant parce que c’est le plus
+            représenté, mais pas le plus représentatif.
+          </p>
+          <p class="mt-4 text-gray-700 text-lg md:text-xl leading-relaxed">
+            Nous voulions que vous réfléchissiez aux différents handicaps qu’ils
+            soient visibles ou invisibles et aux différentes adaptations quelle
+            que soit la nature du handicap.
+          </p>
+        </section>
       </div>
-    </nav>
+      <div class="container mx-auto w-full flex justify-center">
+        
+        <table class="table-fixed border-collapse w-full md:w-10/12 text-center">
+            <thead>
+              <tr class="bg-white-200">
+                <th class="border px-2 md:px-4 py-2"></th>
+                <th class="border px-2 md:px-4 py-2">Permanent</th>
+                <th class="border px-2 md:px-4 py-2">Temporaire</th>
+                <th class="border px-2 md:px-4 py-2">Situationnel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Mobilité -->
+              <tr>
+                <th class="border px-2 md:px-4 py-2 bg-white-200">Mobilité</th>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">un bras</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/bras.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">blessure au bras</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/blessure.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">jeune parent</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/bebe.png" alt="">
+                  </div>
+                </td>
+              </tr>
+          
+              <!-- Vision -->
+              <tr>
+                <th class="border px-2 md:px-4 py-2 bg-white-200">Vision</th>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">aveugle</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/aveugle.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">cataracte</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/cataracte.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                    <div class="flex flex-row items-center justify-center w-full">
+                      <p class="font-bold text-sm md:text-lg">Hypersensibilité à la lumière</p>
+                      <img class="w-12 h-12 md:w-16 md:h-16 lg:w-[200px] lg:h-[200px] object-contain" src="/tableau/soleil.png" alt="">
+                    </div>
+                  </td>
+              </tr>
+          
+              <!-- Audition -->
+              <tr>
+                <th class="border px-2 md:px-4 py-2 bg-white-200">Audition</th>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">Sourd(e)</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/sourd.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">infection a l'oreille</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/infection or.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">barman</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/barman.png" alt="">
+                  </div>
+                </td>
+              </tr>
+          
+              <!-- Voix -->
+              <tr>
+                <th class="border px-2 md:px-4 py-2 bg-white-200">Voix</th>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">non verbal</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/verbal.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">laryngite</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/laryngite.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">fort accent</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/accent.png" alt="">
+                  </div>
+                </td>
+              </tr>
+          
+              <!-- Intellectuel -->
+              <tr>
+                <th class="border px-2 md:px-4 py-2 bg-white-200">Intellectuel</th>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">dyslexie</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/dyslexie.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">migraine</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/migraine.png" alt="">
+                  </div>
+                </td>
+                <td class="border px-2 md:px-4 py-2">
+                  <div class="flex items-center justify-center w-full">
+                    <p class="font-bold text-lg md:text-xl">Surcharge sensorielle</p>
+                    <img class="w-16 h-16 md:w-[200px] md:h-[200px] object-contain" src="/tableau/surcharge.png" alt="">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
 
-  </header>
+      <div class="mt-6 px-2 md:px-4">
+  <p class="text-sm md:text-base lg:text-lg text-center">Les personae sont librement inspirées et traduites des illustrations de Microsoft Inclusive Design (EN)</p>
+</div>
 
-  <!-- Mobile Sidebar Toggle -->
-  <div class="position-absolute burger-menu-container d-lg-none">
-    <button class="navbar-toggler mt-5" type="button" aria-label="Toggle navigation" aria-expanded="false"
-      aria-controls="navsidebar">
-      <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
-          class="burgerspan"></span><span class="burgerspan"></span></div>
-    </button>
-  </div>
-
-  <!-- Mobile Sidebar -->
-  <div class="d-flex flex-column flex-shrink-0 p-3 navsidebar d-lg-none" id="navsidebar" role="navigation"
-    aria-label="Sidebar">
-    <span class="fs-4 mt-5">Sidebar</span>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li>
-        <a href="./accueil.html" class="nav-link">
-          Accueil
-        </a>
-      </li>
-      <li>
-        <a href="./cartes.html" class="nav-link">
-          Cartes
-        </a>
-      </li>
-      <li>
-        <a href="./atelier.html" class="nav-link active">
-          Atelier
-        </a>
-      </li>
-      <li>
-        <a href="./contact.html" class="nav-link">
-          Contact
-        </a>
-      </li>
-      <li>
-        <a href="./a-propos.html" class="nav-link" aria-current="page">
-          A propos
-        </a>
-      </li>
-    </ul>
-    <hr>
-    <button id="themebuttonmobile" class="btn btn-light">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun"
-        viewBox="0 0 16 16">
-        <path
-          d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
-      </svg>
-    </button>
-  </div>
-
-  <div class="mx-auto p-8">
-    <div class="flex flex-col items-center mt-16">
-      <h1 class="font-bold text-center text-3xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        hendrerit maximus neque,
-      </h1>
-      <p class="text-center mt-10 max-w-2xl mx-auto">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        hendrerit maximus neque,
-        <br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        hendrerit maximus neque,
-        <br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-        hendrerit maximus neque,
-      </p>
+      <!-- Fin erreur dessous   -->
     </div>
-    <div class="flex flex-col items-center mt-40">
-      <h2 class="font-bold text-center text-2xl">
-        Lorem ipsum dolor sit amet, consectetur
-      </h2>
-      <p class="text-justify mt-5 max-w-3xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla congue
-        nec nulla ac auctor. Aenean ut malesuada orci, tincidunt elementum
-        orci. Donec tincidunt sem nec porta dignissim. Vivamus a eros
-        consequat, viverra est ac, interdum risus. Aliquam sit amet mattis
-        dolor, a gravida lectus. Donec elementum sed lacus at blandit. Aenean
-        eget justo sed ipsum maximus lobortis. Praesent volutpat, leo ac
-        imperdiet iaculis, leo velit congue enim.
-      </p>
-      <p class="text-justify mt-5 max-w-3xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla congue
-        nec nulla ac auctor. Aenean ut malesuada orci, tincidunt elementum
-        orci. Donec tincidunt sem nec porta dignissim. Vivamus a eros
-        consequat, viverra est ac, interdum risus. Aliquam sit amet mattis
-      </p>
-    </div>
-    <div class="flex flex-col items-center mt-40 px-20">
-      <h2 class="font-bold text-center text-2xl">
-        Lorem ipsum dolor sit amet, consectetur
-      </h2>
-      <div class="w-full max-w-3xl">
-        <h3 class="mt-10 font-bold text-left">
-          Lorem ipsum dolor sit amet
-        </h3>
-        <p class="text-justify mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla congue
-          nec nulla ac auctor. Aenean ut malesuada orci, tincidunt elementum
-          orci. Donec tincidunt sem nec porta dignissim. Vivamus a eros
-          consequat, viverra est ac, interdum risus. Aliquam sit amet mattis
-          dolor, a gravida lectus. Donec elementum sed lacus at blandit. Aenean
-          eget justo sed ipsum maximus lobortis. Praesent volutpat, leo ac
-          imperdiet iaculis, leo velit congue enim.
-        </p>
-      </div>
 
-      <div class="w-full max-w-3xl">
-        <h3 class="mt-10 font-bold text-left">
-          Lorem ipsum dolor sit amet
-        </h3>
-        <p class="text-justify mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla congue
-          nec nulla ac auctor. Aenean ut malesuada orci, tincidunt elementum
-          orci. Donec tincidunt sem nec porta dignissim. Vivamus a eros
-          consequat, viverra est ac, interdum risus. Aliquam sit amet mattis
-          dolor, a gravida lectus. Donec elementum sed lacus at blandit. Aenean
-          eget justo sed ipsum maximus lobortis. Praesent volutpat, leo ac
-          imperdiet iaculis, leo velit congue enim.
-        </p>
-      </div>
+    <!-- Script pour le carrousel -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const galleryContainer = document.querySelector(".gallery-container");
+        const galleryControlsContainer =
+          document.querySelector(".gallery-controls");
+        const galleryControls = ["previous", "next"];
+        const galleryItems = document.querySelectorAll(".gallery-item");
 
-      <div class="w-full max-w-3xl">
-        <h3 class="mt-10 font-bold text-left">
-          Lorem ipsum dolor sit amet
-        </h3>
-        <p class="text-justify mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla congue
-          nec nulla ac auctor. Aenean ut malesuada orci, tincidunt elementum
-          orci. Donec tincidunt sem nec porta dignissim. Vivamus a eros
-          consequat, viverra est ac, interdum risus. Aliquam sit amet mattis
-          dolor, a gravida lectus. Donec elementum sed lacus at blandit. Aenean
-          eget justo sed ipsum maximus lobortis. Praesent volutpat, leo ac
-          imperdiet iaculis, leo velit congue enim.
-        </p>
-      </div>
+        class Carousel {
+          constructor(container, items, controls) {
+            this.carouselContainer = container;
+            this.carouselControls = controls;
+            this.carouselArray = [...items];
+          }
 
-      <div class="w-full max-w-3xl">
-        <h3 class="mt-10 font-bold text-left">
-          Lorem ipsum dolor sit amet
-        </h3>
-        <p class="text-justify mt-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla congue
-          nec nulla ac auctor. Aenean ut malesuada orci, tincidunt elementum
-          orci. Donec tincidunt sem nec porta dignissim. Vivamus a eros
-          consequat, viverra est ac, interdum risus. Aliquam sit amet mattis
-          dolor, a gravida lectus. Donec elementum sed lacus at blandit. Aenean
-          eget justo sed ipsum maximus lobortis. Praesent volutpat, leo ac
-          imperdiet iaculis, leo velit congue enim.
-        </p>
+          updateGallery() {
+            this.carouselArray.forEach((el) => {
+              el.classList.remove("gallery-item-1");
+              el.classList.remove("gallery-item-2");
+              el.classList.remove("gallery-item-3");
+              el.classList.remove("gallery-item-4");
+              el.classList.remove("gallery-item-5");
+            });
 
-        <div class="flex justify-between items-center mt-40" data-aos="zoom-out-up">
-          <div>
-          </div>
+            this.carouselArray.slice(0, 5).forEach((el, i) => {
+              el.classList.add(`gallery-item-${i + 1}`);
+            });
+          }
 
-        </div>
-        <div class="mt-4">
-          <h3 class="text-2xl font-semibold mb-8">Contactez-nous</h3>
-          <form>
-            <div class="mb-6">
-              <label for="name" class="block text-gray-700 font-medium mb-2">Nom</label>
-              <input type="text" id="name" class="w-full border border-gray-300 p-3 rounded" required />
-            </div>
-            <div class="mb-6">
-              <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-              <input type="email" id="email" class="w-full border border-gray-300 p-3 rounded" required />
-            </div>
-            <div class="mb-6">
-              <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-              <textarea id="message" rows="4" class="w-full border border-gray-300 p-3 rounded" required></textarea>
-            </div>
-            <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded">
-              Envoyer
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <footer class="py-5 bg-gray-100">
-      <div class="container mx-auto flex flex-col items-center space-y-10">
-        <!-- Première ligne -->
-        <div class="flex justify-evenly items-center w-full max-w-4xl">
-          <!-- Logo gauche -->
-          <div class="logo">
-            <img src="https://placehold.co/50x50/EEE/31343C" alt="Logo gauche" class="w-12 h-12">
-          </div>
-          <!-- Liens de navigation -->
-          <ul class="flex space-x-8">
-            <li>
-              <a href="./accueil.html" class="text-blue-600 hover:text-blue-800">Accueil</a>
-            </li>
-            <li>
-              <a href="./cartes.html" class="text-blue-600 hover:text-blue-800">Cartes</a>
-            </li>
-            <li>
-              <a href="./atelier.html" class="text-blue-600 hover:text-blue-800">Atelier</a>
-            </li>
-            <li>
-              <a href="./contact.html" class="text-blue-600 hover:text-blue-800">Contact</a>
-            </li>
-            <li>
-              <a href="./a-propos.html" class="text-blue-600 hover:text-blue-800">A propos</a>
-            </li>
-          </ul>
-          <!-- Logo droit -->
-          <div class="logo">
-            <img src="https://placehold.co/50x50/EEE/31343C" alt="Logo droit" class="w-12 h-12">
-          </div>
-        </div>
-        <!-- Deuxième ligne -->
-        <div class="flex justify-evenly items-center w-full max-w-4xl text-gray-700">
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>Lorem ipsum dolor sit amet.</p>
-          <p>Lorem ipsum dolor sit amet.</p>
-        </div>
-      </div>
-    </footer>
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-      </script>
-    <script src="../javascript/script.js"></script>
+          setCurrentState(direction) {
+            if (direction.className === "gallery-controls-previous") {
+              this.carouselArray.unshift(this.carouselArray.pop());
+            } else {
+              this.carouselArray.push(this.carouselArray.shift());
+            }
+            this.updateGallery();
+          }
 
-</body>
+          setControls() {
+            this.carouselControls.forEach((control) => {
+              galleryControlsContainer.appendChild(
+                document.createElement("button")
+              ).className = `gallery-controls-${control}`;
+              document.querySelector(`.gallery-controls-${control}`).innerText =
+                control;
+            });
+          }
 
+          useControls() {
+            const triggers = [...galleryControlsContainer.childNodes];
+            triggers.forEach((control) => {
+              control.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.setCurrentState(control);
+              });
+            });
+          }
+        }
+
+        const exampleCarousel = new Carousel(
+          galleryContainer,
+          galleryItems,
+          galleryControls
+        );
+        exampleCarousel.setControls();
+        exampleCarousel.useControls();
+      });
+    </script>
+  </body>
 </html>
