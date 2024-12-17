@@ -49,7 +49,9 @@ function applyTheme(isDark) {
 	cursorCircle.style.backgroundColor = theme.cursorBg;
 
 	if (elements.backdropAccueil) {
-		elements.backdropAccueil.style.boxShadow = `inset 0 -50px 100px -5px ${theme.background}, inset 0 50px 100px -5px ${theme.background}`;
+		elements.backdropAccueil.style.boxShadow = isDark
+			? `inset 0 -50px 100px -5px ${theme.background}, inset 0 50px 100px -5px ${theme.background}`
+			: `inset 0 -50px 100px -5px rgba(255, 255, 255, 1), inset 0 50px 100px -5px rgba(255, 255, 255, 1)`;
 	}
 
 	elements.circles.forEach(
