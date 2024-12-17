@@ -764,7 +764,7 @@
 									synth.speak(utterance);
 								});
 								modal.querySelectorAll("button").forEach((button) => {
-									addEventToCursorCircle(button);
+									addCursorEffect(button);
 								});
 								modal.querySelectorAll("#nextCard, #prevCard").forEach((button) => {
 									button.addEventListener("click", () => {
@@ -794,7 +794,7 @@
 							"a, button, input, img, .button-group .button, .button-info, input, .slider"
 						)
 						.forEach((element) => {
-							addEventToCursorCircle(element);
+							addCursorEffect(element);
 						});
 
 				})
