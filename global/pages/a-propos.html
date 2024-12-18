@@ -1,149 +1,255 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>À propos</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      .bg-custom-light {
-        background-color: #edf0e8;
-        /* Remplace la couleur exacte */
-      }
 
-      html,
-      body {
-        overflow-x: hidden;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .navsidebar .nav-link.active::after,
+    .navbar .nav-link.active::after {
+      background-color: #7BB928 !important;
+      width: 70% !important;
+    }
 
-  <body>
-    <div class="position-relative w-100" style="height: 500px">
-      <!-- Image de fond -->
-      <img
-        src="/images/1c62d5ab549320b68e8783affde737ba.jpg"
-        class="img-fluid w-100 h-100 object-fit-cover"
-        alt="Bandeau"
-      />
+    .bg-custom-light {
+      background-color: #edf0e8;
+      /* Remplace la couleur exacte */
+    }
 
-      <!-- Overlay avec texte centré -->
-      <div
-        class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50"
-      >
-        <div class="container text-center">
-          <h1 class="text-white fw-bold display-4 mb-4">À propos</h1>
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!-- Mobile Navbar -->
+    <nav class="mobile-header fixed-top navbar navbar-dark py-2 d-lg-none">
+      <div class="container mb-2 d-flex justify-content-center align-items-center">
+        <a class="navbar-brand m-0" href="accueil.html"></a>
+        <img src="/img/logo.png" alt="Sample image" class="img-fluid" width="69" height="69">
+        </a>
+      </div>
+    </nav>
+    <!-- Desktop Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-none d-lg-block">
+      <div class="container d-flex align-items-center">
+        <a class="navbar-brand" href="accueil.html">
+          <img src="/img/logo.png" alt="Sample image" class="img-fluid" width="69" height="69">
+        </a>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="accueil.html">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cartes.html">Cartes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="atelier.html">Atelier</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="a-propos.html">A propos</a>
+            </li>
+          </ul>
+        </div>
+        <div class="theme-switch" role="switch" tabindex="0" aria-checked="false" aria-label="Changer le thème">
+
+          <input type="checkbox" id="checkbox" aria-hidden="true" tabindex="-1">
+          <span class="slider">
+            <span class="slider-circle">
+              <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <line x1="12" y1="3" x2="12" y2="5" />
+                <line x1="12" y1="19" x2="12" y2="21" />
+                <line x1="5" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="19" y2="12" />
+                <line x1="6.36" y1="6.36" x2="4.94" y2="4.94" />
+                <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" />
+                <line x1="6.36" y1="17.66" x2="4.94" y2="19.07" />
+                <line x1="17.66" y1="6.36" x2="19.07" y2="4.94" />
+              </svg>
+              <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z" />
+              </svg>
+            </span>
+          </span>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <!-- 1ère personne -->
-    <div class="container mt-5">
-      <div class="row align-items-center justify-content-center gx-5 p-4">
-        <!-- Conteneur de l'image avec bordure verte -->
-        <div
-          class="col-12 col-md-5 d-flex justify-content-center align-items-center mx-5"
-          style="background-color: #7bb928; max-width: 400px"
-        >
-          <!-- Image -->
-          <img
-            class="img-fluid position-relative"
-            src="/images/239186b1e6de2536f18d3d2fc50a14ef.png"
-            alt="Photo de Angi Guyard"
-            style="bottom: 20px; left: 15px; max-width: 400px"
-          />
-        </div>
+  </header>
 
-        <!-- Conteneur de texte -->
-        <div class="col-12 col-md-5 mt-4 mt-md-0 mx-5">
-          <h2 class="text-success font-weight-semibold">Co-Fondatrice</h2>
-          <h3 class="text-dark font-weight-bold mt-3">Angi Guyard</h3>
-          <p class="text-muted mt-3" style="font-size: 1.25rem">
-            Je suis développeuse reconvertie, passionnée et curieuse dans de
-            nombreux domaines. La plupart de mes sujets de prédilection tournent
-            autour de l’inclusion au sens large : je porte aussi bien
-            l’accessibilité pour les personnes handicapées que le féminisme, la
-            diversité dans la tech, etc. Mon levier est de contribuer à un monde
-            plus équitable où chacun peut trouver sa place et voir ses besoins
-            pris en compte.
-          </p>
-        </div>
+  <!-- Mobile Sidebar Toggle -->
+  <div class="position-absolute burger-menu-container d-lg-none">
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation" aria-expanded="false"
+      aria-controls="navsidebar">
+      <div class="animated-icon" aria-hidden="true"><span class="burgerspan"></span><span
+          class="burgerspan"></span><span class="burgerspan"></span></div>
+    </button>
+  </div>
+
+  <!-- Mobile Sidebar -->
+  <div class="d-flex flex-column flex-shrink-0 p-4 navsidebar d-lg-none" id="navsidebar" role="navigation"
+    aria-label="Sidebar">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="../pages/accueil.html" class="nav-link">
+          Accueil
+        </a>
+      </li>
+      <li>
+        <a href="../pages/cartes.html" class="nav-link">
+          Cartes
+        </a>
+      </li>
+      <li>
+        <a href="../pages/atelier.html" class="nav-link">
+          Atelier
+        </a>
+      </li>
+      <li>
+        <a href="../pages/contact.html" class="nav-link">
+          Contact
+        </a>
+      </li>
+      <li>
+        <a href="../pages/a-propos.html" class="nav-link active" aria-current="page">
+          &Agrave; propos
+        </a>
+      </li>
+    </ul>
+    <label class="theme-switch">
+      <input type="checkbox" id="checkboxmobile">
+      <span class="slider">
+        <span class="slider-circle">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4" />
+            <line x1="12" y1="3" x2="12" y2="5" />
+            <line x1="12" y1="19" x2="12" y2="21" />
+            <line x1="5" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="19" y2="12" />
+            <line x1="6.36" y1="6.36" x2="4.94" y2="4.94" />
+            <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" />
+            <line x1="6.36" y1="17.66" x2="4.94" y2="19.07" />
+            <line x1="17.66" y1="6.36" x2="19.07" y2="4.94" />
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79z" />
+          </svg>
+        </span>
+      </span>
+    </label>
+  </div>
+  <div class="position-relative w-100" style="height: 500px">
+    <!-- Image de fond -->
+    <img src="/images/1c62d5ab549320b68e8783affde737ba.jpg" class="img-fluid w-100 h-100 object-fit-cover"
+      alt="Bandeau" />
+
+    <!-- Overlay avec texte centré -->
+    <div
+      class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
+      <div class="container text-center">
+        <h1 class="text-white fw-bold display-4 mb-4">À propos</h1>
       </div>
     </div>
+  </div>
 
-    <!-- 2ème personne -->
-    <div class="container-fluid mt-5 py-0">
-      <div
-        class="row align-items-center justify-content-center gx-5 p-4 py-5 bg-light-custom"
-        style="background-color: #edf0e8"
-      >
-        <!-- Conteneur de l'image avec bordure verte -->
-        <div
-          class="col-12 col-md-5 d-flex justify-content-center align-items-center order-md-2 mx-3"
-          style="background-color: #7bb928; max-width: 400px"
-        >
-          <!-- Image -->
-          <img
-            class="img-fluid position-relative"
-            src="/images/accs2.png"
-            alt="Photo de Angi Guyard"
-            style="bottom: 20px; left: 15px; max-width: 400px"
-          />
-        </div>
+  <!-- 1ère personne -->
+  <div class="container mt-5">
+    <div class="row align-items-center justify-content-center gx-5 p-4">
+      <!-- Conteneur de l'image avec bordure verte -->
+      <div class="col-12 col-md-5 d-flex justify-content-center align-items-center mx-5"
+        style="background-color: #7bb928; max-width: 400px">
+        <!-- Image -->
+        <img class="img-fluid position-relative" src="/images/239186b1e6de2536f18d3d2fc50a14ef.png"
+          alt="Photo de Angi Guyard" style="bottom: 20px; left: 15px; max-width: 400px" />
+      </div>
 
-        <!-- Conteneur de texte -->
-        <div class="col-12 col-md-5 mt-4 mt-md-0 text-md-end order-md-1">
-          <h2 class="text-success fw-semibold fs-4">Co-Fondatrice</h2>
-          <h3 class="text-dark fw-bold fs-2 mt-3">Angi Guyard</h3>
-          <p class="text-muted fs-5 mt-3">
-            Je suis développeuse reconvertie, passionnée et curieuse dans de
-            nombreux domaines. La plupart de mes sujets de prédilection tournent
-            autour de l’inclusion au sens large : je porte aussi bien
-            l’accessibilité pour les personnes handicapées que le féminisme, la
-            diversité dans la tech, etc. Mon levier est de contribuer à un monde
-            plus équitable où chacun peut trouver sa place et voir ses besoins
-            pris en compte.
-          </p>
-        </div>
+      <!-- Conteneur de texte -->
+      <div class="col-12 col-md-5 mt-4 mt-md-0 mx-5">
+        <h2 class="text-success font-weight-semibold">Co-Fondatrice</h2>
+        <h3 class="text-dark font-weight-bold mt-3">Angi Guyard</h3>
+        <p class="text-muted mt-3" style="font-size: 1.25rem">
+          Je suis développeuse reconvertie, passionnée et curieuse dans de
+          nombreux domaines. La plupart de mes sujets de prédilection tournent
+          autour de l’inclusion au sens large : je porte aussi bien
+          l’accessibilité pour les personnes handicapées que le féminisme, la
+          diversité dans la tech, etc. Mon levier est de contribuer à un monde
+          plus équitable où chacun peut trouver sa place et voir ses besoins
+          pris en compte.
+        </p>
       </div>
     </div>
+  </div>
 
-    <!-- 3e personne -->
-    <div class="container mt-5">
-      <div class="row align-items-center justify-content-center gx-5 p-4">
-        <!-- Conteneur de l'image avec bordure verte -->
-        <div
-          class="col-12 col-md-5 d-flex justify-content-center align-items-center mx-5"
-          style="background-color: #7bb928; max-width: 400px"
-        >
-          <!-- Image -->
-          <img
-            class="img-fluid position-relative"
-            src="/images/accs1.png"
-            alt="Photo de Angi Guyard"
-            style="bottom: 20px; left: 15px; max-width: 400px"
-          />
-        </div>
+  <!-- 2ème personne -->
+  <div class="container-fluid mt-5 py-0">
+    <div class="row align-items-center justify-content-center gx-5 p-4 py-5 bg-light-custom"
+      style="background-color: #edf0e8">
+      <!-- Conteneur de l'image avec bordure verte -->
+      <div class="col-12 col-md-5 d-flex justify-content-center align-items-center order-md-2 mx-3"
+        style="background-color: #7bb928; max-width: 400px">
+        <!-- Image -->
+        <img class="img-fluid position-relative" src="/images/accs2.png" alt="Photo de Angi Guyard"
+          style="bottom: 20px; left: 15px; max-width: 400px" />
+      </div>
 
-        <!-- Conteneur de texte -->
-        <div class="col-12 col-md-5 mt-4 mt-md-0 mx-5">
-          <h2 class="text-success font-weight-semibold">Co-Fondatrice</h2>
-          <h3 class="text-dark font-weight-bold mt-3">Angi Guyard</h3>
-          <p class="text-muted mt-3" style="font-size: 1.25rem">
-            Je suis développeuse reconvertie, passionnée et curieuse dans de
-            nombreux domaines. La plupart de mes sujets de prédilection tournent
-            autour de l’inclusion au sens large : je porte aussi bien
-            l’accessibilité pour les personnes handicapées que le féminisme, la
-            diversité dans la tech, etc. Mon levier est de contribuer à un monde
-            plus équitable où chacun peut trouver sa place et voir ses besoins
-            pris en compte.
-          </p>
-        </div>
+      <!-- Conteneur de texte -->
+      <div class="col-12 col-md-5 mt-4 mt-md-0 text-md-end order-md-1">
+        <h2 class="text-success fw-semibold fs-4">Co-Fondatrice</h2>
+        <h3 class="text-dark fw-bold fs-2 mt-3">Angi Guyard</h3>
+        <p class="text-muted fs-5 mt-3">
+          Je suis développeuse reconvertie, passionnée et curieuse dans de
+          nombreux domaines. La plupart de mes sujets de prédilection tournent
+          autour de l’inclusion au sens large : je porte aussi bien
+          l’accessibilité pour les personnes handicapées que le féminisme, la
+          diversité dans la tech, etc. Mon levier est de contribuer à un monde
+          plus équitable où chacun peut trouver sa place et voir ses besoins
+          pris en compte.
+        </p>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- 3e personne -->
+  <div class="container mt-5">
+    <div class="row align-items-center justify-content-center gx-5 p-4">
+      <!-- Conteneur de l'image avec bordure verte -->
+      <div class="col-12 col-md-5 d-flex justify-content-center align-items-center mx-5"
+        style="background-color: #7bb928; max-width: 400px">
+        <!-- Image -->
+        <img class="img-fluid position-relative" src="/images/accs1.png" alt="Photo de Angi Guyard"
+          style="bottom: 20px; left: 15px; max-width: 400px" />
+      </div>
+
+      <!-- Conteneur de texte -->
+      <div class="col-12 col-md-5 mt-4 mt-md-0 mx-5">
+        <h2 class="text-success font-weight-semibold">Co-Fondatrice</h2>
+        <h3 class="text-dark font-weight-bold mt-3">Angi Guyard</h3>
+        <p class="text-muted mt-3" style="font-size: 1.25rem">
+          Je suis développeuse reconvertie, passionnée et curieuse dans de
+          nombreux domaines. La plupart de mes sujets de prédilection tournent
+          autour de l’inclusion au sens large : je porte aussi bien
+          l’accessibilité pour les personnes handicapées que le féminisme, la
+          diversité dans la tech, etc. Mon levier est de contribuer à un monde
+          plus équitable où chacun peut trouver sa place et voir ses besoins
+          pris en compte.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="../javascript/script.js"></script>
+</body>
+
 </html>
