@@ -100,15 +100,17 @@
       background-color: transparent;
       border: 0;
       cursor: pointer;
-      font-size: 30px;
+      font-size: 16px;
       margin: 50px;
       padding: 0 12px;
       text-transform: capitalize;
       position: relative;
+      color: #BD1D59;
+      transition: color 0.3s ease;
     }
 
     .gallery-controls-previous::before {
-      border: solid black;
+      border: solid #BD1D59;
       border-width: 0 5px 5px 0;
       content: "";
       display: inline-block;
@@ -118,10 +120,11 @@
       left: -30px;
       transform: rotate(135deg);
       width: 5px;
+      transition: border-color 0.3s ease;
     }
 
     .gallery-controls-next::before {
-      border: solid black;
+      border: solid #BD1D59;
       border-width: 0 5px 5px 0;
       content: "";
       display: inline-block;
@@ -131,11 +134,22 @@
       right: -30px;
       transform: rotate(-45deg);
       width: 5px;
+      transition: border-color 0.3s ease;
+    }
+
+    /* Dark theme styles */
+    body.dark-theme .gallery-controls button {
+      color: #D76891;
+    }
+
+    body.dark-theme .gallery-controls-previous::before,
+    body.dark-theme .gallery-controls-next::before {
+      border-color: #D76891;
     }
   </style>
 </head>
 
-<body class="bg-light">
+<body class="bg-light-custom">
   <header class="position-relative w-100">
     <!-- Mobile Navbar -->
     <nav class="mobile-header fixed-top navbar navbar-dark py-2 d-lg-none">
@@ -208,7 +222,7 @@
   </div>
 
   <!-- Mobile Sidebar -->
-  <div class="d-flex flex-column flex-shrink-0 p-4 navsidebar d-lg-none" id="navsidebar" role="navigation"
+  <div class="d-flex flex-column flex-shrink-0 p-2 navsidebar d-lg-none" id="navsidebar" role="navigation"
     aria-label="Sidebar">
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">

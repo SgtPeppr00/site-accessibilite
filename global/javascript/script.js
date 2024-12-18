@@ -17,6 +17,14 @@ const elements = {
 	carouselControls: document.querySelectorAll(
 		".carousel-control-next-icon, .carousel-control-prev-icon"
 	),
+	customTexts: document.querySelectorAll(
+		".text-dark, .text-success, .text-muted"
+	),
+	bgLight: document.querySelectorAll(".bg-light-custom"),
+	galleryControls: document.querySelectorAll(".gallery-controls button"),
+	galleryArrows: document.querySelectorAll(
+		".gallery-controls-previous::before, .gallery-controls-next::before"
+	),
 };
 
 // Theme Management
@@ -29,6 +37,10 @@ const themeColors = {
 		borderColor: "black",
 		sidebar: "#4B4848",
 		header: "#fff",
+		textDark: "black",
+		textSuccess: "#7BB928",
+		textMuted: "#6c757d",
+		bgCustomLight: "#f8f9fa", // Bootstrap's default light background
 	},
 	dark: {
 		background: "black",
@@ -38,12 +50,21 @@ const themeColors = {
 		borderColor: "white",
 		sidebar: "#1E1E1E",
 		header: "#1E1E1E",
+		textDark: "white",
+		textSuccess: "#95d742",
+		textMuted: "#a7a7a7",
+		bgCustomLight: "#222222", // Darker background for dark theme
 	},
 };
 
 let isDarkTheme = localStorage.getItem("darkTheme") === "true";
 
 // Theme Functions
+function syncCheckboxes(checked) {
+	elements.checkbox.checked = checked;
+	elements.checkboxMobile.checked = checked;
+}
+
 function applyTheme(isDark) {
 	const theme = isDark ? themeColors.dark : themeColors.light;
 
@@ -81,11 +102,41 @@ function applyTheme(isDark) {
 	elements.mobileHeader.style.backgroundColor = theme.header;
 
 	elements.navSidebar.style.backgroundColor = theme.sidebar;
+
+	// Handle text colors
+	elements.customTexts.forEach((element) => {
+		console.log(element);
+		if (element.classList.contains("text-dark")) {
+			element.style.setProperty("color", theme.textDark, "important");
+		} else if (element.classList.contains("text-success")) {
+			element.style.setProperty("color", theme.textSuccess, "important");
+		} else if (element.classList.contains("text-muted")) {
+			element.style.setProperty("color", theme.textMuted, "important");
+		}
+	});
+
+	// Handle background colors
+	elements.bgLight.forEach((element) => {
+		element.style.setProperty(
+			"background-color",
+			theme.bgCustomLight,
+			"important"
+		);
+	});
+
+	// Update gallery controls colors
+	elements.galleryControls.forEach((button) => {
+		button.style.color = theme.buttonBg;
+	});
+
+	// Add/remove dark theme class to body for gallery arrows
+	document.body.classList.toggle("dark-theme", isDark);
 }
 
 function changeTheme() {
 	isDarkTheme = !isDarkTheme;
 	localStorage.setItem("darkTheme", isDarkTheme);
+	syncCheckboxes(isDarkTheme);
 	applyTheme(isDarkTheme);
 }
 
@@ -149,8 +200,7 @@ function addCursorEffect(element) {
 // Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
 	setupCursorCircle();
-	elements.checkbox.checked = isDarkTheme;
-	elements.checkboxMobile.checked = isDarkTheme;
+	syncCheckboxes(isDarkTheme);
 	applyTheme(isDarkTheme);
 
 	document

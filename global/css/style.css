@@ -26,35 +26,28 @@
 	font-weight: 400;
 }
 .text-contact3 {
-	border-bottom: 3px solid #1578BE;
+	border-bottom: 3px solid #1578be;
 	width: 50px;
 	font-size: 32px;
 	font-weight: 700;
 	font-family: Atkinson Hyperlegible;
 }
 
-
-
 .container-form {
 	margin-right: 50px;
 }
 
-
 .form-control::placeholder {
-	color: #1578BE;
+	color: #1578be;
 	font-size: 16px;
 	font-family: Atkinson Hyperlegible;
 	font-weight: 400;
 }
 
 .form-control {
-	border-top: none;
-	border-left: none;
-	border-right: none;
 	border-radius: 0%;
 	border-bottom: 1px solid #000;
 }
-
 
 /* Footer */
 .footer-container {
@@ -225,9 +218,9 @@
 .navsidebar {
 	z-index: 1001;
 	width: 250px;
-	height: 500px; /* Changed from 100vh */
+	height: 400px; /* Changed from 100vh */
 	position: fixed;
-	top: 330px; /* Added to position from middle */
+	top: 297px; /* Added to position from middle */
 	transform: translateY(-50%); /* Added for vertical centering */
 	right: -250px;
 	background: #4b4848; /* Changed to grey */
