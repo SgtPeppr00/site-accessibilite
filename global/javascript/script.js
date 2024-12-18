@@ -1,8 +1,9 @@
 // DOM Elements
 const elements = {
 	animatedIcon: document.querySelector(".animated-icon"),
-	navSidebar: document.querySelector(".navsidebar"),
 	backdropAccueil: document.querySelector("#backdropaccueil"),
+	navSidebar: document.querySelector("#navsidebar"),
+	mobileHeader: document.querySelector(".mobile-header"),
 	checkbox: document.getElementById("checkbox"),
 	checkboxMobile: document.getElementById("checkboxmobile"),
 	circles: document.querySelectorAll(".circle"),
@@ -26,6 +27,8 @@ const themeColors = {
 		buttonBg: "#BD1D59",
 		cursorBg: "rgba(0, 0, 0, 0.5)",
 		borderColor: "black",
+		sidebar: "#4B4848",
+		header: "#fff",
 	},
 	dark: {
 		background: "black",
@@ -33,6 +36,8 @@ const themeColors = {
 		buttonBg: "#D76891",
 		cursorBg: "rgba(255, 255, 255, 0.5)",
 		borderColor: "white",
+		sidebar: "#1E1E1E",
+		header: "#1E1E1E",
 	},
 };
 
@@ -44,8 +49,6 @@ function applyTheme(isDark) {
 
 	document.body.style.background = theme.background;
 	document.body.style.color = theme.text;
-	elements.navSidebar.style.background = theme.background;
-	elements.navSidebar.style.borderColor = theme.borderColor;
 	cursorCircle.style.backgroundColor = theme.cursorBg;
 
 	if (elements.backdropAccueil) {
@@ -75,6 +78,9 @@ function applyTheme(isDark) {
 		link.classList.toggle("link-dark", !isDark);
 		link.classList.toggle("link-light", isDark);
 	});
+	elements.mobileHeader.style.backgroundColor = theme.header;
+
+	elements.navSidebar.style.backgroundColor = theme.sidebar;
 }
 
 function changeTheme() {

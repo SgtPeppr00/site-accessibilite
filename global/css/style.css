@@ -191,31 +191,18 @@
 	width: 250px;
 	height: 500px; /* Changed from 100vh */
 	position: fixed;
-	top: 225px; /* Added to position from middle */
+	top: 330px; /* Added to position from middle */
 	transform: translateY(-50%); /* Added for vertical centering */
 	right: -250px;
-	background: #808080; /* Changed to grey */
+	background: #4b4848; /* Changed to grey */
 	color: white;
 	transition: all 0.3s;
-	border-left: solid 1px #000;
 }
 
 .navsidebar .nav-link {
 	position: relative;
 	transition: all 0.3s;
 	color: white;
-}
-
-.navsidebar .nav-link::after {
-	content: "";
-	position: absolute;
-	width: 0;
-	height: 2px;
-	bottom: 0;
-	left: 50%;
-	background-color: currentColor;
-	transition: all 0.3s ease;
-	transform: translateX(-50%);
 }
 
 .navsidebar .nav-link:hover::after,
@@ -460,6 +447,10 @@ input:checked + .slider .moon-icon {
 	outline: 6px solid #0400ff !important;
 }
 
+.mobile-header {
+	background-color: #fff;
+}
+
 @media (max-width: 1200px) {
 	.carousel-control-next,
 	.carousel-control-prev {
@@ -470,6 +461,9 @@ input:checked + .slider .moon-icon {
 	.carousel-inner {
 		height: auto !important;
 		min-height: 300px;
+	}
+	.hero-section {
+		margin-top: 100px;
 	}
 }
 @media (max-width: 768px) {
