@@ -13,6 +13,66 @@
 			background-color: #673C90 !important;
 			width: 70% !important;
 		}
+
+		#cardGrid {
+			transition: all 0.3s ease-in-out;
+			position: relative;
+		}
+
+		.alert-info {
+			transition: all 0.3s ease-in-out;
+			transform: translateY(-100%);
+			opacity: 0;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1050;
+			margin: 0;
+			border-radius: 1rem;
+		}
+
+		.alert-info.show {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		@media (max-width: 991px) {
+			.alert-info {
+				top: 56px;
+			}
+		}
+
+		/* Add these new styles */
+		.input-group:focus-within {
+			outline: 6px solid #02007b !important;
+			border-radius: 50px;
+		}
+
+		.input-group:focus-within input:focus,
+		.input-group:focus-within .input-group-text:focus {
+			outline: none !important;
+		}
+
+		.input-group input,
+		.input-group .input-group-text {
+			border-color: #ced4da !important;
+		}
+
+		.cardGridContainer {
+			position: relative;
+			min-height: 500px;
+		}
+
+		.no-results {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			font-size: 1.2rem;
+			color: #666;
+			width: 100%;
+		}
 	</style>
 </head>
 
@@ -159,15 +219,15 @@
 			</button>
 			<div class="d-flex filters justify-content-between mt-5 mb-4 w-100 h-50 h-sm-25" role="search">
 				<div class="col-12 col-lg-4 me-5" role="group" aria-label="Filtres de cartes">
-					<div class="input-group">
-						<span class="input-group-text rounded-start-pill bg-white border-end-0">
+					<div class="input-group" role="search">
+						<span class="input-group-text rounded-start-pill bg-white border-end-0" aria-hidden="true">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 								class="bi bi-search" viewBox="0 0 16 16">
 								<path
 									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 							</svg>
 						</span>
-						<input type="text" class="form-control rounded-end-pill border-start-0"
+						<input type="search" class="form-control rounded-end-pill border-start-0"
 							placeholder="Rechercher..." id="searchBar" aria-label="Rechercher des cartes" />
 					</div>
 				</div>
@@ -178,7 +238,9 @@
 				<p class="h4 mb-0" id="nameOfFamily"></p>
 			</div>
 			<h2 id="familytitle" class="text-center mt-5 mb-5">Toutes les cartes</h2>
-			<div class="row row-cols-2 row-cols-lg-4 gx-0 gy-4 gx-md-5 g-lg-5 mb-5" id="cardGrid" role="list">
+			<div class="cardGridContainer">
+				<div class="row row-cols-2 row-cols-lg-4 gx-0 gy-4 gx-md-5 g-lg-5 mb-5" id="cardGrid" role="list">
+				</div>
 			</div>
 
 		</div>
@@ -425,6 +487,8 @@
 				const cards = document.querySelectorAll(".card-item");
 				const activeCategory = document.querySelector(".btn-group .button.button-primary")?.getAttribute("data-category");
 				let i = 0;
+				let visibleCards = 0;
+
 				cards.forEach((card) => {
 					const title = card.dataset.title.toLowerCase();
 					const id = card.dataset.image.slice(0, -4).toLowerCase();
@@ -436,12 +500,26 @@
 						card.querySelector("img").tabIndex = 0;
 						card.setAttribute("data-id", i);
 						i += 1;
+						visibleCards++;
 					} else {
 						card.style.display = "none";
 						card.querySelector("img").tabIndex = -1;
 						card.setAttribute("data-id", "");
 					}
 				});
+
+				// Handle no results message
+				const existingMessage = document.querySelector('.no-results');
+				if (visibleCards === 0) {
+					if (!existingMessage) {
+						const noResults = document.createElement('div');
+						noResults.className = 'no-results';
+						noResults.textContent = 'Aucune carte ne correspond à ces critères';
+						document.getElementById('cardGrid').appendChild(noResults);
+					}
+				} else if (existingMessage) {
+					existingMessage.remove();
+				}
 			});
 		}
 
@@ -514,16 +592,31 @@
 			}
 
 			let i = 0;
+			let visibleCards = 0;
 			cards.forEach((card) => {
 				if (card.style.display === "block") {
 					card.querySelector("img").tabIndex = 0;
 					card.setAttribute("data-id", i);
 					i += 1;
+					visibleCards++;
 				} else {
 					card.querySelector("img").tabIndex = -1;
 					card.setAttribute("data-id", "");
 				}
 			});
+
+			// Handle no results message
+			const existingMessage = document.querySelector('.no-results');
+			if (visibleCards === 0) {
+				if (!existingMessage) {
+					const noResults = document.createElement('div');
+					noResults.className = 'no-results';
+					noResults.textContent = 'Aucune carte ne correspond à ces critères';
+					document.getElementById('cardGrid').appendChild(noResults);
+				}
+			} else if (existingMessage) {
+				existingMessage.remove();
+			}
 		}
 
 		function setupSkipButton() {
@@ -550,6 +643,9 @@
 
 			nameDiv.textContent = familyName;
 			alertDiv.classList.remove('d-none');
+			setTimeout(() => {
+				alertDiv.classList.add('show');
+			}, 10);
 
 			// Set colors based on family name
 			if (familyName.toLowerCase().includes('journée')) {
@@ -595,9 +691,13 @@
 			hideTimeout = setTimeout(() => {
 				if (!activeFilter && !isHovering) {
 					const nameDiv = document.querySelector('#nameOfFamily');
-					nameDiv.parentElement.classList.add('d-none');
+					const alertDiv = nameDiv.parentElement;
+					alertDiv.classList.remove('show');
+					setTimeout(() => {
+						alertDiv.classList.add('d-none');
+					}, 300);
 				}
-			}, 1000);
+			}, 500);
 		}
 
 		function handleButtonHover() {
