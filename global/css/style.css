@@ -5,6 +5,7 @@
 	color: white;
 	width: 20%;
 	align-self: flex-end;
+	margin-bottom: 20px;
 }
 
 .btn-rose:hover {
@@ -16,13 +17,33 @@
 .text-contact {
 	font-size: 32px;
 	font-weight: 700;
-	font-family: Kanit-bold;
+	font-family: Atkinson Hyperlegible;
 }
+
+.text-contact2 {
+	font-size: 20px;
+	font-family: Atkinson Hyperlegible;
+	font-weight: 400;
+}
+.text-contact3 {
+	border-bottom: 3px solid #1578BE;
+	width: 50px;
+	font-size: 32px;
+	font-weight: 700;
+	font-family: Atkinson Hyperlegible;
+}
+
+
+
+.container-form {
+	margin-right: 50px;
+}
+
 
 .form-control::placeholder {
 	color: #1578BE;
 	font-size: 16px;
-	font-family: Kanit-regular;
+	font-family: Atkinson Hyperlegible;
 	font-weight: 400;
 }
 
