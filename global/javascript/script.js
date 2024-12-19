@@ -41,6 +41,7 @@ const themeColors = {
 		textSuccess: "#7BB928",
 		textMuted: "#6c757d",
 		bgCustomLight: "#f8f9fa", // Bootstrap's default light background
+		secondPersonBg: "#f8f9fa", // Same as regular light background
 	},
 	dark: {
 		background: "black",
@@ -54,6 +55,7 @@ const themeColors = {
 		textSuccess: "#95d742",
 		textMuted: "#a7a7a7",
 		bgCustomLight: "black", // Darker background for dark theme
+		secondPersonBg: "#1a1a1a", // Slightly lighter than black
 	},
 };
 
@@ -117,11 +119,19 @@ function applyTheme(isDark) {
 
 	// Handle background colors
 	elements.bgLight.forEach((element) => {
-		element.style.setProperty(
-			"background-color",
-			theme.bgCustomLight,
-			"important"
-		);
+		if (element.classList.contains("second-person")) {
+			element.style.setProperty(
+				"background-color",
+				theme.secondPersonBg,
+				"important"
+			);
+		} else {
+			element.style.setProperty(
+				"background-color",
+				theme.bgCustomLight,
+				"important"
+			);
+		}
 	});
 
 	// Update gallery controls colors
@@ -142,8 +152,19 @@ function changeTheme() {
 
 // Cursor Functions
 const cursorCircle = document.createElement("div");
+cursorCircle.className = "cursor-circle";
 
 function setupCursorCircle() {
+	// Check if device is mobile/tablet
+	const isMobileDevice =
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		) || window.matchMedia("(max-width: 992px)").matches;
+
+	if (isMobileDevice) {
+		return; // Don't setup cursor circle on mobile devices
+	}
+
 	cursorCircle.style.cssText = `
         z-index: 9999;
         position: fixed;
