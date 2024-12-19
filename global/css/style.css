@@ -482,7 +482,10 @@ input:checked + .slider .moon-icon {
 .mobile-header {
 	background-color: #fff;
 }
-
+#searchBar {
+	border-right: 1px solid #000;
+	border-top: 1px solid #000;
+}
 footer .nav-link {
 	background-color: transparent;
 	border-radius: 2rem;
