@@ -1,87 +1,91 @@
 # Site Accessibilité
 
-## Contributors
+## Contributeurs
 
 - LANGUEPIN August
 - MAOUCHI Ilan
 - DIOP Cheikh
 
-A web application focused on accessibility awareness and education through
-interactive cards and workshops.
+Une application web axée sur la sensibilisation et l'éducation à l'accessibilité
+à travers des cartes interactives et des ateliers.
 
-## Project Overview
+## Aperçu du Projet
 
-This project is a multi-page web application that provides resources and tools
-for understanding and implementing accessibility in various contexts. It
-includes:
+Ce projet est une application web multi-pages qui fournit des ressources et des
+outils pour comprendre et mettre en œuvre l'accessibilité dans divers contextes.
+Il comprend :
 
-- Interactive card system showcasing different accessibility scenarios
-- Workshop/training materials
-- Information pages about accessibility
-- Contact form
-- Dark/light theme support
+- Un système de cartes interactif présentant différents scénarios
+  d'accessibilité
+- Du matériel d'atelier/formation
+- Des pages d'information sur l'accessibilité
+- Un formulaire de contact
+- Support des thèmes clair/sombre
 
-## Features
+## Fonctionnalités
 
-### Card System
+### Système de Cartes
 
-- Categorized accessibility scenarios
-- Interactive card display with:
-  - Visual representation
-  - Title and subtitle
-  - Detailed descriptions
-  - Screen reader support
-  - Keyboard navigation
-  - Search functionality
-  - Category filtering
+- Scénarios d'accessibilité catégorisés
+- Affichage de cartes interactif avec :
+  - Représentation visuelle
+  - Titre et sous-titre
+  - Descriptions détaillées
+  - Support pour lecteur d'écran
+  - Navigation au clavier
+  - Fonction de recherche
+  - Filtrage par catégorie
 
-### Accessibility Features
+### Fonctionnalités d'Accessibilité
 
-- Screen reader compatible
-- Keyboard navigation support
-- High contrast options
-- Custom font (Luciole) for better readability
-- Focus indicators
-- Skip to content links
-- ARIA labels and roles
-- Responsive design
+- Compatible avec les lecteurs d'écran
+- Support de la navigation au clavier
+- Options de contraste élevé
+- Police personnalisée (Luciole) pour une meilleure lisibilité
+- Indicateurs de focus
+- Liens d'accès rapide au contenu
+- Labels et rôles ARIA
+- Design responsive
 
-### Theme Support
+### Support des Thèmes
 
-- Toggle between light and dark themes
-- Persistent theme selection
-- Accessible color contrasts
+- Basculement entre thèmes clair et sombre
+- Sélection de thème persistante
+- Contrastes de couleurs accessibles
 
-## Technical Stack
+## Stack Technique
 
 - HTML5
 - CSS3 (Bootstrap 5.3.3)
 - JavaScript (Vanilla)
-- TailwindCSS (for some pages)
-- JSON for data management
+- TailwindCSS (pour certaines pages)
+- JSON pour la gestion des données
 
-## Card Categories
+## Catégories de Cartes
 
-The application organizes accessibility scenarios into five main categories:
+L'application organise les scénarios d'accessibilité en cinq catégories
+principales :
 
-1. Organisation de la journée (Day Organization)
-2. Accessibilité des lieux (Location Accessibility)
-3. Matériel (Equipment)
-4. Numérique (Digital)
-5. Événements sociaux / professionnels (Social/Professional Events)
+1. Organisation de la journée
+2. Accessibilité des lieux
+3. Matériel
+4. Numérique
+5. Événements sociaux / professionnels
 
-## Setup and Installation
+## Installation et Configuration
 
-1. Clone the repository
-2. No build process required - can be served directly from a web server
-3. Ensure all font files and images are properly placed in their respective
-   directories
+1. Cloner le dépôt
+2. Aucun processus de build requis - peut être servi directement depuis un
+   serveur web
+3. S'assurer que tous les fichiers de polices et images sont correctement placés
+   dans leurs répertoires respectifs
 
-## Browser Support
+## Support des Navigateurs
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Emphasis on accessibility support across different screen readers
+- Navigateurs modernes (Chrome, Firefox, Safari, Edge)
+- Accent mis sur le support d'accessibilité à travers différents lecteurs
+  d'écran
 
-## Contributing
+## Contribution
 
-## License
+## Licence
