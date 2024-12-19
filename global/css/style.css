@@ -492,7 +492,7 @@ input:checked + .slider .moon-icon {
 		min-height: 300px;
 	}
 	.hero-section {
-		margin-top: 100px;
+		margin-top: 95px;
 	}
 }
 @media (max-width: 768px) {

@@ -53,7 +53,7 @@ const themeColors = {
 		textDark: "white",
 		textSuccess: "#95d742",
 		textMuted: "#a7a7a7",
-		bgCustomLight: "#222222", // Darker background for dark theme
+		bgCustomLight: "black", // Darker background for dark theme
 	},
 };
 
