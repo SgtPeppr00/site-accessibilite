@@ -9,6 +9,19 @@
 	/* Remplace la couleur exacte */
 }
 
+/* bg-green: Add green background and max-width */
+.bg-green {
+	background-color: #7bb928;
+	max-width: 400px;
+}
+
+/* photo-angie: Positioning for the image */
+.photo-angie {
+	bottom: 20px;
+	left: 15px;
+	max-width: 400px;
+}
+
 html,
 body {
 	overflow-x: hidden;

@@ -172,3 +172,13 @@ tbody img {
 		width: 80%;
 	}
 }
+
+/* background-atelier: Add background image to hero-section */
+.background-atelier {
+	background: url("../img/atelierhero.png") center/cover no-repeat;
+}
+
+/* retour-en-haut: Style for 'Retour en haut' button */
+.retour-en-haut {
+	background-color: #bd1d59;
+}
