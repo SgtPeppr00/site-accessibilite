@@ -1,0 +1,5 @@
+.navsidebar .nav-link.active::after,
+.navbar .nav-link.active::after {
+	background-color: #1578be !important;
+	width: 70% !important;
+}

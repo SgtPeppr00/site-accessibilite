@@ -1,0 +1,137 @@
+.navsidebar .nav-link.active::after,
+.navbar .nav-link.active::after {
+	background-color: #ea9506 !important;
+	width: 70% !important;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.gallery {
+	width: 100%;
+}
+
+.gallery-container {
+	align-items: center;
+	display: flex;
+	height: 400px;
+	margin: 0 auto;
+	max-width: 1000px;
+	position: relative;
+}
+
+.gallery-item {
+	height: 200px;
+	opacity: 0;
+	position: absolute;
+	transition: all 0.3s ease-in-out;
+	width: 330px;
+	z-index: 0;
+	border-radius: 15px;
+	background-size: contain;
+}
+
+.gallery-item-1 {
+	left: 15%;
+	opacity: 0.4;
+	transform: translateX(-50%);
+}
+
+.gallery-item-2,
+.gallery-item-4 {
+	height: 250px;
+	opacity: 0.8;
+	width: 380px;
+	z-index: 1;
+}
+
+.gallery-item-2 {
+	left: 30%;
+	transform: translateX(-50%);
+}
+
+.gallery-item-3 {
+	box-shadow: -2px 5px 33px 6px rgba(0, 0, 0, 0.35);
+	height: 300px;
+	left: 50%;
+	opacity: 1;
+	transform: translateX(-50%);
+	width: 400px;
+	z-index: 2;
+}
+
+.gallery-item-4 {
+	left: 70%;
+	transform: translateX(-50%);
+}
+
+.gallery-item-5 {
+	left: 85%;
+	opacity: 0.4;
+	transform: translateX(-50%);
+}
+
+.gallery-controls {
+	display: flex;
+	justify-content: center;
+	margin: 25px 0;
+	height: 100px;
+}
+
+.gallery-controls button {
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	font-size: 16px;
+	margin: 50px;
+	padding: 0 12px;
+	text-transform: capitalize;
+	position: relative;
+	color: #bd1d59;
+	transition: color 0.3s ease;
+}
+
+.gallery-controls-previous::before {
+	border: solid #bd1d59;
+	border-width: 0 5px 5px 0;
+	content: "";
+	display: inline-block;
+	height: 5px;
+	padding: 10px;
+	position: absolute;
+	left: -30px;
+	transform: rotate(135deg);
+	width: 5px;
+	transition: border-color 0.3s ease;
+}
+
+.gallery-controls-next::before {
+	border: solid #bd1d59;
+	border-width: 0 5px 5px 0;
+	content: "";
+	display: inline-block;
+	height: 5px;
+	padding: 10px;
+	position: absolute;
+	right: -30px;
+	transform: rotate(-45deg);
+	width: 5px;
+	transition: border-color 0.3s ease;
+}
+
+/* Dark theme styles */
+body.dark-theme .gallery-controls button {
+	color: #d76891;
+}
+
+body.dark-theme .gallery-controls-previous::before,
+body.dark-theme .gallery-controls-next::before {
+	border-color: #d76891;
+}

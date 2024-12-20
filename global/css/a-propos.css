@@ -1,0 +1,15 @@
+.navsidebar .nav-link.active::after,
+.navbar .nav-link.active::after {
+	background-color: #7bb928 !important;
+	width: 70% !important;
+}
+
+.bg-custom-light {
+	background-color: #edf0e8;
+	/* Remplace la couleur exacte */
+}
+
+html,
+body {
+	overflow-x: hidden;
+}

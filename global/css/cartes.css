@@ -1,0 +1,218 @@
+#cardGrid {
+	transition: all 0.3s ease-in-out;
+	position: relative;
+}
+
+.alert-info {
+	transition: all 0.3s ease-in-out;
+	transform: translateY(-100%);
+	opacity: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	margin: 0;
+	border-radius: 1rem;
+}
+
+.alert-info.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@media (max-width: 991px) {
+	.alert-info {
+		top: 25px;
+	}
+}
+
+/* Add these new styles */
+.input-group:focus-within {
+	outline: 6px solid #02007b !important;
+	border-radius: 50px;
+}
+
+.input-group:focus-within input:focus,
+.input-group:focus-within .input-group-text:focus {
+	outline: none !important;
+}
+
+.input-group input,
+.input-group .input-group-text {
+	border-color: #ced4da !important;
+}
+
+.cardGridContainer {
+	position: relative;
+	min-height: 500px;
+}
+
+.no-results {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-size: 1.2rem;
+	color: #666;
+	width: 100%;
+}
+.navsidebar .nav-link.active::after,
+.navbar .nav-link.active::after {
+	background-color: #673c90 !important;
+	width: 70% !important;
+}
+
+.filter-button {
+	font-size: 1rem;
+	font-weight: bold;
+	transition: all 0.3s ease;
+	border-radius: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.filter-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+	.filter-button {
+		padding: 8px 16px;
+		font-size: 0.9rem;
+	}
+}
+
+#cardGrid:focus {
+	background-color: #207cc4;
+}
+
+@font-face {
+	font-family: "Luciole";
+	src: url("../fonts/Luciole-Regular.ttf");
+}
+
+#skipToCards {
+	border-radius: 0 0 50px 50px;
+}
+
+.h-45 {
+	height: 45%;
+}
+
+* {
+	font-family: "Luciole", sans-serif;
+	text-align: start;
+}
+
+*:focus-visible {
+	outline: 6px solid #02007b !important;
+}
+
+.card-title {
+	text-align: center;
+}
+
+.subTitle {
+	font-weight: bold;
+}
+
+.card-img-top:focus {
+	outline: 6px solid #02007b;
+}
+
+.bluebg {
+	background-color: transparent;
+	border: 0.15em solid #1578be;
+	color: #1578be;
+}
+
+.bluebg:hover,
+.bluebg:focus,
+.bluebg.button-primary {
+	background-color: #1578be;
+	color: white !important;
+}
+
+.redbg {
+	background-color: transparent;
+	border: 0.15em solid #bd1d59;
+	color: #bd1d59;
+}
+
+.redbg:hover,
+.redbg:focus,
+.redbg.button-primary {
+	background-color: #bd1d59;
+	color: white !important;
+}
+
+.greenbg {
+	background-color: transparent;
+	border: 0.15em solid #7bb928;
+	color: #7bb928;
+}
+
+.greenbg:hover,
+.greenbg:focus,
+.greenbg.button-primary {
+	background-color: #7bb928;
+	color: white !important;
+}
+
+.orangebg {
+	background-color: transparent;
+	border: 0.15em solid #ea9506;
+	color: #ea9506;
+}
+
+.orangebg:hover,
+.orangebg:focus,
+.orangebg.button-primary {
+	background-color: #ea9506;
+	color: white !important;
+}
+
+.purplebg {
+	background-color: transparent;
+	border: 0.15em solid #673c90;
+	color: #673c90;
+}
+
+.purplebg:hover,
+.purplebg:focus,
+.purplebg.button-primary {
+	background-color: #673c90;
+	color: white !important;
+}
+
+@media (min-width: 1000px) {
+	.subTitle {
+		font-size: 1.4rem;
+	}
+
+	.description {
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 1000px) {
+	.filters {
+		flex-direction: column;
+	}
+
+	.modal-dialog {
+		max-width: 100% !important;
+	}
+
+	.filter-button {
+		margin-top: 1rem;
+		font-size: 0.8rem;
+	}
+
+	#searchBar {
+		height: 50.4px;
+	}
+}
