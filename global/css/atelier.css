@@ -135,3 +135,40 @@ body.dark-theme .gallery-controls-previous::before,
 body.dark-theme .gallery-controls-next::before {
 	border-color: #d76891;
 }
+
+/* Ensure table cells have uniform width and height */
+table tbody td {
+	/* Use Bootstrap utility classes for padding and alignment */
+	padding: 1rem;
+	vertical-align: middle;
+	width: 25%; /* Adjust as needed to ensure uniformity */
+}
+
+/* Adjust width for the leftmost column in tbody */
+table tbody th {
+	width: 15%; /* Set a smaller width for the leftmost column */
+}
+
+/* Make images fully responsive and maintain aspect ratio */
+tbody img {
+	width: 50%;
+	height: 150px; /* Set a fixed height for uniformity */
+	object-fit: cover;
+	border-radius: 8px; /* Optional: Add border radius for aesthetics */
+}
+
+/* Optional: Ensure the table is responsive */
+.table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+@media (max-width: 768px) {
+	table tbody td {
+		width: 100%;
+	}
+	tbody img {
+		height: auto;
+		width: 80%;
+	}
+}
