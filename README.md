@@ -1,7 +1,6 @@
 # Site Accessibilité
 
-Lien vers la [démo]([https://sgtpeppr00.github.io/site-accessibilite/global/pages/accueil.html])
-[I'm an inline-style link](https://www.google.com)
+Lien vers la [démo](https://sgtpeppr00.github.io/site-accessibilite/global/pages/accueil.html)
 
 ## Contributeurs
 
