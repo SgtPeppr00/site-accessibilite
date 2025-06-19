@@ -1,6 +1,6 @@
 # Site Accessibilité
 
-Lien vers la [démo]((https://sgtpeppr00.github.io/site-accessibilite/global/pages/accueil.html))
+Lien vers la [démo]([https://sgtpeppr00.github.io/site-accessibilite/global/pages/accueil.html])
 
 ## Contributeurs
 
